@@ -18,7 +18,7 @@ interface Slide {
   titulo?: string;
   subtitulo?: string;
   topicos?: string[];
-  dicaProfessor: string;
+  dicaProfessor?: string;
   imagemDeFundo?: string;
   texto?: string;
   subtexto?: string;
@@ -45,8 +45,8 @@ const slidesData: Record<string, Slide[]> = {
 
   // AULAS 2º TRIMESTRE (JOGOS DE TABULEIRO)
   '8ano_08/06': SLIDES_JOGOS_TABULEIRO.map(s => ({...s, tipo: s.tipo || 'texto'})),
-  '8ano_15/06': SLIDES_GENERICOS['Jogos do Mundo'].map(s => ({...s, tipo: s.tipo || 'texto'})),
-  '8ano_22/06': SLIDES_GENERICOS['Jogos Cooperativos'].map(s => ({...s, tipo: s.tipo || 'texto'})),
+  '8ano_15/06': SLIDES_GENERICOS['Jogos do Mundo'].map((s: any) => ({...s, tipo: s.type || 'texto'})),
+  '8ano_22/06': SLIDES_GENERICOS['Jogos Cooperativos'].map((s: any) => ({...s, tipo: s.type || 'texto'})),
   'ap_12/06': SLIDES_JOGOS_TABULEIRO.map(s => ({...s, tipo: s.tipo || 'texto'})),
   'ap_sexta_19/06': SLIDES_JOGOS_TABULEIRO.map(s => ({...s, tipo: s.tipo || 'texto'})),
 
@@ -709,10 +709,8 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
       </div>
     </div>
   );
-
-  // --- TELA REPOSITÓRIO DE AULAS (Menu de Slides) ---
   const renderRepositorioAulas = () => {
-    const planningSubViewKey = planningSubView === 'gestao' ? 'ilgch' : (planningSubView === 'ap_sexta' ? 'ap' : planningSubView);
+    const planningSubViewKey = planningSubView === 'gestao' ? 'ilgch' : planningSubView;
     const activeCronograma = PE_PLAN[planningSubViewKey as any] || [];
     
     return (
@@ -732,8 +730,8 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {activeCronograma.map((aula, index) => {
             const currentSubView = planningSubViewKey as string;
-            const slideKey = Object.keys(slidesData).find(key => key === `${currentSubView}_${aula.data}`) ? `${currentSubView}_${aula.data}` : null;
-            const temSlides = slideKey !== null;
+            const slideKey = `${currentSubView}_${aula.data}`;
+            const temSlides = true;
             
             let isPast = false;
             if (aula.data) {
@@ -788,12 +786,110 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
         </div>
       </div>
     </div>
-  );
-};
+    );
+  };
 
   // --- TELA PLAYER DE SLIDES (Estilo Datashow de Alto Contraste) ---
   const SlidePlayer = () => {
-    const slides = selectedAulaData ? (slidesData as any)[selectedAulaData] : null;
+    const getSlides = () => {
+      if (!selectedAulaData) return null;
+      
+      // 1. If physical slides exist, return them
+      if ((slidesData as any)[selectedAulaData]) {
+        return (slidesData as any)[selectedAulaData];
+      }
+      
+      // 2. Otherwise parse plans dynamically
+      const lastUnderscoreIndex = selectedAulaData.lastIndexOf('_');
+      if (lastUnderscoreIndex === -1) return null;
+      const turmaId = selectedAulaData.substring(0, lastUnderscoreIndex);
+      const dateStr = selectedAulaData.substring(lastUnderscoreIndex + 1);
+      
+      const plans = PE_PLAN[turmaId] || [];
+      const aula = plans.find(a => a.data === dateStr);
+      if (!aula) return null;
+
+      const resumo = aula.resumo || '';
+
+      const cleanMarkerText = (text: string) => {
+        return text.split('\n')
+          .map(l => l.replace(/^[•\s\-\*]+/g, '').trim())
+          .filter(Boolean);
+      };
+
+      let objetivo = aula.desc || '';
+      const objMatch = resumo.match(/🎯 \*\*Objetivo da Aula:\*\*(.*?)(?=(🗣️|📜|⚠️|📥|$))/s);
+      if (objMatch) {
+        objetivo = objMatch[1].trim();
+      }
+
+      let dinamica = '';
+      const dinMatch = resumo.match(/(🗣️ \*\*Dinâmica:\*\*|🗣️ \*\*O que falar\/Dinâmica:\*\*|🗣️ \*\*Prática:\*\*)(.*?)(?=(📜|⚠️|📥|$))/s);
+      if (dinMatch) {
+        dinamica = dinMatch[2].trim();
+      }
+
+      let reflexao = '';
+      const refMatch = resumo.match(/📜 \*\*Reflexão:\*\*(.*?)(?=(⚠️|📥|$))/s);
+      if (refMatch) {
+         reflexao = refMatch[1].trim();
+      }
+
+      let trabalho = '';
+      const trabMatch = resumo.match(/(⚠️ \*\*TRABALHO:\*\*|📥 \*\*TRABALHO:\*\*|⚠️ \*\*TRABALHO TRIMESTRAL:\*\*|📥 \*\*TRABALHO:\*\*|⚠️ \*\*LEMBRETE\*\*)(.*?)$/s);
+      if (trabMatch) {
+         trabalho = trabMatch[2].trim();
+      }
+
+      const deck: any[] = [
+        {
+          tipo: 'capa',
+          title: aula.titulo,
+          subtitle: `${aula.modulo} • ${aula.tri}`,
+          dicaProfessor: 'Deixe esse slide visível enquanto os alunos organizam os lugares.'
+        }
+      ];
+
+      if (objetivo) {
+        deck.push({
+          tipo: 'texto_simples',
+          title: '🎯 Objetivo da Aula',
+          topicos: cleanMarkerText(objetivo),
+          dicaProfessor: 'Compartilhe o foco de estudo e metas com a classe.'
+        });
+      }
+
+      if (dinamica) {
+        deck.push({
+          tipo: 'texto_simples',
+          title: '🗣️ Dinâmica e Atividades',
+          topicos: cleanMarkerText(dinamica),
+          dicaProfessor: 'Gerencie a divisão das equipes e a execução das tarefas.'
+        });
+      }
+
+      if (reflexao) {
+        deck.push({
+          tipo: 'destaque_centro',
+          texto: 'Reflexão Coletiva',
+          subtexto: reflexao,
+          dicaProfessor: 'Fomente a criticidade, ouvindo as impressões dos alunos.'
+        });
+      }
+
+      if (trabalho) {
+        deck.push({
+          tipo: 'texto_simples',
+          title: '⚠️ Tarefa / Trabalho',
+          topicos: cleanMarkerText(trabalho),
+          dicaProfessor: 'Explique os critérios de pontuação e data limite de entrega.'
+        });
+      }
+
+      return deck;
+    };
+
+    const slides = getSlides();
     const [currentIndex, setCurrentIndex] = useState(0);
     const [showDica, setShowDica] = useState(false);
 
@@ -819,12 +915,13 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
     // Renderização dos Tipos de Slide Visual Limpo
     const renderSlideContent = () => {
       // Map legacy "tipo" to "type" from data
-      const slideType = slideAtual.type || slideAtual.tipo;
+      const slideType = slideAtual.type || slideAtual.tipo || 'texto';
+      const isIlgch = selectedAulaData ? selectedAulaData.startsWith('ilgch') : false;
 
       switch (slideType) {
         case 'capa':
         case 'hero':
-          return (
+          return isIlgch ? (
             <div className="w-full h-full flex flex-col items-center justify-center text-center p-6 md:p-12 bg-slate-950 min-h-[450px]">
               <h1 className="text-4xl md:text-7xl font-black text-white tracking-tighter mb-6 uppercase leading-tight">
                 {slideAtual.title || slideAtual.titulo}
@@ -833,12 +930,23 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
                 {slideAtual.subtitle || slideAtual.subtitulo}
               </p>
             </div>
+          ) : (
+            <div className="w-full h-full flex flex-col items-center justify-center text-center p-6 md:p-12 bg-white min-h-[450px] border-b-8 border-blue-600">
+              <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tight mb-6 uppercase leading-tight">
+                {slideAtual.title || slideAtual.titulo}
+              </h1>
+              <div className="h-1.5 w-24 bg-blue-600 mb-6 rounded"></div>
+              <p className="text-xl md:text-3xl font-extrabold text-blue-600">
+                {slideAtual.subtitle || slideAtual.subtitulo}
+              </p>
+            </div>
           );
         
+        case 'text':
         case 'texto':
         case 'texto_simples':
         case 'list':
-          return (
+          return isIlgch ? (
             <div className="w-full h-full flex flex-col justify-center p-6 md:p-16 bg-[#0B1120] min-h-[450px]">
               <h2 className="text-3xl md:text-5xl font-black text-emerald-400 mb-8 border-l-8 border-emerald-500 pl-4">
                 {slideAtual.title || slideAtual.titulo}
@@ -847,9 +955,25 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
                 <p className="text-2xl md:text-3xl font-bold text-slate-200 mb-6">{slideAtual.content}</p>
               )}
               <ul className="space-y-6 max-w-5xl">
-                {(slideAtual.points || slideAtual.topicos)?.map((topico: string, idx: number) => (
+                {(slideAtual.points || slideAtual.topicos || slideAtual.content?.split('\n').filter(Boolean))?.map((topico: string, idx: number) => (
                   <li key={idx} className="text-xl md:text-3xl font-bold text-slate-200 flex items-start gap-4 leading-tight">
-                    <span className="text-white mt-1">»</span> {topico}
+                    <span className="text-emerald-400 mt-1">»</span> {topico}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            <div className="w-full h-full flex flex-col justify-center p-6 md:p-16 bg-white min-h-[450px]">
+              <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-8 border-l-8 border-blue-600 pl-4 tracking-tight">
+                {slideAtual.title || slideAtual.titulo}
+              </h2>
+              {slideAtual.content && (
+                <p className="text-xl md:text-2xl font-extrabold text-blue-900 mb-6 bg-blue-50/50 p-4 rounded-xl border border-blue-100">{slideAtual.content}</p>
+              )}
+              <ul className="space-y-6 max-w-5xl">
+                {(slideAtual.points || slideAtual.topicos || slideAtual.content?.split('\n').filter(Boolean))?.map((topico: string, idx: number) => (
+                  <li key={idx} className="text-xl md:text-2xl font-bold text-slate-700 flex items-start gap-4 leading-relaxed">
+                    <span className="text-blue-600 mt-1 font-bold">●</span> {topico}
                   </li>
                 ))}
               </ul>
@@ -857,7 +981,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
           );
 
         case 'destaque_centro':
-          return (
+          return isIlgch ? (
             <div className="w-full h-full flex flex-col items-center justify-center p-6 md:p-12 text-center bg-[#0B1120] min-h-[450px]">
                <h2 className="text-4xl md:text-6xl font-black text-white leading-tight uppercase max-w-6xl">
                  {slideAtual.texto || slideAtual.content}
@@ -868,10 +992,21 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
                  </p>
                )}
             </div>
+          ) : (
+            <div className="w-full h-full flex flex-col items-center justify-center p-6 md:p-12 text-center bg-blue-50 min-h-[450px] border-y-8 border-blue-200">
+               <h2 className="text-4xl md:text-5xl font-extrabold text-blue-950 leading-tight uppercase max-w-6xl tracking-tight">
+                 {slideAtual.texto || slideAtual.content}
+               </h2>
+               {(slideAtual.subtexto || slideAtual.subtitle) && (
+                 <p className="mt-8 text-xl md:text-3xl text-blue-600 font-black border-b-4 border-blue-600 pb-2 uppercase tracking-wider">
+                   {slideAtual.subtexto || slideAtual.subtitle}
+                 </p>
+               )}
+            </div>
           );
 
         default:
-          return (
+          return isIlgch ? (
             <div className="w-full h-full flex flex-col items-center justify-center p-6 md:p-12 text-center bg-[#0B1120] min-h-[450px]">
               <h2 className="text-3xl md:text-5xl font-black text-emerald-400 mb-8">
                 {slideAtual.title || slideAtual.titulo}
@@ -880,12 +1015,23 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
                 {slideAtual.content || slideAtual.texto}
               </p>
             </div>
+          ) : (
+            <div className="w-full h-full flex flex-col items-center justify-center p-6 md:p-12 text-center bg-white min-h-[450px]">
+              <h2 className="text-3xl md:text-5xl font-black text-slate-900 mb-8 tracking-tight">
+                {slideAtual.title || slideAtual.titulo}
+              </h2>
+              <p className="text-xl md:text-2xl font-bold text-slate-700">
+                {slideAtual.content || slideAtual.texto}
+              </p>
+            </div>
           );
       }
     };
 
+    const isIlgch = selectedAulaData ? selectedAulaData.startsWith('ilgch') : false;
+
     return (
-      <div className="fixed inset-0 bg-slate-950 z-[99999] flex flex-col font-sans">
+      <div className={`fixed inset-0 ${isIlgch ? 'bg-slate-950' : 'bg-slate-100'} z-[99999] flex flex-col font-sans`}>
         
         {/* CSS para Impressão */}
         <style dangerouslySetInnerHTML={{__html: `
@@ -896,16 +1042,19 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
         `}} />
 
         {/* Header do Player */}
-        <div className="h-16 flex justify-between items-center px-6 absolute top-0 w-full z-[100000] bg-black/50 backdrop-blur no-print">
+        <div className={`h-16 flex justify-between items-center px-6 absolute top-0 w-full z-[100000] ${isIlgch ? 'bg-black/50 text-white' : 'bg-white/80 border-b border-slate-200 text-slate-800'} backdrop-blur no-print`}>
           <div className="flex gap-4">
-            <button onClick={() => setCurrentView('repositorio_aulas_lista')} className="text-white bg-white/20 hover:bg-white/30 px-4 py-2 rounded font-bold text-sm">
+            <button 
+              onClick={() => setCurrentView('repositorio_aulas_lista')} 
+              className={`px-4 py-2 rounded font-bold text-sm transition-all shadow-sm ${isIlgch ? 'text-white bg-white/20 hover:bg-white/30' : 'text-slate-700 bg-slate-200 hover:bg-slate-300'}`}
+            >
               Voltar
             </button>
-            <button onClick={handlePrint} className="flex items-center gap-2 text-white bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded font-bold text-sm">
+            <button onClick={handlePrint} className="flex items-center gap-2 text-white bg-blue-600 hover:bg-blue-500 px-4 py-2 rounded font-bold text-sm shadow-sm transition-all">
               <Printer size={16} /> Salvar PDF
             </button>
           </div>
-          <div className="text-white font-bold tracking-widest text-xs bg-black/50 px-3 py-1 rounded">
+          <div className={`font-bold tracking-widest text-xs px-3 py-1 rounded shadow-sm ${isIlgch ? 'text-white bg-black/50' : 'text-slate-800 bg-slate-200'}`}>
             {currentIndex + 1} / {slides.length}
           </div>
         </div>
@@ -919,7 +1068,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
         <button 
           onClick={prevSlide} 
           disabled={currentIndex === 0} 
-          className="absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 md:w-20 md:h-20 bg-slate-900/60 hover:bg-emerald-600/90 text-white rounded-full flex items-center justify-center disabled:opacity-10 transition-all border border-slate-700/50 shadow-2xl z-[100000] no-print cursor-pointer"
+          className={`absolute left-4 top-1/2 -translate-y-1/2 w-14 h-14 md:w-20 md:h-20 ${isIlgch ? 'bg-slate-900/60 hover:bg-emerald-600/90 text-white border-slate-700/50' : 'bg-white/80 hover:bg-blue-600/90 text-slate-800 hover:text-white border-slate-300'} rounded-full flex items-center justify-center disabled:opacity-10 transition-all border shadow-2xl z-[100000] no-print cursor-pointer`}
           title="Slide Anterior (Tecla Seta Esquerda)"
         >
           <ChevronLeft size={36} className="md:w-12 md:h-12" />
@@ -928,7 +1077,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
         <button 
           onClick={nextSlide} 
           disabled={currentIndex === slides.length - 1} 
-          className="absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 md:w-20 md:h-20 bg-slate-900/60 hover:bg-emerald-600/90 text-white rounded-full flex items-center justify-center disabled:opacity-10 transition-all border border-slate-700/50 shadow-2xl z-[100000] no-print cursor-pointer"
+          className={`absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 md:w-20 md:h-20 ${isIlgch ? 'bg-slate-900/60 hover:bg-emerald-600/90 text-white border-slate-700/50' : 'bg-white/80 hover:bg-blue-600/90 text-slate-800 hover:text-white border-slate-300'} rounded-full flex items-center justify-center disabled:opacity-10 transition-all border shadow-2xl z-[100000] no-print cursor-pointer`}
           title="Próximo Slide (Tecla Seta Direita)"
         >
           <ChevronRight size={36} className="md:w-12 md:h-12" />
@@ -939,23 +1088,31 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
           <div className="max-w-xl">
             <button 
               onClick={() => setShowDica(!showDica)}
-              className="flex items-center gap-2 text-slate-300 hover:text-white bg-slate-800/85 px-4 py-2 rounded-lg font-bold text-xs mb-2 backdrop-blur border border-slate-700 shadow-md animate-pulse cursor-pointer"
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg font-bold text-xs mb-2 backdrop-blur border shadow-md animate-pulse cursor-pointer ${isIlgch ? 'text-slate-300 hover:text-white bg-slate-800/85 border-slate-700' : 'text-slate-700 hover:text-slate-900 bg-white/90 border-slate-300'}`}
             >
               <Info size={14} /> {showDica ? 'Esconder Dica' : 'Ver Dica de Fala'}
             </button>
             {showDica && (
-              <div className="bg-slate-900 border-2 border-emerald-500 p-5 rounded-xl shadow-2xl max-h-[160px] overflow-y-auto">
-                <span className="text-emerald-400 font-bold text-xs uppercase tracking-wider block mb-1">Seu Roteiro:</span>
-                <p className="text-white text-base md:text-lg font-medium leading-snug">{slideAtual.dicaProfessor}</p>
+              <div className={`p-5 rounded-xl shadow-2xl max-h-[160px] overflow-y-auto border-2 ${isIlgch ? 'bg-slate-900 border-emerald-500' : 'bg-white border-blue-500'}`}>
+                <span className={`font-bold text-xs uppercase tracking-wider block mb-1 ${isIlgch ? 'text-emerald-400' : 'text-blue-600'}`}>Seu Roteiro:</span>
+                <p className={`text-base md:text-lg font-medium leading-snug ${isIlgch ? 'text-white' : 'text-slate-800'}`}>{slideAtual.dicaProfessor}</p>
               </div>
             )}
           </div>
 
           <div className="flex gap-3">
-            <button onClick={prevSlide} disabled={currentIndex === 0} className="w-16 h-16 md:w-20 md:h-20 bg-emerald-600 text-white rounded-full flex items-center justify-center disabled:opacity-30 hover:bg-emerald-500 border-4 border-white shadow-xl">
+            <button 
+              onClick={prevSlide} 
+              disabled={currentIndex === 0} 
+              className={`w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center disabled:opacity-30 border-4 border-white shadow-xl transition-colors ${isIlgch ? 'bg-emerald-600 text-white hover:bg-emerald-500' : 'bg-blue-600 text-white hover:bg-blue-500'}`}
+            >
               <ChevronLeft size={32} />
             </button>
-            <button onClick={nextSlide} disabled={currentIndex === slides.length - 1} className="w-16 h-16 md:w-20 md:h-20 bg-white text-emerald-900 rounded-full flex items-center justify-center disabled:opacity-30 hover:bg-slate-200 border-4 border-white shadow-xl">
+            <button 
+              onClick={nextSlide} 
+              disabled={currentIndex === slides.length - 1} 
+              className={`w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center disabled:opacity-30 border-4 border-white shadow-xl transition-colors ${isIlgch ? 'bg-white text-emerald-900 hover:bg-slate-200' : 'bg-white text-blue-900 hover:bg-slate-200'}`}
+            >
               <ChevronRight size={32} />
             </button>
           </div>

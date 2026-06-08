@@ -51,23 +51,7 @@ export const AlunosView: React.FC<AlunosViewProps> = ({ onBack, classData }) => 
     let planos = PE_PLAN[planKey] || [];
 
     const baseClasses = planos.filter(p => {
-        const lowerTitle = p.titulo.toLowerCase();
-        const lowerModulo = p.modulo.toLowerCase();
-        const lowerDesc = p.desc.toLowerCase();
-        const isExcluded = lowerModulo.includes('prática') || 
-                           lowerModulo.includes('apresentação') || 
-                           lowerModulo.includes('trabalho') ||
-                           lowerModulo.includes('avaliação') || 
-                           lowerModulo.includes('recuperação') || 
-                           lowerModulo.includes('torneio') ||
-                           lowerModulo.includes('competição') ||
-                           lowerTitle.includes('prática') || 
-                           lowerTitle.includes('apresentação') || 
-                           lowerTitle.includes('avaliação') ||
-                           lowerTitle.includes('recuperação') ||
-                           lowerDesc.includes('aula prática') ||
-                           lowerDesc.includes('apresentação');
-        return !isExcluded && p.resumo && p.resumo.trim() !== '';
+        return p.resumo && p.resumo.trim() !== '';
     }).map((p, index) => {
         const parts = p.data.split('/');
         // Padronizando para 2026.
@@ -80,7 +64,7 @@ export const AlunosView: React.FC<AlunosViewProps> = ({ onBack, classData }) => 
         };
     });
 
-    return baseClasses.filter(c => new Date(c.date) <= agora);
+    return baseClasses;
   };
 
   const handlePrint = () => {
