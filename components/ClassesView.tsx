@@ -515,40 +515,40 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
           Voltar ao Portal
         </button>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 relative z-10 w-full max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 relative z-10 w-full max-w-6xl mx-auto">
           {finalSchools.length > 0 ? finalSchools.map(school => {
             const schoolClasses = getClassesBySchool(school);
             return (
               <button
                 key={school}
                 onClick={() => setSelectedGrade(school)}
-                className="group relative bg-[#262626] border border-white/10 rounded-3xl p-6 hover:bg-[#2a2a2a] transition-all text-left overflow-hidden flex flex-col justify-between h-[220px] shadow-lg"
+                className="group relative bg-[#262626] border border-white/10 rounded-2xl p-4 hover:bg-[#2a2a2a] transition-all text-left overflow-hidden flex flex-col justify-between h-[170px] shadow-md"
               >
                 {/* Background Watermark (similar to Calendar in Image 1) */}
-                <div className="absolute top-4 right-4 opacity-5 pointer-events-none group-hover:scale-110 transition-transform duration-500">
-                  <svg className="w-24 h-24 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-2.682.565 1 1 0 00-.639.913V17a1 1 0 01-2 0v-.427a1 1 0 00-.639-.913z" /></svg>
+                <div className="absolute top-3 right-3 opacity-5 pointer-events-none group-hover:scale-110 transition-transform duration-500">
+                  <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-2.682.565 1 1 0 00-.639.913V17a1 1 0 01-2 0v-.427a1 1 0 00-.639-.913z" /></svg>
                 </div>
                 
                 <div className="relative z-10 w-full">
                   {/* Icon Container resembling Image 1 */}
-                  <div className="w-14 h-14 bg-[#2b3544] rounded-2xl flex items-center justify-center mb-5 shadow-inner border border-white/5">
-                    <svg className="w-7 h-7 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="w-8 h-8 bg-[#2b3544] rounded-lg flex items-center justify-center mb-2 shadow-inner border border-white/5">
+                    <svg className="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
                     </svg>
                   </div>
                   
-                  <h3 className="text-[22px] font-black text-white tracking-tight uppercase leading-none mb-2">
+                  <h3 className="text-base font-black text-white tracking-tight uppercase leading-none mb-1">
                     {school}
                   </h3>
                   
-                  <p className="text-sm text-neutral-400 font-medium leading-snug max-w-[85%]">
+                  <p className="text-xs text-neutral-400 font-medium leading-snug max-w-[95%]">
                     Controle de frequência e notas para {schoolClasses.length} turmas ativas.
                   </p>
                 </div>
                 
-                <div className="relative z-10 mt-6 flex items-center text-blue-400 text-xs font-black tracking-widest uppercase group-hover:text-blue-300 transition-colors">
+                <div className="relative z-10 mt-3 flex items-center text-blue-400 text-[10px] font-black tracking-widest uppercase group-hover:text-blue-300 transition-colors">
                   ACESSAR TURMAS
-                  <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                  <svg className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                 </div>
               </button>
             );
@@ -587,42 +587,42 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 relative z-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 relative z-10">
           {classes.map(cls => (
             <button
               key={cls.id}
               onClick={() => setSelectedClassId(cls.id)}
-              className="group relative bg-[#262626] border border-[#333] rounded-3xl p-6 hover:bg-[#2a2a2a] transition-all text-left overflow-hidden flex flex-col justify-between h-[220px] shadow-lg"
+              className="group relative bg-[#262626] border border-[#333] rounded-2xl p-4 hover:bg-[#2a2a2a] transition-all text-left overflow-hidden flex flex-col justify-between h-[170px] shadow-md"
             >
               {/* Background Watermark */}
-              <div className="absolute top-6 right-4 opacity-5 pointer-events-none group-hover:scale-110 transition-transform duration-500">
-                <svg className="w-20 h-20 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <div className="absolute top-3 right-3 opacity-5 pointer-events-none group-hover:scale-110 transition-transform duration-500">
+                <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 14l9-5-9-5-9 5 9 5z" />
                   <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0v6m0-6l-9-5m9 5l9-5" />
                 </svg>
               </div>
 
-              <div className="relative z-10 w-full">
+              <div className="relative z-10 w-full animate-fade-in">
                 {/* Icon Container matching Image 1 */}
-                <div className="w-14 h-14 bg-[#2b3544] rounded-2xl flex items-center justify-center mb-5 shadow-inner border border-[#3f4a5c]">
-                  <svg className="w-7 h-7 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-8 h-8 bg-[#2b3544] rounded-lg flex items-center justify-center mb-2 shadow-inner border border-[#3f4a5c]">
+                  <svg className="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                   </svg>
                 </div>
                 
-                <h3 className="text-[22px] font-black tracking-tight text-white leading-none mb-2">
+                <h3 className="text-base font-black tracking-tight text-white leading-none mb-1">
                   {cls.name.startsWith('Turma') ? cls.name.replace('Turma ', '') : cls.name}
                 </h3>
                 
-                <p className="text-sm text-[#9ca3af] font-medium leading-snug">
+                <p className="text-xs text-[#9ca3af] font-medium leading-snug">
                   {cls.students.length} alunos · {cls.schedule || '--:--'}
                 </p>
               </div>
               
-              <div className="relative z-10 mt-4 flex items-center text-blue-400 text-xs font-black tracking-widest uppercase group-hover:text-blue-300 transition-colors">
+              <div className="relative z-10 mt-3 flex items-center text-blue-400 text-[10px] font-black tracking-widest uppercase group-hover:text-blue-300 transition-colors">
                 FAZER CHAMADA
-                <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
+                <svg className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
               </div>
             </button>
           ))}

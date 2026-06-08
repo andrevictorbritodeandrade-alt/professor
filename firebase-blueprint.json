@@ -110,9 +110,31 @@
         "finalMatches": { "type": "array", "items": { "type": "object" } },
         "finalPlayers": { "type": "array", "items": { "type": "string" } }
       }
+    },
+    "Occurrence": {
+      "title": "Occurrence",
+      "description": "Student or Class Occurrence incident log",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "date": { "type": "string" },
+        "type": { "type": "string", "enum": ["class", "student"] },
+        "classId": { "type": "string" },
+        "className": { "type": "string" },
+        "school": { "type": "string" },
+        "studentId": { "type": "number" },
+        "studentName": { "type": "string" },
+        "description": { "type": "string" },
+        "createdAt": { "type": "number" }
+      },
+      "required": ["id", "date", "type", "classId", "className", "school", "description", "createdAt"]
     }
   },
   "firestore": {
+    "/occurrences/{occurrenceId}": {
+      "schema": "Occurrence",
+      "description": "Incident logs and occurrences for students or classes"
+    },
     "/gallery/main": {
       "schema": "GalleryData",
       "description": "Main gallery storage"

@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 import { PE_PLAN } from '../data/planosPE';
 import { PlanoAnualPE } from './PlanoAnualPE';
+import { OcorrenciasView } from './OcorrenciasView';
 import { ALTINHA_FUTVOLEI_SLIDES, SLIDES_3TRI, SLIDES_JOGOS_TABULEIRO, SLIDES_GENERICOS } from '../data/corpoMidiaSlides';
 
 // ================= DADOS DO CRONOGRAMA =================
@@ -246,7 +247,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 w-full max-w-6xl">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 w-full max-w-7xl">
           {[
             {
               id: 'planejamento',
@@ -271,6 +272,14 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
               image: '/src/assets/images/aulas_datashow_card_premium_1779985704354.png',
               action: () => setCurrentView('repositorio_aulas'),
               delay: 0.5
+            },
+            {
+              id: 'ocorrencias',
+              title: 'OCORRÊNCIAS',
+              subtitle: 'Registro de fatos e relatórios de alunos.',
+              image: '/src/assets/images/ocorrencias_card_premium_1780922149802.png',
+              action: () => setCurrentView('ocorrencias'),
+              delay: 0.6
             }
           ].map((card) => (
             <motion.div 
@@ -1131,6 +1140,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
       {currentView === 'repositorio_aulas' && renderAulasMenu()}
       {currentView === 'repositorio_aulas_lista' && renderRepositorioAulas()}
       {currentView === 'player' && <SlidePlayer />}
+      {currentView === 'ocorrencias' && <OcorrenciasView onBack={() => setCurrentView('menu')} />}
     </div>
   );
 };

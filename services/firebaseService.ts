@@ -1,7 +1,7 @@
 import { initializeApp, getApps, getApp } from 'firebase/app';
 import { getFirestore, doc, onSnapshot, updateDoc, setDoc, collection, writeBatch, enableIndexedDbPersistence, getDocFromServer } from 'firebase/firestore';
 import { getAuth, signInAnonymously, onAuthStateChanged } from 'firebase/auth';
-import { DashboardCardData, ClassDataMap, GalleryData } from '../types';
+import { DashboardCardData, ClassDataMap, GalleryData, OccurrenceData } from '../types';
 import firebaseAppletConfig from '../firebase-applet-config.json';
 
 const CONFIG_KEY = 'school_management_firebase_config';
@@ -215,5 +215,49 @@ export const saveGalleryToFirestore = async (data: GalleryData) => {
     await setDoc(doc(db, 'gallery', 'main'), data);
   } catch (error) {
     handleFirestoreError(error, OperationType.WRITE, path);
+  }
+};
+
+// --- REAL-TIME OCCURRENCES SYNC ---
+
+export const subscribeToOccurrences = (callback: (data: OccurrenceData[]) => void) => {
+  if (!db) initFirebase();
+  if (!db) return () => {};
+  
+  const path = 'occurrences';
+  return onSnapshot(collection(db, path), (snapshot: any) => {
+    const list: OccurrenceData[] = [];
+    snapshot.forEach((doc: any) => {
+      list.push(doc.data() as OccurrenceData);
+    });
+    // Sort by date/createdAt descending
+    list.sort((a, b) => b.createdAt - a.createdAt);
+    callback(list);
+  }, (error) => {
+    handleFirestoreError(error, OperationType.GET, path);
+  });
+};
+
+export const saveOccurrenceToFirestore = async (occurrence: OccurrenceData) => {
+  if (!db) initFirebase();
+  if (!db) return;
+  const path = `occurrences/${occurrence.id}`;
+  try {
+    await setDoc(doc(db, 'occurrences', occurrence.id), occurrence);
+  } catch (error) {
+    handleFirestoreError(error, OperationType.WRITE, path);
+  }
+};
+
+export const deleteOccurrenceFromFirestore = async (id: string) => {
+  if (!db) initFirebase();
+  if (!db) return;
+  const path = `occurrences/${id}`;
+  // Firebase Auth requires signed in to write.
+  const { deleteDoc } = await import('firebase/firestore');
+  try {
+    await deleteDoc(doc(db, 'occurrences', id));
+  } catch (error) {
+    handleFirestoreError(error, OperationType.DELETE, path);
   }
 };

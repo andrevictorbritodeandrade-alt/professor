@@ -73,6 +73,18 @@ service cloud.firestore {
       return data.images is list && data.images.size() <= 200;
     }
 
+    function isValidOccurrence(data) {
+      return data.keys().hasAll(['id', 'date', 'type', 'classId', 'className', 'school', 'description', 'createdAt']) &&
+             data.id is string && isValidId(data.id) &&
+             data.date is string && data.date.size() <= 20 &&
+             data.type in ['class', 'student'] &&
+             data.classId is string && data.classId.size() <= 50 &&
+             data.className is string && data.className.size() <= 100 &&
+             data.school is string && data.school.size() <= 100 &&
+             data.description is string && data.description.size() <= 6000 &&
+             (data.createdAt is int || data.createdAt is timestamp);
+    }
+
     function isValidArquivo(data) {
       return data.keys().hasAll(['title', 'category', 'type', 'dataUrl', 'createdAt']) &&
              data.title is string && data.title.size() <= 255 &&
@@ -123,6 +135,13 @@ service cloud.firestore {
     match /gallery/{docId} {
       allow read: if isSignedIn();
       allow write: if isSignedIn() && docId == 'main' && isValidGallery(incoming());
+    }
+
+    match /occurrences/{occurrenceId} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn() && isValidId(occurrenceId) && occurrenceId == incoming().id && isValidOccurrence(incoming());
+      allow update: if isSignedIn() && isValidId(occurrenceId) && occurrenceId == incoming().id && isValidOccurrence(incoming());
+      allow delete: if isSignedIn();
     }
 
     // System connection test collection

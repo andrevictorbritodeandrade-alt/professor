@@ -89,3 +89,16 @@ export interface GalleryImage {
 export interface GalleryData {
   images: GalleryImage[];
 }
+
+export interface OccurrenceData {
+  id: string;
+  date: string;
+  type: 'class' | 'student';
+  classId: string;
+  className: string;
+  school: string;
+  studentId: number | null;
+  studentName: string | null;
+  description: string;
+  createdAt: number;
+}

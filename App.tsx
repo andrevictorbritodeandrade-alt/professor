@@ -206,6 +206,23 @@ const App: React.FC = () => {
           initialClassData[id].dailyActivities!.forEach((act: any) => {
             if (!existingIds.has(act.id)) {
               base[id].dailyActivities!.push(act);
+            } else {
+              const existingAct = base[id].dailyActivities!.find((a: any) => a.id === act.id);
+              if (existingAct && existingAct.actualActivity !== act.actualActivity && act.actualActivity.includes("Trabalho do 2º Trimestre")) {
+                existingAct.actualActivity = act.actualActivity;
+              }
+            }
+          });
+        }
+
+        if (initialClassData[id].assignments && initialClassData[id].assignments!.length > 0) {
+          if (!base[id].assignments) {
+            base[id].assignments = [];
+          }
+          const existingAssignIds = new Set(base[id].assignments!.map((a: any) => a.id));
+          initialClassData[id].assignments!.forEach((assign: any) => {
+            if (!existingAssignIds.has(assign.id)) {
+              base[id].assignments!.push(assign);
             }
           });
         }
@@ -404,6 +421,26 @@ const App: React.FC = () => {
                 initialClassData[id].dailyActivities!.forEach(act => {
                   if (!existingIds.has(act.id)) {
                     migratedClasses[id].dailyActivities!.push(act);
+                    needsUpdateRemote = true;
+                  } else {
+                    const existingAct = migratedClasses[id].dailyActivities!.find(a => a.id === act.id);
+                    if (existingAct && existingAct.actualActivity !== act.actualActivity && act.actualActivity.includes("Trabalho do 2º Trimestre")) {
+                      existingAct.actualActivity = act.actualActivity;
+                      needsUpdateRemote = true;
+                    }
+                  }
+                });
+              }
+
+              // Ensure default assignments are merged in
+              if (initialClassData[id].assignments && initialClassData[id].assignments!.length > 0) {
+                if (!migratedClasses[id].assignments) {
+                  migratedClasses[id].assignments = [];
+                }
+                const existingAssignIds = new Set(migratedClasses[id].assignments!.map(a => a.id));
+                initialClassData[id].assignments!.forEach(assign => {
+                  if (!existingAssignIds.has(assign.id)) {
+                    migratedClasses[id].assignments!.push(assign);
                     needsUpdateRemote = true;
                   }
                 });
