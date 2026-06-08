@@ -1,0 +1,798 @@
+import { ClassDataMap, UserProfile } from './types';
+
+export const BACKGROUND_IMAGES = [
+  "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=3870&auto=format&fit=crop", // Gym/Fitness
+  "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?q=80&w=3869&auto=format&fit=crop", // Running/Athletics
+  "https://images.unsplash.com/photo-1574629810360-7efbbe195018?q=80&w=3936&auto=format&fit=crop", // Soccer/Field
+  "https://images.unsplash.com/photo-1526676023131-d352423b06b4?q=80&w=3870&auto=format&fit=crop", // Basketball court
+  "https://images.unsplash.com/photo-1519315901367-f34ff9154487?q=80&w=3870&auto=format&fit=crop"  // Swimming/Sports
+];
+
+// Helper para formatar nomes (Capitalize)
+const formatName = (name: string) => {
+  return name.toLowerCase().split(' ').map(word => {
+    if (['da', 'de', 'do', 'dos', 'das', 'e'].includes(word)) return word;
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }).join(' ');
+};
+
+const students601Raw = [
+  "Allanda Lima",
+  "Ana Beatriz",
+  "Anderson",
+  "Arthur Bastos",
+  "Arthur Cruz",
+  "Aryel Monteiro",
+  "Bernardo Lamprecht",
+  "Carlos Eduardo",
+  "Emanuelly",
+  "Esther",
+  "Gabriel Alves",
+  "Geovane",
+  "Gustavo Reinaldo",
+  "Henrique Lemos",
+  "Kelvin Oliveira",
+  "Maria Luísa Magalhães",
+  "Miguel de Oliveira",
+  "Pedro Cruz",
+  "Pedro Henrique Oliveira",
+  "Rickarlyson",
+  "Thiago",
+  "Vitor Bastos",
+  "Vitória Beatriz",
+  "Vívian Avelino",
+  "Ysabella Ricas"
+];
+
+const students602Raw = [
+  "Agatha de Souza",
+  "Alice Costa",
+  "Alice dos Santos",
+  "Ana Beatriz",
+  "Ana Clara",
+  "Ana Kateryne",
+  "Ana Sophia",
+  "Anna Ester",
+  "Annalu Barros",
+  "Any Carreiri",
+  "Arthur Azevedo",
+  "Benício Diniz",
+  "Cristal Marisa",
+  "Davi Leal",
+  "Davi Lucas",
+  "Davi Luiz",
+  "Davi Miguel",
+  "Eloah",
+  "Enzo",
+  "Gabriel",
+  "Gabriel de Oliveira",
+  "Geovanna",
+  "Heitor",
+  "Helena",
+  "Heloísa",
+  "Isadora",
+  "João Gabriel",
+  "João Guilherme",
+  "João Lucas",
+  "João Pedro",
+  "João Victor",
+  "Júlia",
+  "Kauã",
+  "Lara",
+  "Larissa",
+  "Laura",
+  "Lavínia",
+  "Letícia",
+  "Lívia",
+  "Lorena",
+  "Lucas",
+  "Lucca",
+  "Luiz Felipe",
+  "Luiz Gustavo",
+  "Luiz Henrique",
+  "Luiz Otávio",
+  "Luíza",
+  "Manuela",
+  "Maria Alice",
+  "Maria Clara",
+  "Maria Eduarda",
+  "Maria Fernanda",
+  "Maria Júlia",
+  "Maria Luíza",
+  "Maria Sophia",
+  "Mariana",
+  "Marina",
+  "Mateus",
+  "Matheus",
+  "Melissa",
+  "Miguel",
+  "Milena",
+  "Murilo",
+  "Natália",
+  "Nathan",
+  "Nicolas",
+  "Nicole",
+  "Otávio",
+  "Paulo",
+  "Pedro",
+  "Pietro",
+  "Rafael",
+  "Rafaela",
+  "Rebeca",
+  "Rodrigo",
+  "Samuel",
+  "Sarah",
+  "Sophia",
+  "Thales",
+  "Theo",
+  "Thiago",
+  "Valentina",
+  "Victor",
+  "Vinícius",
+  "Vitor",
+  "Vitória",
+  "Yasmin",
+  "Yuri"
+];
+
+const students603Raw = [
+  "Alycia Vitória",
+  "Arnaldo Barbosa",
+  "Arthur Coutinho",
+  "Arthur Nogueira",
+  "Beatriz Vidal",
+  "Breno Henrique",
+  "Catarina Santiago",
+  "Davi Lucca",
+  "Fabiano Rocha",
+  "Fabíola Gabryella",
+  "Fernanda Isaías",
+  "Gabriel Gosta",
+  "João Miguel",
+  "Laís Moura",
+  "Lavínia da Rocha",
+  "Leidania",
+  "Luís Henrique Marchi",
+  "Mariana Tostes",
+  "Miguel Macedo",
+  "Moisés Santiago",
+  "Nathalia de Melo",
+  "Pedro Joaquim",
+  "Peron Pérez",
+  "Pietro dos Santos",
+  "Piettra Moreira"
+];
+
+const students604Raw = [
+  "Manuella da Silva",
+  "Arthur Mendonça",
+  "Sthefany Vitória",
+  "Paulo Sérgio",
+  "Nina Pacheco",
+  "Isaque oliveira",
+  "Laura Neves",
+  "Richard EIke",
+  "Milena Gonçalves",
+  "Mirella Ramos",
+  "Patrícia da França",
+  "Pyetro Coelho",
+  "Rafaella Alves",
+  "Sofia Dutra",
+  "Thallys Monteiro",
+  "Ygorvde Castro",
+  "Pedro Lucas",
+  "Thayna de Araújo",
+  "Ana Luíza Guedes",
+  "Isaías Alexsander",
+  "João Gabriel",
+  "José Bernardo",
+  "Júlia Franco",
+  "Júlia Melo",
+  "Luca Ávila",
+  "Juliana Monteiro",
+  "Safira de Aguiar"
+];
+
+const createStudents = (rawList: string[], classId: string) => {
+  return rawList.map((name, i) => {
+    const attendance: { [date: string]: 'P' | 'F' | null } = {};
+    
+    // Frequência de 09/03 para a Turma 603
+    if (classId === '603') {
+      const present603 = [
+        "Alicia Vitória Silva dos Santos",
+        "Arnaldo Barbosa Vilaça Junior",
+        "Arthur Coutinho Oliveira",
+        "Arthur Nogueira Pinto da Silva",
+        "Beatriz Vidal Machado",
+        "Breno Henrique Souza de Oliveira",
+        "Catarina Santiago Martins",
+        "Davi Lucca Duarte Bastos",
+        "Fábiolla Gabryella Bach do Rosário Pereira",
+        "Gabriel Costa de Azevedo"
+      ];
+      const absent603 = [
+        "Fabiano Rocha de Oliveira Júnior",
+        "Fernanda Isaías",
+        "João Miguel Henriques Brum"
+      ];
+      
+      if (present603.includes(name)) attendance["09/03"] = "P";
+      if (absent603.includes(name)) attendance["09/03"] = "F";
+    }
+
+    // Frequência de 09/03 para a Turma 604
+    if (classId === '604') {
+      const present604 = [
+        "Manuela da Silva Gomes",
+        "Arthur Mendonça da Silva",
+        "Laura Neves",
+        "Patrícia da França Gomes dos Santos",
+        "Pyetro Coelho Santana",
+        "Rafaela Alves Freitas Passos"
+      ];
+      const absent604 = [
+        "Sthefany Vitória Valadares Neves da Silva",
+        "Paulo Sérgio Batista de Souza",
+        "Nina Pacheco Dias da Silva",
+        "Isaque Oliveira Matos dos Santos",
+        "Richard EIke",
+        "Milena Gonçalves Rodrigues",
+        "Mirella Ramos dos Santos Gomes"
+      ];
+      
+      if (present604.includes(name)) attendance["09/03"] = "P";
+      if (absent604.includes(name)) attendance["09/03"] = "F";
+    }
+
+    return {
+      id: parseInt(classId) * 100 + i,
+      name: name,
+      attendance: attendance
+    };
+  });
+};
+
+export const initialClassData: ClassDataMap = {
+  "801": { 
+    id: "801", 
+    name: "Turma 801", 
+    grade: "8", 
+    school: "EE Cordelia Paiva",
+    students: [
+      { id: 80101, name: "Alice Vitória Rosa de Sales Ramos", attendance: { "08/05": "P", "18/05": "P" } },
+      { id: 80102, name: "Ana Cristina Silva Pereira", attendance: { "08/05": "P", "18/05": "P" } },
+      { id: 80103, name: "Ana Luiza da Costa Martins", attendance: { "08/05": "P", "18/05": "P" } },
+      { id: 80104, name: "Ana Luiza Rodrigues da Silva", attendance: { "08/05": "P", "18/05": "P" } },
+      { id: 80105, name: "Ana Vitória Farias Correa", attendance: { "08/05": "P", "18/05": "P" } },
+      { id: 80106, name: "André Nunes da Silva Lopes", attendance: { "08/05": "P", "18/05": "F" } },
+      { id: 80107, name: "Andressa da Silva Vieira", attendance: { "08/05": "P", "18/05": "P" } },
+      { id: 80108, name: "Andrey de Sousa Santos", attendance: { "08/05": "P", "18/05": "P" } },
+      { id: 80109, name: "Angelliny de Oliveira Silva", attendance: { "08/05": "P", "18/05": "P" } },
+      { id: 80110, name: "Anna Beatriz Souza Lima", attendance: { "08/05": "P", "18/05": "P" } },
+      { id: 80111, name: "Anna Karolinny Souza Lima", attendance: { "08/05": "P", "18/05": "P" } },
+      { id: 80112, name: "Bianca Santos de Souza Oliveira", attendance: { "08/05": "P", "18/05": "P" } },
+      { id: 80113, name: "Camili Oliveira Batista", attendance: { "08/05": "P", "18/05": "P" } },
+      { id: 80114, name: "Carolina Caldas Souza", attendance: { "08/05": "P", "18/05": "P" } },
+      { id: 80115, name: "Cauã Victor Nobre de Oliveira Lins", attendance: { "08/05": "P", "18/05": "P" } },
+      { id: 80116, name: "Davi Moura da Cruz", attendance: { "08/05": "P", "18/05": "P" } },
+      { id: 80117, name: "Davi Sousa Santos da Silva", attendance: { "08/05": "P", "18/05": "P" } },
+      { id: 80118, name: "Enzo José Jardim Augusto", attendance: { "08/05": "P", "18/05": "P" } },
+      { id: 80119, name: "Ezequiel Lima de Oliveira", attendance: { "08/05": "P", "18/05": "P" } },
+      { id: 80120, name: "Fernanda Honorato Sabino da Silva", attendance: { "08/05": "P", "18/05": "P" } },
+      { id: 80121, name: "Gabrieli de Barros Caiana", attendance: { "08/05": "P", "18/05": "P" } },
+      { id: 80122, name: "Gabrielly Lima da Silva", attendance: { "08/05": "P", "18/05": "F" } },
+      { id: 80123, name: "Geovana Fernandes R. de Andrade", attendance: { "08/05": "P", "18/05": "P" } },
+      { id: 80124, name: "Giovanna Kaylane Gonçalves Godoy", attendance: { "08/05": "P", "18/05": "P" } },
+      { id: 80125, name: "Guilherme Santos de Jesus", attendance: { "08/05": "P", "18/05": "P" } },
+      { id: 80126, name: "Gustavo Nascimento de Jesus", attendance: { "08/05": "P", "18/05": "P" } },
+      { id: 80127, name: "Hashelly Letícia B. dos Santos", attendance: { "08/05": "P", "18/05": "P" } },
+      { id: 80128, name: "Miguel de Souza R. do Nascimento", attendance: { "08/05": "P", "18/05": "P" } },
+      { id: 80129, name: "Nicolly Baptista do Nascimento", attendance: { "08/05": "P", "18/05": "P" } },
+      { id: 80130, name: "Richard Josafá V. B. T. Augusto", attendance: { "08/05": "P", "18/05": "P" } }
+    ],
+    schedule: "10:35 – 12:15",
+    days: ["Segunda"],
+    dailyActivities: [
+      {
+        id: "cordelia-801-2026-05-11",
+        date: "2026-05-11T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "Fique em sala para conhecer as turmas e aplicar prova de recuperação de outros professores. Nesse dia, as turmas saíram cedo",
+        observations: ""
+      },
+      {
+        id: "cordelia-801-2026-05-18",
+        date: "2026-05-18T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "Comecei o conteúdo de altinha e futevôlei de maneira teórica. passei, no quadro até a página 4 dos slides.",
+        observations: ""
+      },
+      {
+        id: "cordelia-801-2026-05-25",
+        date: "2026-05-25T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "Continuidade do conteúdo de altinha e futevôlei, com conteúdo teórico, no quadro, até a página 7 do slide; jogos em grupo dentro de sala",
+        observations: ""
+      }
+    ]
+  },
+  "802": { 
+    id: "802", 
+    name: "Turma 802", 
+    grade: "8", 
+    school: "EE Cordelia Paiva",
+    students: [
+      { id: 802001, name: "Henzo Martins da Silva Evangelista", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 802002, name: "Isabella Ribeiro Gomes", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 802003, name: "Isabella Vitoria Correa Pereira", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 802004, name: "Isabelly Lopes do Nascimento", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 802005, name: "Jhully Victoria C. S. Oliveira", attendance: { "11/05": "F", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 802006, name: "João Davi Gomes Pereira", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 802007, name: "João Gabriel Alves da Costa", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 802008, name: "João Marcos Oliveira Ribeiro", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 802009, name: "Julia Oliveira da Silva", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 802010, name: "Juliana Arueira Luparelli", attendance: { "11/05": "F", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 802011, name: "Kaique Cruz Gonçalves Damião", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 802028, name: "Kauã Richard Ferreira da Silva", attendance: { "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 802012, name: "Kevin Gabriel Gomes da Silva", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 802013, name: "Lara Maria de Sousa Soares", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 802014, name: "Lara Monteiro dos Santos", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 802015, name: "Lara Vieira de Andrade", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 802016, name: "Lavinnya de Souza de Araújo", attendance: { "11/05": "F", "18/05 - 1º T": "F", "18/05 - 2º T": "F", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 802017, name: "Laysa Ambrozio Claudio", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 802018, name: "Leticia Costa Santos", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 802019, name: "Livia Duarte Soares de Lima", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 802020, name: "Livia Fernandes Gaiani", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 802021, name: "Luis Fernando Amorim de Deus", attendance: { "11/05": "P", "18/05 - 1º T": "F", "18/05 - 2º T": "F", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 802022, name: "Manuela Figueiredo da Silva", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 802023, name: "Manuela Ribeiro dos Santos", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 802024, name: "Manuella Magalhães Martins", attendance: { "11/05": "F", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 802025, name: "Maria Rita de Jesus Sergio", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 802026, name: "Mellyna Santos Spatafora", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 802027, name: "Sophia Oliveira Ribeiro", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } }
+    ],
+    schedule: "07:00 – 08:40",
+    days: ["Segunda"],
+    dailyActivities: [
+      {
+        id: "cordelia-802-2026-05-11",
+        date: "2026-05-11T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "Fique em sala para conhecer as turmas e aplicar prova de recuperação de outros professores. Nesse dia, as turmas saíram cedo",
+        observations: ""
+      },
+      {
+        id: "cordelia-802-2026-05-18",
+        date: "2026-05-18T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "Comecei o conteúdo de altinha e futevôlei de maneira teórica. passei, no quadro até a página 4 dos slides.",
+        observations: ""
+      },
+      {
+        id: "cordelia-802-2026-05-25",
+        date: "2026-05-25T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "Continuidade do conteúdo de altinha e futevôlei, com conteúdo teórico, no quadro, até a página 7 do slide; jogos em grupo dentro de sala",
+        observations: ""
+      },
+      {
+        id: "cordelia-802-2026-06-01",
+        date: "2026-06-01T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "Aulas práticas de fundamento de toque, passe e recepção adaptados a jogos pré-desportivos de altinha e futevôlei",
+        observations: ""
+      }
+    ]
+  },
+  "803": { 
+    id: "803", 
+    name: "Turma 803", 
+    grade: "8", 
+    school: "EE Cordelia Paiva",
+    students: [
+      { id: 80301, name: "Adrieli Vitória dos Santos da Silva", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 80302, name: "Ana Clara de Jesus Pereira", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 80303, name: "Danilo Ribeiro Feliciano", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 80304, name: "Esther Nunes da Costa", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 80305, name: "Felipe Santos Vital Guimarães", attendance: { "18/05 - 1º T": "F", "18/05 - 2º T": "F", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "F", "01/06 - 2º T": "F" } },
+      { id: 80306, name: "Ítalo Silva de Almeida", attendance: { "18/05 - 1º T": "F", "18/05 - 2º T": "F", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "F", "01/06 - 2º T": "F" } },
+      { id: 80307, name: "João Paulo Lima da Silva", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 80308, name: "Matheus Araujo da Silva", attendance: { "18/05 - 1º T": "F", "18/05 - 2º T": "F", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "F", "01/06 - 2º T": "F" } },
+      { id: 80309, name: "Matheus Severiano Galdino da Silva", attendance: { "18/05 - 1º T": "F", "18/05 - 2º T": "F", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "F", "01/06 - 2º T": "F" } },
+      { id: 80310, name: "Micaella Moraes Lourenço da Silva", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 80311, name: "Micaelly Vitória Alves de França", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 80312, name: "Miguel Lucas Vicente Gomes", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 80313, name: "Milena Vitória Tavares de Jesus", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 80314, name: "Nicole Archanjo Santos", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 80315, name: "Pedro Henryk dos Santos Coelho", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 80316, name: "Pietro Vitor Santos Braga", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 80317, name: "Rafaela Lourenço da Silva Camilo", attendance: { "18/05 - 1º T": "F", "18/05 - 2º T": "F", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "F", "01/06 - 2º T": "F" } },
+      { id: 80318, name: "Rafaelle dos Santos Almeida", attendance: { "18/05 - 1º T": "F", "18/05 - 2º T": "F", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "F", "01/06 - 2º T": "F" } },
+      { id: 80319, name: "Ray Bomfim Pereira", attendance: { "18/05 - 1º T": "F", "18/05 - 2º T": "F", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "F", "01/06 - 2º T": "F" } },
+      { id: 80320, name: "Richard Reis Costa", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 80321, name: "Riquelme Oliveira Carlos", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 80322, name: "Roberta Flôr de Liz Araujo da Silva", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 80323, name: "Ryan Lucas Soares Velasco", attendance: { "18/05 - 1º T": "F", "18/05 - 2º T": "F", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "F", "01/06 - 2º T": "F" } },
+      { id: 80324, name: "Sarah Rafaela de Souza Ferreira", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 80325, name: "Sofia Nascimento de Araujo", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 80326, name: "Sophia Quaresma Jeronymo", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } },
+      { id: 80327, name: "Vitor Manoel Gomes da Silva", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P" } }
+    ],
+    schedule: "08:40 – 10:20",
+    days: ["Segunda"],
+    dailyActivities: [
+      {
+        id: "cordelia-803-2026-05-11",
+        date: "2026-05-11T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "Fique em sala para conhecer as turmas e aplicar prova de recuperação de outros professores. Nesse dia, as turmas saíram cedo",
+        observations: ""
+      },
+      {
+        id: "cordelia-803-2026-05-18",
+        date: "2026-05-18T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "Comecei o conteúdo de altinha e futevôlei de maneira teórica. passei, no quadro até a página 4 dos slides.",
+        observations: ""
+      },
+      {
+        id: "cordelia-803-2026-05-25",
+        date: "2026-05-25T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "Continuidade do conteúdo de altinha e futevôlei, com conteúdo teórico, no quadro, até a página 7 do slide; jogos em grupo dentro de sala",
+        observations: ""
+      },
+      {
+        id: "cordelia-803-2026-06-01",
+        date: "2026-06-01T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "Aulas práticas de fundamento de toque, passe e recepção adaptados a jogos pré-desportivos de altinha e futevôlei",
+        observations: ""
+      }
+    ]
+  },
+  "CIEP198_AP101": { 
+    id: "CIEP198_AP101", 
+    name: "AP 101", 
+    grade: "1", 
+    school: "CIEP 198",
+    students: [],
+    assignments: [{ id: "A1", title: "O Corpo na Mídia - Estereótipo vs. Realidade", discipline: "Educação Física", description: "Pesquisa sobre como corpos negros e periféricos são vistos na mídia.", totalPoints: 3, format: "Individual ou dupla", dueDate: "22/05/2026" }],
+    schedule: "13:35 – 15:15",
+    days: ["Segunda"],
+    dailyActivities: [
+      {
+        id: "ciep198-ap101-2026-05-11",
+        date: "2026-05-11T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "Fique em sala para conhecer a turma, e trabalhei um jogo eletrônico do aplicativo Sala de Jogos, que foi o Adedonha.",
+        observations: ""
+      },
+      {
+        id: "ciep198-ap101-2026-05-18",
+        date: "2026-05-18T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "Comecei o conteúdo de altinha e futevôlei de maneira teórica. passei, no quadro até a página 4 dos slides.",
+        observations: ""
+      },
+      {
+        id: "ciep198-ap101-2026-05-25",
+        date: "2026-05-25T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "Não houve aula por conta do furto de cabos de energia da escola.",
+        observations: ""
+      }
+    ]
+  },
+  "CIEP369_AP101": {
+    id: "CIEP369_AP101",
+    name: "AP 101",
+    grade: "1",
+    school: "CIEP 369",
+    students: [
+      { id: 36901, name: "Arthur Silva de Sousa", attendance: { "13/05": "P", "20/05": "P" } },
+      { id: 36902, name: "Beatriz Oliveira Santos", attendance: { "13/05": "P", "20/05": "F" } },
+      { id: 36903, name: "Carlos Eduardo Costa Lima", attendance: { "13/05": "P", "20/05": "P" } },
+      { id: 36904, name: "Daniel Ferreira de Melo", attendance: { "13/05": "P", "20/05": "P" } },
+      { id: 36905, name: "Emilly Victória Goulart", attendance: { "13/05": "F", "20/05": "P" } },
+      { id: 36906, name: "Felipe Nascimento Barbosa", attendance: { "13/05": "P", "20/05": "P" } },
+      { id: 36907, name: "Gabriel de Jesus Fonseca", attendance: { "13/05": "P", "20/05": "P" } },
+      { id: 36908, name: "Helena Dias da Rocha", attendance: { "13/05": "P", "20/05": "P" } },
+      { id: 36909, name: "Isabela Lima Guimarães", attendance: { "13/05": "P", "20/05": "P" } },
+      { id: 36910, name: "João Pedro Martins Reis", attendance: { "13/05": "P", "20/05": "P" } },
+      { id: 36911, name: "Kauã Rodrigues Cardoso", attendance: { "13/05": "P", "20/05": "P" } },
+      { id: 36912, name: "Larissa Gomes de Oliveira", attendance: { "13/05": "P", "20/05": "F" } }
+    ],
+    assignments: [{ id: "A1", title: "O Corpo na Mídia - Estereótipo vs. Realidade", discipline: "Educação Física", description: "Pesquisa sobre como corpos negros e periféricos são vistos na mídia.", totalPoints: 3, format: "Individual ou dupla", dueDate: "22/05/2026" }],
+    schedule: "14:25 – 16:20",
+    days: ["Sexta"],
+    dailyActivities: [
+      {
+        id: "ciep369-ap101-2026-05-13",
+        date: "2026-05-13T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "Apresentação da disciplina, conhecimento da turma e dinâmica de integração.",
+        observations: ""
+      },
+      {
+        id: "ciep369-ap101-2026-05-20",
+        date: "2026-05-20T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "Início do conteúdo teórico de futevôlei e esportes de rede (slides até pág. 4).",
+        observations: ""
+      }
+    ]
+  },
+  "CIEP320_AP101": { 
+    id: "CIEP320_AP101", 
+    name: "AP 101", 
+    grade: "1", 
+    school: "CIEP 320",
+    students: [
+      { id: 10107, name: "Danyelle Thomaz Canêdo", attendance: { "15/05": "P", "08/05": "P" } },
+      { id: 10106, name: "Diego Rafael da Silva Zan Pires", attendance: { "15/05": "P", "08/05": "P" } },
+      { id: 10120, name: "Emylly Vitória Nascimento dos Santos", attendance: { "15/05": "P", "08/05": "P" } },
+      { id: 10116, name: "Enzo de Jesus Rodrigues", attendance: { "15/05": "P", "08/05": "P" } },
+      { id: 10113, name: "Ester Senes Magela", attendance: { "15/05": "P", "08/05": "P" } },
+      { id: 10109, name: "Heverton Lima Xavier", attendance: { "15/05": "P", "08/05": "P" } },
+      { id: 10108, name: "Ícaro Martins França", attendance: { "15/05": "P", "08/05": "P" } },
+      { id: 10115, name: "Kevin Lucas Oliveira dos Santos", attendance: { "15/05": "P", "08/05": "P" } },
+      { id: 10104, name: "Lucas Gabryel da Silva Nascimento", attendance: { "15/05": "P", "08/05": "P" } },
+      { id: 10105, name: "Lucas Rodrigues da Silva Lima", attendance: { "15/05": "P", "08/05": "P" } },
+      { id: 10123, name: "Maria Tayryne de Souza de Lima", attendance: { "15/05": "P", "08/05": "P" } },
+      { id: 10103, name: "Micaelly Avolio Falsetta", attendance: { "15/05": "P", "08/05": "P" } },
+      { id: 10102, name: "Millena Vitoria da Silva Jesus", attendance: { "15/05": "P", "08/05": "P" } },
+      { id: 10110, name: "Nathan Galvão Bastos", attendance: { "15/05": "P", "08/05": "P" } },
+      { id: 10119, name: "Nayara Vytorya dos Santos", attendance: { "15/05": "P", "08/05": "P" } },
+      { id: 10101, name: "Sophia Lourenço da Silva", attendance: { "15/05": "P", "08/05": "P" } },
+      { id: 10111, name: "Walbert Leonardo Lima Novaes", attendance: { "15/05": "P", "08/05": "P" } },
+      { id: 10118, name: "Yuri da Silva Ribeiro", attendance: { "15/05": "P", "08/05": "P" } },
+      { id: 10112, name: "Yuri Ryan Jesus Nascimento", attendance: { "15/05": "P", "08/05": "P" } }
+    ],
+    assignments: [{ id: "A1", title: "O Corpo na Mídia - Estereótipo vs. Realidade", discipline: "Educação Física", description: "Pesquisa sobre como corpos negros e periféricos são vistos na mídia.", totalPoints: 3, format: "Individual ou dupla", dueDate: "22/05/2026" }],
+    schedule: "07:00 – 08:40",
+    days: ["Sexta"],
+    dailyActivities: [
+      {
+        id: "ciep320-ap101-2026-05-08",
+        date: "2026-05-08T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "dei aula prática de futevôlei em duplas na parte externa da quadra, em duplas.",
+        observations: ""
+      },
+      {
+        id: "ciep320-ap101-2026-05-15",
+        date: "2026-05-15T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "Fique em sala para conhecer a turma.Comecei o conteúdo de altinha e futevôlei de maneira teórica. passei, no quadro até a página 4 dos slides.",
+        observations: ""
+      },
+      {
+        id: "ciep320-ap101-2026-05-22",
+        date: "2026-05-22T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "Fiz aula prática com a turma, de futevôlei na quadra, com rede mais alta",
+        observations: ""
+      }
+    ]
+  },
+  "CIEP320_AP301": { 
+    id: "CIEP320_AP301", 
+    name: "AP 301", 
+    grade: "3", 
+    school: "CIEP 320",
+    students: [
+      { id: 30101, name: "Ana Karollina Silva Ávila", attendance: { "15/05": "P", "22/05": "F", "29/05": "P" } },
+      { id: 30102, name: "Breno Carneiro Roque da Cruz", attendance: { "15/05": "F", "22/05": "F", "29/05": "F" } },
+      { id: 30103, name: "Emilly Souza Lima", attendance: { "15/05": "F", "22/05": "P", "29/05": "F" } },
+      { id: 30104, name: "Gabriel Costa Santana", attendance: { "15/05": "F", "22/05": "P", "29/05": "F" } },
+      { id: 30105, name: "Iuri Klinger Soares dos Santos", attendance: { "15/05": "F", "22/05": "F", "29/05": "F" } },
+      { id: 30106, name: "Kaio Klinger Soares dos Santos", attendance: { "15/05": "F", "22/05": "F", "29/05": "F" } },
+      { id: 30107, name: "Kaylanne Ribeiro Canuto", attendance: { "15/05": "P", "22/05": "P", "29/05": "F" } },
+      { id: 30108, name: "Leonardo Kauã Oliveira de Paiva", attendance: { "15/05": "P", "22/05": "P", "29/05": "P" } },
+      { id: 30109, name: "Lorena Ribeiro de Almeida", attendance: { "15/05": "F", "22/05": "P", "29/05": "P" } },
+      { id: 30110, name: "Luiz André Lima Bezerra", attendance: { "15/05": "P", "22/05": "P", "29/05": "P" } },
+      { id: 30111, name: "Marcelly Gomes Serra", attendance: { "15/05": "F", "22/05": "F", "29/05": "F" } },
+      { id: 30112, name: "Maria Alyndy Lopes da Cunha", attendance: { "15/05": "F", "22/05": "F", "29/05": "F" } },
+      { id: 30113, name: "Rodrigo Rafael Silva de Oliveira", attendance: { "15/05": "P", "22/05": "P", "29/05": "P" } },
+      { id: 30114, name: "Ryan Bruno Arcanjo da Cruz", attendance: { "15/05": "P", "22/05": "P", "29/05": "P" } },
+      { id: 30115, name: "Eduardo da Silva Coelho", attendance: { "15/05": "P", "22/05": "P", "29/05": "P" } },
+      { id: 30116, name: "Murilo Marcos", attendance: { "15/05": "P", "22/05": "P", "29/05": "P" } },
+      { id: 30117, name: "Caito da Silva", attendance: { "15/05": "P", "22/05": "P", "29/05": "P" } }
+    ],
+    schedule: "12:45 - 14:25",
+    days: ["Sexta"],
+    dailyActivities: [
+      {
+        id: "ciep320-ap301-2026-05-08",
+        date: "2026-05-08T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "não houve alunos para dar aula.",
+        observations: ""
+      },
+      {
+        id: "ciep320-ap301-2026-05-15",
+        date: "2026-05-15T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "Fique em sala para conhecer a turma.Comecei o conteúdo de altinha e futevôlei de maneira teórica. passei, no quadro até a página 4 dos slides.",
+        observations: ""
+      },
+      {
+        id: "ciep320-ap301-2026-05-22",
+        date: "2026-05-22T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "Fiz aula prática com a turma, de futemesa, por conta do número de alunos",
+        observations: ""
+      },
+      {
+        id: "ciep320-ap301-2026-05-29",
+        date: "2026-05-29T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "Trabalhei futevôlei e altinha na areia/quadra de forma prática.",
+        observations: ""
+      }
+    ]
+  },
+  "CIEP476_1001": { 
+    id: "CIEP476_1001", 
+    name: "Turma 1001", 
+    grade: "1", 
+    school: "CIEP 476",
+    students: [
+      { id: 100101, name: "Ana Carolina Pereira Silva", attendance: { "15/05": "P" } },
+      { id: 100102, name: "Andrey Vinicius Santos Marques", attendance: { "15/05": "P" } },
+      { id: 100105, name: "Beatriz Barbosa de Souza", attendance: { "15/05": "F" } },
+      { id: 100103, name: "Davi Lemes Wandermurem", attendance: { "15/05": "P" } },
+      { id: 100104, name: "Geovanna Martins Xavier", attendance: { "15/05": "F" } },
+      { id: 100106, name: "Gustavo do Couto dos Santos", attendance: { "15/05": "P" } },
+      { id: 100107, name: "Isabella Pereira", attendance: { "15/05": "P" } },
+      { id: 100108, name: "Jarllan Abraão Lima da Silva", attendance: { "15/05": "P" } },
+      { id: 100109, name: "João Ricardo de Sousa", attendance: { "15/05": "P" } },
+      { id: 100110, name: "Kaike dos Santos Ferreira", attendance: { "15/05": "P" } },
+      { id: 100111, name: "Kauan Lima Gomes", attendance: { "15/05": "P" } },
+      { id: 100112, name: "Leonardo Mendes", attendance: { "15/05": "P" } },
+      { id: 100113, name: "Lívia Pereira Santos", attendance: { "15/05": "P" } },
+      { id: 100114, name: "Luiz Henrique Amaral Affonso", attendance: { "15/05": "P" } },
+      { id: 100115, name: "Mariana Goulart da Conceição", attendance: { "15/05": "P" } },
+      { id: 100116, name: "Miguel Bastos", attendance: { "15/05": "P" } },
+      { id: 100117, name: "Milena Simões Pontife", attendance: { "15/05": "P" } },
+      { id: 100118, name: "Mylena Santos Alves Duque", attendance: { "15/05": "F" } },
+      { id: 100119, name: "Pedro Henrique Teixeira da Rocha", attendance: { "15/05": "P" } },
+      { id: 100120, name: "Richard da Silva", attendance: { "15/05": "P" } },
+      { id: 100121, name: "Samuel Carvalho Vieira", attendance: { "15/05": "P" } },
+      { id: 100122, name: "Victor Hugo de Oliveira Carvalho", attendance: { "15/05": "P" } },
+      { id: 100123, name: "Walison Teixeira Ribeiro", attendance: { "15/05": "P" } },
+      { id: 100124, name: "Yuri da Silva Ferreira", attendance: { "15/05": "P" } },
+      { id: 100125, name: "Vitor Lucas Santos Pantoja", attendance: { "15/05": "P" } },
+      { id: 100126, name: "Thaina Barreto Almeida", attendance: { "15/05": "P" } }
+    ],
+    assignments: [{ id: "A1", title: "O Corpo na Mídia - Estereótipo vs. Realidade", discipline: "Educação Física", description: "Pesquisa sobre como corpos negros e periféricos são vistos na mídia.", totalPoints: 3, format: "Individual ou dupla", dueDate: "22/05/2026" }],
+    schedule: "10:35 - 12:15",
+    days: ["Sexta"],
+    dailyActivities: [
+      {
+        id: "ciep476-1001-2026-05-08",
+        date: "2026-05-08T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "somente conheci as turmas, pois foram liberados cedos por estarem em semana de recuperação",
+        observations: ""
+      },
+      {
+        id: "ciep476-1001-2026-05-15",
+        date: "2026-05-15T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "inicio do conteúdo sobre ILGCH e a proposta da disciplina",
+        observations: ""
+      },
+      {
+        id: "ciep476-1001-2026-05-22",
+        date: "2026-05-22T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "sequencia do conteúdo e do slide sobre fanon e cida bento",
+        observations: ""
+      }
+    ]
+  },
+  "CIEP476_1003": { 
+    id: "CIEP476_1003", 
+    name: "Turma 1003", 
+    grade: "1", 
+    school: "CIEP 476",
+    students: [
+      { id: 100301, name: "Rayane de Souza Mohamed", attendance: { "08/05": "P", "15/05": "P", "22/05": "P" } },
+      { id: 100302, name: "Suany Santana Ribeiro", attendance: { "08/05": "P", "15/05": "P", "22/05": "P" } }
+    ],
+    assignments: [{ id: "A1", title: "O Corpo na Mídia - Estereótipo vs. Realidade", discipline: "Educação Física", description: "Pesquisa sobre como corpos negros e periféricos são vistos na mídia.", totalPoints: 3, format: "Individual ou dupla", dueDate: "22/05/2026" }],
+    schedule: "08:40 – 10:20",
+    days: ["Sexta"],
+    dailyActivities: [
+      {
+        id: "ciep476-1003-2026-05-08",
+        date: "2026-05-08T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "somente conheci as turmas, pois foram liberados cedos por estarem em semana de recuperação",
+        observations: ""
+      },
+      {
+        id: "ciep476-1003-2026-05-15",
+        date: "2026-05-15T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "inicio do conteúdo sobre ILGCH e a proposta da disciplina",
+        observations: ""
+      },
+      {
+        id: "ciep476-1003-2026-05-22",
+        date: "2026-05-22T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "sequencia do conteúdo e do slide sobre fanon e cida bento",
+        observations: ""
+      }
+    ]
+  },
+  "CIEP476_1007": { 
+    id: "CIEP476_1007", 
+    name: "Turma 1007", 
+    grade: "1", 
+    school: "CIEP 476",
+    students: [
+      { id: 100701, name: "Ana Beatriz Ferreira Santos", attendance: { "29/05": "P" } },
+      { id: 100702, name: "Ana Clara Mendonça Guimarães", attendance: { "29/05": "P" } },
+      { id: 100703, name: "Anna Giulia de Félix", attendance: { "29/05": "P" } },
+      { id: 100704, name: "Anny Camilly Gomes da Silva", attendance: { "29/05": "P" } },
+      { id: 100705, name: "João Pedro Samara Soares", attendance: { "29/05": "P" } },
+      { id: 100706, name: "Júlio César", attendance: { "29/05": "P" } },
+      { id: 100707, name: "Ketelyn Vitória Fernandes Nascimento", attendance: { "29/05": "P" } },
+      { id: 100708, name: "Maria Eduarda da Silva Gonçalves", attendance: { "29/05": "P" } },
+      { id: 100709, name: "Maria Vitória Fonseca", attendance: { "29/05": "P" } },
+      { id: 100710, name: "Rhyan Pereira", attendance: { "29/05": "P" } },
+      { id: 100711, name: "Yuri Yohan Ferreira Rodrigues", attendance: { "29/05": "P" } }
+    ],
+    assignments: [{ id: "A1", title: "O Corpo na Mídia - Estereótipo vs. Realidade", discipline: "Educação Física", description: "Pesquisa sobre como corpos negros e periféricos são vistos na mídia.", totalPoints: 3, format: "Individual ou dupla", dueDate: "22/05/2026" }],
+    schedule: "19:40 – 21:20",
+    days: ["Sexta"],
+    dailyActivities: [
+      {
+        id: "ciep476-1007-2026-05-08",
+        date: "2026-05-08T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "não houve aula a noite, pois a turma tinha sido liberada",
+        observations: ""
+      },
+      {
+        id: "ciep476-1007-2026-05-15",
+        date: "2026-05-15T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "fui liberado pelo diretor da turma da noite",
+        observations: ""
+      },
+      {
+        id: "ciep476-1007-2026-05-22",
+        date: "2026-05-22T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "inicio do conteúdo sobre ILGCH e a proposta da disciplina",
+        observations: ""
+      },
+      {
+        id: "ciep476-1007-2026-05-29",
+        date: "2026-05-29T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "Aprofundamento da matéria e chamada",
+        observations: ""
+      }
+    ]
+  }
+};
+
+export const mockUserProfile: UserProfile = {
+  id: "user_123",
+  name: "André Brito",
+  email: "andre.brito@escola.com",
+  joinedAt: "Fev 2024",
+  avatarUrl: "https://api.dicebear.com/7.x/avataaars/svg?seed=Andre",
+  achievements: [
+    { id: '1', title: 'Mestre da Estratégia', description: 'Venceu 50 partidas', icon: '🏆' },
+    { id: '2', title: 'Foco Total', description: 'Fez 100% nas atividades', icon: '🎯' },
+    { id: '3', title: 'Sempre Presente', description: 'Nenhuma falta em 1 mês', icon: '✅' },
+  ]
+};
