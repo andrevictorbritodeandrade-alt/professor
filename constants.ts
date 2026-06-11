@@ -519,7 +519,7 @@ export const initialClassData: ClassDataMap = {
     grade: "1", 
     school: "CIEP 198",
     students: [],
-    assignments: [{ id: "A1", title: "O Corpo na Mídia - Estereótipo vs. Realidade", discipline: "Educação Física", description: "Pesquisa sobre como corpos negros e periféricos são vistos na mídia.", totalPoints: 3, format: "Individual ou dupla", dueDate: "22/05/2026" }],
+    assignments: [{ id: "A2_CIEP198_AP101", title: "Trabalho do 2º Trimestre", discipline: "Educação Física", description: "Pesquisa sobre jogos de tabuleiro, cartas, mentais ou de concentração de outros países/continentes. Estrutura obrigatória: capa, introdução, desenvolvimento e referências.", totalPoints: 3, format: "Individual", dueDate: "29/06/2026" }],
     schedule: "13:35 – 15:15",
     days: ["Segunda"],
     dailyActivities: [
@@ -565,7 +565,7 @@ export const initialClassData: ClassDataMap = {
       { id: 36911, name: "Kauã Rodrigues Cardoso", attendance: { "13/05": "P", "20/05": "P" } },
       { id: 36912, name: "Larissa Gomes de Oliveira", attendance: { "13/05": "P", "20/05": "F" } }
     ],
-    assignments: [{ id: "A1", title: "O Corpo na Mídia - Estereótipo vs. Realidade", discipline: "Educação Física", description: "Pesquisa sobre como corpos negros e periféricos são vistos na mídia.", totalPoints: 3, format: "Individual ou dupla", dueDate: "22/05/2026" }],
+    assignments: [{ id: "A2_AP_FIELD_COURT", title: "Trabalho do 2º Trimestre: Esportes de Campo e Quadra", discipline: "Educação Física", description: "Elaborar um trabalho de pesquisa simples sobre regras e fundamentos de um esporte de quadra ou campo (Ex: Futsal, Basquete, Handebol, Vôlei). Estrutura: capa, introdução, desenvolvimento e referências. Valor: 3 pontos.", totalPoints: 3, format: "Individual", dueDate: "29/06/2026" }],
     schedule: "14:25 – 16:20",
     days: ["Sexta"],
     dailyActivities: [
@@ -580,7 +580,42 @@ export const initialClassData: ClassDataMap = {
         id: "ciep369-ap101-2026-05-20",
         date: "2026-05-20T12:00:00.000Z",
         plannedActivity: "",
-        actualActivity: "Início do conteúdo teórico de futevôlei e esportes de rede (slides até pág. 4).",
+        actualActivity: "Introdução aos fundamentos dos esportes de quadra.",
+        observations: ""
+      },
+      {
+        id: "ciep369-ap101-2026-06-12",
+        date: "2026-06-12T12:00:00.000Z",
+        plannedActivity: "Conteúdo: Regras do Futsal.",
+        actualActivity: "Futsal: Regras básicas e introdução ao trabalho trimestral.",
+        observations: "Trabalho passado."
+      },
+      {
+        id: "ciep369-ap101-2026-06-19",
+        date: "2026-06-19T12:00:00.000Z",
+        plannedActivity: "Conteúdo: Handebol.",
+        actualActivity: "Handebol: Regras e fundamentos básicos.",
+        observations: ""
+      },
+      {
+        id: "ciep369-ap101-2026-06-26",
+        date: "2026-06-26T12:00:00.000Z",
+        plannedActivity: "Conteúdo: Basquete.",
+        actualActivity: "Basquete: Regras e fundamentos básicos.",
+        observations: ""
+      },
+      {
+        id: "ciep369-ap101-2026-07-03",
+        date: "2026-07-03T12:00:00.000Z",
+        plannedActivity: "Conteúdo: Vôlei.",
+        actualActivity: "Vôlei: Regras e fundamentos básicos.",
+        observations: ""
+      },
+      {
+        id: "ciep369-ap101-2026-07-31",
+        date: "2026-07-31T12:00:00.000Z",
+        plannedActivity: "Conteúdo: Campo.",
+        actualActivity: "Esportes de Campo: Futebol de Campo e suas regras.",
         observations: ""
       }
     ]
@@ -611,29 +646,43 @@ export const initialClassData: ClassDataMap = {
       { id: 10118, name: "Yuri da Silva Ribeiro", attendance: { "15/05": "P", "08/05": "P" } },
       { id: 10112, name: "Yuri Ryan Jesus Nascimento", attendance: { "15/05": "P", "08/05": "P" } }
     ],
-    assignments: [{ id: "A1", title: "O Corpo na Mídia - Estereótipo vs. Realidade", discipline: "Educação Física", description: "Pesquisa sobre como corpos negros e periféricos são vistos na mídia.", totalPoints: 3, format: "Individual ou dupla", dueDate: "22/05/2026" }],
+    assignments: [{ id: "A2_AP_FIELD_COURT", title: "Trabalho do 2º Trimestre: Esportes de Campo e Quadra", discipline: "Educação Física", description: "Elaborar um trabalho de pesquisa simples sobre regras e fundamentos de um esporte de quadra ou campo (Ex: Futsal, Basquete, Handebol, Vôlei). Estrutura: capa, introdução, desenvolvimento e referências. Valor: 3 pontos.", totalPoints: 3, format: "Individual", dueDate: "29/06/2026" }],
     schedule: "07:00 – 08:40",
     days: ["Sexta"],
     dailyActivities: [
       {
-        id: "ciep320-ap101-2026-05-08",
-        date: "2026-05-08T12:00:00.000Z",
-        plannedActivity: "",
-        actualActivity: "dei aula prática de futevôlei em duplas na parte externa da quadra, em duplas.",
+        id: "ciep320-ap101-2026-06-12",
+        date: "2026-06-12T12:00:00.000Z",
+        plannedActivity: "Conteúdo: Regras do Futsal.",
+        actualActivity: "Futsal: Regras básicas e introdução ao trabalho trimestral.",
+        observations: "Trabalho passado."
+      },
+      {
+        id: "ciep320-ap101-2026-06-19",
+        date: "2026-06-19T12:00:00.000Z",
+        plannedActivity: "Conteúdo: Handebol.",
+        actualActivity: "Handebol: Regras e fundamentos básicos.",
         observations: ""
       },
       {
-        id: "ciep320-ap101-2026-05-15",
-        date: "2026-05-15T12:00:00.000Z",
-        plannedActivity: "",
-        actualActivity: "Fique em sala para conhecer a turma.Comecei o conteúdo de altinha e futevôlei de maneira teórica. passei, no quadro até a página 4 dos slides.",
+        id: "ciep320-ap101-2026-06-26",
+        date: "2026-06-26T12:00:00.000Z",
+        plannedActivity: "Conteúdo: Basquete.",
+        actualActivity: "Basquete: Regras e fundamentos básicos.",
         observations: ""
       },
       {
-        id: "ciep320-ap101-2026-05-22",
-        date: "2026-05-22T12:00:00.000Z",
-        plannedActivity: "",
-        actualActivity: "Fiz aula prática com a turma, de futevôlei na quadra, com rede mais alta",
+        id: "ciep320-ap101-2026-07-03",
+        date: "2026-07-03T12:00:00.000Z",
+        plannedActivity: "Conteúdo: Vôlei.",
+        actualActivity: "Vôlei: Regras e fundamentos básicos.",
+        observations: ""
+      },
+      {
+        id: "ciep320-ap101-2026-07-31",
+        date: "2026-07-31T12:00:00.000Z",
+        plannedActivity: "Conteúdo: Campo.",
+        actualActivity: "Esportes de Campo: Futebol de Campo e suas regras.",
         observations: ""
       }
     ]
@@ -662,6 +711,7 @@ export const initialClassData: ClassDataMap = {
       { id: 30116, name: "Murilo Marcos", attendance: { "15/05": "P", "22/05": "P", "29/05": "P" } },
       { id: 30117, name: "Caito da Silva", attendance: { "15/05": "P", "22/05": "P", "29/05": "P" } }
     ],
+    assignments: [{ id: "A2_AP_FIELD_COURT", title: "Trabalho do 2º Trimestre: Esportes de Campo e Quadra", discipline: "Educação Física", description: "Elaborar um trabalho de pesquisa sobre regras básicas e fundamentos de um esporte de quadra ou campo (Ex: Futsal, Basquete, Handebol, Vôlei). Estrutura obrigatória: capa, introdução, desenvolvimento e referências. Valor: 3 pontos. Trabalho individual.", totalPoints: 3, format: "Individual", dueDate: "29/06/2026" }],
     schedule: "12:45 - 14:25",
     days: ["Sexta"],
     dailyActivities: [

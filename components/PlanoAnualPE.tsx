@@ -8,7 +8,7 @@ const CLASS_PLAN_MAP: Record<string, string> = {
   '802': '8ano',
   '803': '8ano',
   'AP198': 'ap',
-  'AP369': 'ap',
+  'AP369': 'ap_sexta',
   'AP320': 'ap_sexta',
   'AP301': 'ap_sexta',
   '1001': 'ilgch',
@@ -664,15 +664,15 @@ export const PlanoAnualPE: React.FC<{ onBack: () => void }> = ({ onBack }) => {
 
       {/* JANELA MODAL PARA DETALHES DA AULA */}
       {modalData && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md" onClick={() => setModalData(null)}>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm" onClick={() => setModalData(null)}>
           <div 
-            className="bg-white rounded-3xl shadow-2xl w-full max-w-2xl overflow-hidden flex flex-col transform transition-all animate-in zoom-in-95 duration-200 border border-slate-200"
+            className="bg-slate-950 text-slate-100 rounded-3xl shadow-2xl w-full max-w-2xl overflow-hidden flex flex-col transform transition-all animate-in zoom-in-95 duration-200 border border-slate-700"
             onClick={e => e.stopPropagation()}
           >
             {/* Cabeçalho do Modal */}
-            <div className={`p-6 flex justify-between items-start border-b-2 ${modalData.segment.color.split(' ')[0]} border-white/20`}>
+            <div className={`p-6 flex justify-between items-start border-b-2 borde-slate-700 ${modalData.segment.color.split(' ')[0].replace('bg-', 'bg-slate-900/50 text-')}`}>
               <div>
-                <h3 className="text-2xl font-black text-slate-900 tracking-tighter uppercase flex items-center gap-3">
+                <h3 className="text-2xl font-black text-white tracking-tighter uppercase flex items-center gap-3">
                   {modalData.className}
                   {(() => {
                     let isModalCompleted = completedClasses.includes(`${modalData.classId}-${modalData.date}`);
@@ -687,7 +687,7 @@ export const PlanoAnualPE: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                     }
                     return isModalCompleted;
                   })() && (
-                    <span className="bg-emerald-600 text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full flex items-center gap-1 shadow-md ml-2 border border-emerald-400">
+                    <span className="bg-emerald-900 text-emerald-100 text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full flex items-center gap-1 shadow-md ml-2 border border-emerald-700">
                       <CheckCircle size={14} /> Aula Validada
                     </span>
                   )}
@@ -713,40 +713,40 @@ export const PlanoAnualPE: React.FC<{ onBack: () => void }> = ({ onBack }) => {
             </div>
             
             {/* Corpo do Modal */}
-            <div className="p-8 overflow-y-auto max-h-[60vh] bg-slate-50/30">
+            <div className="p-8 overflow-y-auto max-h-[60vh] bg-slate-900/50">
               {/* Título Forte */}
-              <h4 className="text-3xl font-black text-slate-900 mb-8 flex items-center gap-4 border-b-2 border-slate-100 pb-4 tracking-tighter uppercase">
-                 <BookOpen className="text-indigo-600" size={32} />
+              <h4 className="text-3xl font-black text-white mb-8 flex items-center gap-4 border-b-2 border-slate-700 pb-4 tracking-tighter uppercase">
+                 <BookOpen className="text-indigo-400" size={32} />
                  {modalData.activity.title}
               </h4>
               
               {/* Bloco de Avaliação (Se houver trabalho neste dia) */}
               {modalData.activity.assignment && (
-                <div className={`mb-8 p-6 rounded-2xl border-2 shadow-xl ${modalData.activity.assignment.type === 'passar' ? 'bg-orange-50 border-orange-200' : 'bg-red-50 border-red-200'}`}>
-                  <h5 className={`font-black text-xl flex items-center gap-3 tracking-tighter uppercase ${modalData.activity.assignment.type === 'passar' ? 'text-orange-900' : 'text-red-900'}`}>
+                <div className={`mb-8 p-6 rounded-2xl border-2 shadow-xl ${modalData.activity.assignment.type === 'passar' ? 'bg-orange-950/30 border-orange-800' : 'bg-red-950/30 border-red-800'}`}>
+                  <h5 className={`font-black text-xl flex items-center gap-3 tracking-tighter uppercase ${modalData.activity.assignment.type === 'passar' ? 'text-orange-200' : 'text-red-200'}`}>
                     {modalData.activity.assignment.type === 'passar' ? <Bell size={24} /> : <Download size={24} />}
                     {modalData.activity.assignment.type === 'passar' ? '📢 Passar Trabalho' : '📥 Receber Trabalho'}
-                    <span className="bg-white px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-sm border-2 border-white text-gray-800 ml-auto ring-2 ring-white/50">
+                    <span className="bg-slate-950 px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-widest shadow-sm border border-slate-700 text-white ml-auto">
                       {modalData.activity.assignment.points} pts
                     </span>
                   </h5>
                   
-                  <div className="mt-4 text-gray-800">
-                    <p className="font-black text-xl border-b-2 border-black/5 pb-3 mb-4 tracking-tight uppercase">{modalData.activity.assignment.title}</p>
+                  <div className="mt-4 text-slate-300">
+                    <p className="font-black text-xl border-b-2 border-white/10 pb-3 mb-4 tracking-tight uppercase">{modalData.activity.assignment.title}</p>
                     
                     {modalData.activity.assignment.text && (
-                      <p className="text-base text-slate-700 leading-relaxed bg-white/80 p-4 rounded-xl shadow-inner border border-white">
+                      <p className="text-base text-slate-400 leading-relaxed bg-slate-950/50 p-4 rounded-xl border border-slate-800">
                         {modalData.activity.assignment.text}
                       </p>
                     )}
                     
                     {modalData.activity.assignment.deadline && (
                       <div className="mt-6 flex items-center gap-2">
-                         <div className="h-px flex-grow bg-slate-200"></div>
-                         <p className="text-[10px] font-black text-red-600 bg-red-100 uppercase tracking-[0.2em] px-4 py-2 rounded-full border border-red-200">
+                         <div className="h-px flex-grow bg-slate-700"></div>
+                         <p className="text-[10px] font-black text-red-300 bg-red-950/50 uppercase tracking-[0.2em] px-4 py-2 rounded-full border border-red-800">
                            🗓️ Entrega prevista: {modalData.activity.assignment.deadline}
                          </p>
-                         <div className="h-px flex-grow bg-slate-200"></div>
+                         <div className="h-px flex-grow bg-slate-700"></div>
                       </div>
                     )}
                   </div>
@@ -756,11 +756,11 @@ export const PlanoAnualPE: React.FC<{ onBack: () => void }> = ({ onBack }) => {
               {/* Descrição Longa e Explicativa ou Resumo do Plano */}
               {((modalData.activity.fullData?.resumo) || (modalData.activity.description && modalData.activity.description !== DEFAULT_DESC)) && (
                 <div className="space-y-4">
-                  <div className="flex items-center gap-2 text-indigo-700 font-black text-[10px] uppercase tracking-[0.2em]">
+                  <div className="flex items-center gap-2 text-indigo-300 font-black text-[10px] uppercase tracking-[0.2em]">
                     <ClipboardList size={18} />
                     {modalData.activity.fullData?.resumo ? 'Resumo da Aula e Objetivos:' : 'Roteiro e Procedimentos:'}
                   </div>
-                  <div className="text-slate-700 text-base leading-relaxed bg-white p-6 rounded-2xl border-2 border-slate-100 shadow-sm whitespace-pre-line font-medium">
+                  <div className="text-slate-300 text-base leading-relaxed bg-slate-950 p-6 rounded-2xl border border-slate-700 shadow-sm whitespace-pre-line font-medium">
                     {modalData.activity.fullData?.resumo || modalData.activity.description}
                   </div>
                 </div>
@@ -768,14 +768,14 @@ export const PlanoAnualPE: React.FC<{ onBack: () => void }> = ({ onBack }) => {
             </div>
             
             {/* Rodapé do Modal */}
-            <div className="p-6 bg-slate-50 border-t-2 border-slate-100 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div className="p-6 bg-slate-900 border-t border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
               
               <button 
                 onClick={() => toggleCompletion(modalData.classId, modalData.date)}
                 className={`w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 font-black uppercase tracking-widest text-xs rounded-xl transition-all ${
                   completedClasses.includes(`${modalData.classId}-${modalData.date}`)
-                    ? 'bg-emerald-100 text-emerald-800 border-2 border-emerald-300 shadow-sm'
-                    : 'bg-emerald-600 text-white hover:bg-emerald-500 shadow-xl shadow-emerald-200/50 transform hover:-translate-y-1 active:scale-95'
+                    ? 'bg-emerald-950 text-emerald-200 border border-emerald-800 shadow-sm'
+                    : 'bg-emerald-700 text-white hover:bg-emerald-600 shadow-xl shadow-emerald-950/50 transform hover:-translate-y-1 active:scale-95'
                 }`}
               >
                 <CheckCircle size={20} />
@@ -784,7 +784,7 @@ export const PlanoAnualPE: React.FC<{ onBack: () => void }> = ({ onBack }) => {
 
               <button 
                 onClick={() => setModalData(null)}
-                className="w-full sm:w-auto px-10 py-4 bg-slate-900 text-white font-black uppercase tracking-widest text-xs rounded-xl hover:bg-slate-800 transition-all shadow-lg"
+                className="w-full sm:w-auto px-10 py-4 bg-slate-700 text-white font-black uppercase tracking-widest text-xs rounded-xl hover:bg-slate-600 transition-all shadow-lg"
               >
                 Fechar
               </button>

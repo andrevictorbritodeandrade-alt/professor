@@ -45,7 +45,7 @@ export const AlunosView: React.FC<AlunosViewProps> = ({ onBack, classData }) => 
     
     let planKey = '8ano';
     if (turmaId === 'ciep198') planKey = 'ap';
-    if (turmaId === 'ciep320') planKey = 'ap_sexta';
+    if (turmaId === 'ciep320' || turmaId === 'ciep369') planKey = 'ap_sexta';
     if (turmaId === 'ciep476') planKey = 'ilgch';
     
     let planos = PE_PLAN[planKey] || [];
