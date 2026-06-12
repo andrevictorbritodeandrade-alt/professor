@@ -811,8 +811,19 @@ export const initialClassData: ClassDataMap = {
     grade: "1", 
     school: "CIEP 476",
     students: [
-      { id: 100301, name: "Rayane de Souza Mohamed", attendance: { "08/05": "P", "15/05": "P", "22/05": "P" } },
-      { id: 100302, name: "Suany Santana Ribeiro", attendance: { "08/05": "P", "15/05": "P", "22/05": "P" } }
+      { id: 100301, name: "Rayane de Souza Mohamed", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "12/06": "P" } },
+      { id: 100302, name: "Suany Santana Ribeiro", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "12/06": "F" } },
+      { id: 100303, name: "Elizeu", attendance: { "12/06": "P" } },
+      { id: 100304, name: "Thiago", attendance: { "12/06": "P" } },
+      { id: 100305, name: "David Luiz", attendance: { "12/06": "P" } },
+      { id: 100306, name: "Max Machado", attendance: { "12/06": "P" } },
+      { id: 100307, name: "Gustavo Nascimento", attendance: { "12/06": "P" } },
+      { id: 100308, name: "David de Carvalho", attendance: { "12/06": "P" } },
+      { id: 100309, name: "Kathleen Cristyne", attendance: { "12/06": "P" } },
+      { id: 100310, name: "Pamela", attendance: { "12/06": "P" } },
+      { id: 100311, name: "Adrielly", attendance: { "12/06": "P" } },
+      { id: 100312, name: "Guilherme", attendance: { "12/06": "P" } },
+      { id: 100313, name: "Glenda", attendance: { "12/06": "P" } }
     ],
     assignments: [{ id: "A1", title: "O Corpo na Mídia - Estereótipo vs. Realidade", discipline: "Educação Física", description: "Pesquisa sobre como corpos negros e periféricos são vistos na mídia.", totalPoints: 3, format: "Individual ou dupla", dueDate: "22/05/2026" }],
     schedule: "08:40 – 10:20",
@@ -838,6 +849,13 @@ export const initialClassData: ClassDataMap = {
         plannedActivity: "",
         actualActivity: "sequencia do conteúdo e do slide sobre fanon e cida bento",
         observations: ""
+      },
+      {
+        id: "ciep476-1003-2026-06-12",
+        date: "2026-06-12T12:00:00.000Z",
+        plannedActivity: "Aula 3: Negro vs Preto e o Pardismo",
+        actualActivity: "Discussão sobre identidade, autodeclaração e as heranças da colonização baseada em Fanon.",
+        observations: "Chamada realizada. 12 alunos presentes."
       }
     ]
   },

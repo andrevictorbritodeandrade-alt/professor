@@ -203,43 +203,104 @@ const slidesData: Record<string, Slide[]> = {
     },
     {
       tipo: 'texto_simples',
-      titulo: 'O "Pardismo" e a Máscara da Democracia Racial',
+      titulo: 'O "Pardismo" e a Hierarquia de Cor',
       topicos: [
-        'Mito da Democracia Racial: A mentira de que, por sermos todos misturados, o racismo não existe no Brasil.',
-        'Pardismo como Branqueamento: Historicamente usado como indução de distanciamento das matrizes de negritude.',
-        'Frantz Fanon: Peles Negras, Máscaras Brancas. A tentativa de imitar o colonizador para sofrer menos violência.',
-        'A neurose do colorismo: O privilégio e a aceitação são distribuídos proporcionalmente aos traços eurocêntricos.'
+        'Mito da Democracia Racial: A mentira de que a mistura de raças eliminou o preconceito no Brasil.',
+        'Pardismo como Manutenção de Privilégio: O "mulatismo" foi usado para suavizar o racismo e manter negros desunidos.',
+        'Gilberto Freyre (Casa-Grande & Senzala): "Branca para casar, mulata para fuder, preta para trabalhar".',
+        'Hierarquia Colonial: A citação de Freyre expõe como cada corpo era destinado a uma função de serventia ou posse.',
+        'Colorismo: Quanto mais traços europeus (mais clara a pele), maior a "passabilidade" social.'
       ],
-      dicaProfessor: 'Conecte o "pardismo" à ideia de Fanon sobre alienação psíquica. Use o quadro para colocar o dilema de pertencer/não pertencer.'
+      dicaProfessor: 'Use a frase de Freyre para chocar e mostrar como o racismo brasileiro é estruturado no uso e descarte de corpos.'
     },
     {
       tipo: 'texto_simples',
-      titulo: 'Determinantes de Saúde e os Povos Originários',
+      titulo: 'Alienação: O "Preto Jabuticaba"',
       topicos: [
-        'Para além da raça: A saúde, território e bem-estar estão intrinsecamente amarrados à colonização.',
-        'Não foi descobrimento, foi invasão: A desapropriação sistemática destruiu ecossistemas e corpos inteiros.',
-        'Determinante Social da Saúde: Ter direito e posse do território preservado previne o adoecimento físico e mental dos povos.',
-        'Tecnologias de Sobrevivência: Sistemas de manejo e agrofloresta sustentáveis que a ciência moderna herda deles.'
+        'Lélia Gonzalez: O conceito do "Preto Jabuticaba" - aquele que é "preto por fora e branco por dentro, mas ainda tem um caroço".',
+        'O "Caroço": Por mais que o indivíduo tente embranquecer seus hábitos e gostos, o racismo estrutural sempre o barrará pelo corpo.',
+        'Frantz Fanon: Peles Negras, Máscaras Brancas. A neurose de tentar imitar o opressor para ser aceito.',
+        'Alienação Identitária: O desejo de pertencer a um mundo que te rejeita gera adoecimento mental.',
+        'Resistência: O processo de "tornar-se negro" (Neusa Santos Souza) como cura e libertação.'
       ],
-      dicaProfessor: 'Esclareça a transição da aula sobre identidade para os Povos Originários, que serão tema do seminário prático.'
+      dicaProfessor: 'Discuta o "caroço" de Lélia Gonzalez como a barreira intransponível do racismo que não se resolve com "educação" ou "dinheiro".'
     },
     {
       tipo: 'texto_simples',
-      titulo: 'Instruções do Trabalho: Donos do Território',
+      titulo: 'Povos Originários e Instruções do Trabalho',
       topicos: [
-        'Foco do Trabalho: Pesquisar os povos originários das 5 regiões geográficas do Brasil antes de 1500 até hoje.',
-        'Divisão em Grupos: Cada grupo escolherá uma região geográfica para analisar em profundidade.',
-        'Mapeamento Necessário: Cada grupo deve apresentar no mínimo 3 povos nativos originais da sua região.',
-        'Cenário Atual: Levantar conflitos modernos, como demarcações de terras, desmatamento ilegal e o garimpo no norte.',
-        'Entregável: Um roteiro escrito ou cartaz visual contendo mapas históricos comparativos de território.'
+        'Além da Negritude: A saúde e o território dos indígenas são os pilares da nossa formação.',
+        'Determinante de Saúde: O território demarcado é o que evita o adoecimento dos povos nativos.',
+        'TRABALHO: Pesquisar os povos originários das 5 regiões do Brasil antes de 1500 até hoje.',
+        'Escopo: Cada grupo escolhe 1 região e apresenta no mínimo 3 povos nativos.',
+        'Entrega: Seminários visuais ou cartazes focados no cenário atual (conflitos de terra e garimpo).'
       ],
-      dicaProfessor: 'Explique que o trabalho visa resgatar as vozes e saberes dessas etnias. Defina datas de início das apresentações (03/07 e 10/07).'
+      dicaProfessor: 'Faça a transição da alienação urbana para a resistência territorial dos povos originários. Divida os grupos agora.'
     },
     {
       tipo: 'destaque_centro',
       texto: '"Nossos corpos também têm história e nosso território é a nossa identidade."',
       subtexto: 'Cumprimento pedagógico e integrador da Lei Federal 11.645/08.',
       dicaProfessor: 'Finalize a exposição incentivando os alunos a valorizarem as narrativas antes do período português silencioso.'
+    }
+  ],
+  // AULA FUTSAL (REGULAR - TEÓRICA EXPLICATIVA)
+  'ap_sexta_12/06': [
+    {
+      tipo: 'capa',
+      titulo: 'Futsal: Regras Gerais',
+      subtitulo: 'As posições, funções táticas e a geopolítica do jogo de quadra.',
+      dicaProfessor: 'Inicie a aula ressaltando que, antes de ir para a quadra física, precisamos compreender o tabuleiro de xadrez que é a tática do futsal.',
+      imagemDeFundo: '[Textura de quadra de futsal ou táticas desenhadas]'
+    },
+    {
+      tipo: 'texto_simples',
+      titulo: 'Origem e Evolução do Futsal',
+      topicos: [
+        'A Origem: Nascido na ACM de Montevidéu, Uruguai, em 1934, criado pelo professor Juan Carlos Ceriani.',
+        'O Motivo: A escassez de campos e a necessidade de praticar futebol em locais fechados.',
+        'Evolução da Bola: Inicialmente era muito pesada e quicava demais ("bola pesada") para se adaptar à quadra de basquete.',
+        'Espaço Urbano: Como o futsal se tornou a expressão máxima do esporte urbano nas periferias globais por demandar menos espaço que o futebol de campo.'
+      ],
+      dicaProfessor: 'Fale sobre como a falta de espaço nas grandes cidades transformou o futsal no esporte mais jogado do país.'
+    },
+    {
+      tipo: 'texto_simples',
+      titulo: 'Os 4 Pilares: Posições e Funções',
+      topicos: [
+        'Goleiro: Não apenas defende. É o primeiro organizador de jogadas (goleiro-linha) e possui regras específicas de posse de bola na sua meia quadra.',
+        'Fixo: O pilar defensivo. Responsável pela marcação principal, cobertura das subidas dos alas e início da transição tática.',
+        'Alas (Direito e Esquerdo): Os motores da equipe. Velozes, responsáveis pela transição lateral, dribles e recomposição na fase defensiva.',
+        'Pivô: O ponto de referência no ataque. Joga de costas para o gol adversário, retém a bola para a infiltração dos alas e finaliza.'
+      ],
+      dicaProfessor: 'Utilize o quadro negro ou desenhos de giz para ilustrar as zonas de movimentação de cada posição.'
+    },
+    {
+      tipo: 'texto_simples',
+      titulo: 'Sistemas Táticos Básicos',
+      topicos: [
+        'Sistema 2-2 (Quadrado): Dois jogadores atrás e dois na frente. Ideal para iniciantes, dá solidez, mas pouca mobilidade.',
+        'Sistema 3-1 (Triângulo de Entrada): Um fixo, dois alas abertos e um pivô espetado na frente. É o sistema mais comum e equilibrado do futsal moderno.',
+        'Sistema 4-0 (Linha móvel): Sem pivô fixo. Todos os quatro jogadores em constante rotação, exigindo excelente condicionamento e inteligência tática.'
+      ],
+      dicaProfessor: 'Explique que hoje em dia, as posições são dinâmicas. Um fixo pode virar pivô durante a rotação da jogada.'
+    },
+    {
+      tipo: 'texto_simples',
+      titulo: 'Ficha de Trabalho Escrito: Pesquisa Teórica',
+      topicos: [
+        'Objetivo do Trabalho: Desenvolver autonomia intelectual pesquisando regras oficiais e a história de um esporte de quadra ou campo à sua escolha.',
+        'Valor: 3 Pontos adicionais no Diário de Frequência do 2º Trimestre.',
+        'Estrutura Obrigatória: 1) Capa formal; 2) Introdução com origem histórica; 3) Desenvolvimento com desenho detalhado da quadra tática e 3 regras fundamentais; 4) Referências.',
+        'Entrega Rígida: Verifique prazos e entregue em folhas limpas com identificação completa (Nome, Turma, Chamada).'
+      ],
+      dicaProfessor: 'Diga que o capricho estético no desenho manual da quadra será altamente considerado na nota.'
+    },
+    {
+      tipo: 'destaque_centro',
+      texto: '"A quadra é o espaço da cooperação, onde a tática individual serve ao bem comum da equipe."',
+      subtexto: 'Educação Física e Cidadania - CIEP 369 & 320',
+      dicaProfessor: 'Faça um encerramento estimulando a autodisciplina nos treinos táticos e o respeito mútuo aos adversários.'
     }
   ]
 };
@@ -805,7 +866,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
           {activeCronograma.map((aula, index) => {
             const currentSubView = planningSubViewKey as string;
             const slideKey = `${currentSubView}_${aula.data}`;
-            const temSlides = true;
+            const temSlides = (slidesData as any)[slideKey] !== undefined;
             
             let isPast = false;
             if (aula.data) {
