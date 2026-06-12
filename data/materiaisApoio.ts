@@ -207,6 +207,9 @@ Educação Física, embora pareça relacionada apenas aos corpos anatômicos (Ci
   'Identidade e Sociedade': `
 # Construindo a Identidade - Diálogos com Fanon e Cida Bento
 
+## A Cultura Corporal como Território
+O corpo não é apenas uma máquina anatômica; é linguagem social, um mapa de marcadores de cultura, gênero e classe. Ao contrário do padrão de beleza colonial eurocêntrico promovido exaustivamente pela mídia, nossos corpos trazem heranças, resistências e estéticas que precisam ser decolonizadas.
+
 ## Frantz Fanon ("Pele Negra, Máscaras Brancas")
 O psiquiatra revolucionário Fanon discutiu os impactos da colonização europeia de maneira devastadora. Ele estuda o sentimento de rejeição e desejo, onde a população periférica tenta, psicologicamente, usar a "máscara" do seu dominante (mudando seu jeito de falar, estética, e cultura da branquitude para achar que só assim terá respeito corporativo). O racismo cria uma fobia internalizada pelo seu próprio corpo negro.
 
@@ -225,26 +228,41 @@ O esporte de alto nível se moldou à cultura de massa. Em vez do prazer físico
 `,
 
   'Racismo Estrutural e Recreativo': `
-# Racismo Estrutural, Recreativo e Invisível
+# Racismo Estrutural, Estético e Recreativo
 
-O racismo estrutural não se resume apenas a xingamentos (injúria verbal), mas a um conjunto de práticas invisíveis presentes no sistema de forma silenciosa ou "brincalhona", marginalizando pessoas de cor.
+## Conceitos Cruciais de Racismo
+- **Silvio Almeida (Estrutural):** O racismo não é uma mera falha ou patologia moral de um indivíduo isolado, mas sim um processo político e histórico profundo, enraizado na estrutura econômica, jurídica e nas instituições brasileiras.
+- **Frantz Fanon (Cultural e Psíquico):** Processo que desumaniza e aliena o colonizado, injetando uma fobia internalizada pela sua própria cultura e o forçando a imitar padrões dominantes.
+- **Lélia Gonzalez (Por Denegação):** A "neurose" da sociedade brasileira que se orgulha de uma suposta harmonia de raças ao mesmo tempo em que nega direitos e confina estéticas pretas à marginalidade.
 
-## Casos Históricos de Segregação
-- **Apartheid (África do Sul) e Jim Crow (EUA):** Períodos e leis que proibiam negros de frequentarem os mesmos espaços de convivência que brancos, como bebedouros, escolas e assentos de ônibus.
-- **Segregação à Brasileira:** Apesar de nunca termos tido leis oficiais proibindo a segregação de raças, há no país uma "divisão invisível", notada por exemplo em bairros nobres onde negros frequentemente ocupam apenas as posições de serviço.
+## Racismo Estético, Algoritmos e Branqueamento Digital
+A publicidade historicamente associou o belo ao eurocêntrico. Hoje em dia, essa engrenagem de despersonalização continua viva digitalmente: os filtros de redes sociais (Instagram, TikTok) que afinam narizes, mudam o formato de lábios e clareiam peles operam como um "branqueamento digital" que gera adoecimento psíquico na juventude negra e periférica.
 
-## O Blackface e o Racismo Recreativo
-A prática do *Blackface* (pessoas brancas pintando-se de forma exagerada e caricata de negro) surgiu no teatro para ridicularizar e inferiorizar intelectos de pessoas pretas. O racismo recreativo é aquele onde o humor, a "piada", serve como escudo para reproduzir opressões estigmatizantes sob o argumento de que "foi só uma brincadeira".
+## O Racismo Recreativo e a Violência das "Piadas"
+O humor recreativo é aquele no qual piadas preconceituosas e estereótipos (como a caricatura racista do *Blackface* originada no teatro segregacionista) são reproduzidos como entretenimento inofensivo. Trata-se de uma tática silenciosa para manter a humilhação do corpo negro sob o pretexto de ser "apenas uma brincadeira". Descolonizar o olhar e as mídias é urgente.
   `,
 
   'Negro vs Preto e o Pardismo no Brasil': `
 # Identidade: Negro, Preto e Pardismo
 
 ## Classificação do IBGE
-Segundo o IBGE, a população "Negra" brasileira é um grupo político e demográfico formado pela soma de duas categorias: os que se autodeclaram **Pretos** e os que se autodeclaram **Pardos**.
+Segundo o IBGE, a população "Negra" brasileira é um grupo político e demográfico formado pela soma de duas categorias autorrelatadas de cor de pele: os que se autodeclaram **Pretos** e os que se autodeclaram **Pardos** (Pretos + Pardos = Negros). Essa soma política consolidou a visibilidade nacional e direcionou políticas públicas históricas de cotas e reparações.
 
-## O "Pardismo" e o Mito da Democracia Racial
-Historicamente, promoveu-se a ideia de que o Brasil era uma "democracia racial" livre de barreiras porque todos eram muito miscigenados (pardos). Segundo grandes estudiosos, o "pardismo" muitas vezes serviu como política de branqueamento, onde pessoas de pele mais clara se distanciam ao máximo de suas matrizes de negritude para tentar sofrer menos preconceito na sociedade, ecoando as ideias de *Frantz Fanon* sobre as "máscaras brancas".
+## O Mito da Democracia Racial e o "Pardismo"
+A farsa do "paraíso de três raças" no Brasil, construída por intelectuais coloniais para mascarar as desigualdades, costuma usar a miscigenação para suavizar o debate político. O "pardismo" atuou muitas vezes como uma indução ao branqueamento, incitando indivíduos de traços mais finos a rejeitarem seu pertencimento à negritude como tática de sobrevivência social.
+
+## O Tratamento dos Corpos na Colonização (Gilberto Freyre)
+Em *Casa-Grande & Senzala*, Gilberto Freyre registrou o ditado popular brutal: 
+
+> **"Branca para casar, mulata para fuder, preta para trabalhar"**
+
+Essa frase estarrecedora expõe de maneira nua como a ordem patriarcal e escravista estruturou o racismo no Brasil a partir da absoluta posse, exploração e descarte dos corpos negros e pardos em funções rígidas de servidão e opressão sexualizada.
+
+## O "Preto Jabuticaba" de Lélia Gonzalez
+Lélia Gonzalez expõe brilhantemente o conceito satírico do **"Preto Jabuticaba"**: aquele sujeito que é *"preto por fora e branco por dentro, mas que ainda continua tendo um caroço"*. Significa que o indivíduo pode mimetizar todos os hábitos, falas, roupas e até acumular riqueza nos padrões da branquitude para tentar ser aceito, mas no primeiro momento de crise ou na porta giratória de uma agência bancária, o racismo estrutural irá lembrá-lo do "caroço" inevitável: a sua herança corporal física e racial que a lógica racista enxerga como descartável e suspeita. 
+
+## Atividade de Pesquisa: Os Povos Originários
+A decolonização de nossas existências exige ir além da história contada pelo invasor português. Para o trabalho prático, cada grupo deve realizar um mapeamento dos povos nativos e originários das dobras das cinco regiões do Brasil (antes de 1500 até a luta atual contra demarcações e garimpo ilegal). Sem território livre de invasão, não há produção de saúde ou dignidade para os corpos nativos.
   `,
 
   'Ailton Krenak': `
