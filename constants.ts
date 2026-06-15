@@ -339,6 +339,13 @@ export const initialClassData: ClassDataMap = {
         plannedActivity: "",
         actualActivity: "Apresentação e registro no quadro das especificações do Trabalho do 2º Trimestre: valor de 3 pontos, formação de grupos de até 5 pessoas, com o objetivo de entregar trabalho escrito manuscrito (capa, introdução, desenvolvimento e referências) sobre pesquisa de jogos de tabuleiro, cartas, mentais ou de concentração de outros países, além de apresentação prática em sala de aula. Datas das apresentações serão 22/06 e 29/06.",
         observations: ""
+      },
+      {
+        id: "cordelia-801-2026-06-15",
+        date: "2026-06-15T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "Apresentação teórica do tema Jogos do Mundo com registro escrito no quadro do conteúdo dos slides até a página 4, abordando os jogos tradicionais dos continentes africano, asiático e europeu.",
+        observations: ""
       }
     ]
   },
@@ -425,6 +432,13 @@ export const initialClassData: ClassDataMap = {
         plannedActivity: "",
         actualActivity: "Aulas práticas com fundamentos avançados e mini-torneio adaptado de altinha e futevôlei. Também passei as instruções de registro no quadro do Trabalho do 2º Trimestre: valor de 3 pontos, formação de grupos de até 5 pessoas, com o objetivo de entregar trabalho manuscrito (capa, introdução, desenvolvimento e referências) e apresentar/praticar em sala de aula jogos de tabuleiro, cartas, mentais ou de concentração de outros países. As apresentações serão nos dias 22/06 e 29/06.",
         observations: ""
+      },
+      {
+        id: "cordelia-802-2026-06-15",
+        date: "2026-06-15T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "Apresentação teórica do tema Jogos do Mundo com registro escrito no quadro do conteúdo dos slides até a página 4, abordando os jogos tradicionais dos continentes africano, asiático e europeu.",
+        observations: ""
       }
     ]
   },
@@ -509,6 +523,13 @@ export const initialClassData: ClassDataMap = {
         date: "2026-06-08T12:00:00.000Z",
         plannedActivity: "",
         actualActivity: "Apresentação e registro no quadro das especificações do Trabalho do 2º Trimestre: valor de 3 pontos, formação de grupos de até 5 pessoas, com o objetivo de entregar trabalho escrito manuscrito (capa, introdução, desenvolvimento e referências) sobre pesquisa de jogos de tabuleiro, cartas, mentais ou de concentração de outros países, além de apresentação prática em sala de aula. Datas das apresentações serão 22/06 e 29/06.",
+        observations: ""
+      },
+      {
+        id: "cordelia-803-2026-06-15",
+        date: "2026-06-15T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "Apresentação teórica do tema Jogos do Mundo com registro escrito no quadro do conteúdo dos slides até a página 4, abordando os jogos tradicionais dos continentes africano, asiático e europeu.",
         observations: ""
       }
     ]
