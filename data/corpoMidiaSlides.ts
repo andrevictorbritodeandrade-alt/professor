@@ -42,9 +42,84 @@ const createSlide = (title: string, subtitle: string, content: string, type: str
 
 export const SLIDES_GENERICOS = {
   'Jogos do Mundo': [
-     createSlide('Jogos do Mundo', 'Um tour global', 'Vamos conhecer como diferentes culturas se divertem e exercitam a inteligência.', 'capa', 'hero'),
-     createSlide('Mancala (África)', 'Estratégia e semeadura', 'Um dos jogos mais antigos do mundo, focado na distribuição de recursos.', 'text', 'theory'),
-     createSlide('Go (Ásia)', 'Território e conquista', 'Estratégia complexa e visual de controle de espaço.', 'text', 'theory'),
+     {
+       type: 'capa',
+       title: 'Jogos do Mundo: Uma Volta ao Planeta',
+       subtitle: 'A herança cultural, histórica e regras dos esportes intelectuais',
+       dicaProfessor: 'Organize a sala para um debate. Deixe esse slide no telão enquanto os alunos se organizam.'
+     },
+     {
+       type: 'texto_simples',
+       title: '1. Continente Africano',
+       subtitle: 'Mancala, Seega e Fanorona',
+       content: 'O continente berço da humanidade nos legou formas matemáticas brilhantes de partilha, distribuição e agilidade lógica.',
+       points: [
+         'Mancala (Oware / Kalah): Semeadura estratégica. O objetivo é colher mais sementes. Semeia-se de forma consecutiva e captura-se ao terminar em cavas específicas.',
+         'Seega: Jogo egípcio de posicionamento de peças no deserto. Os jogadores intercalam posições para cercar e eliminar o oponente pelos flancos.',
+         'Fanorona: Conhecido jogo de Madagascar com grade geométrica. A captura das peças vizinhas acontece por aproximação ou por recuo rápido na linha.'
+       ],
+       dicaProfessor: 'Foque em ressaltar que a Mancala é um jogo de semeadura e colheita, que reflete cooperação e economia agrária africana.'
+     },
+     {
+       type: 'texto_simples',
+       title: '2. Continente Asiático',
+       subtitle: 'Go (Weiqi), Shogi e Mahjong',
+       content: 'Estratégia abstrata, análise espacial paciente de territórios e cálculos de probabilidade mental.',
+       points: [
+         'Go (Weiqi): A complexidade máxima com regras simples. Dois povos demarcam territórios flutuando pedras pretas e brancas em um grid milenar.',
+         'Shogi: O Xadrez Japonês. Possibilita a regra inovadora de Drop — você pode posicionar qualquer peça capturada do adversário de volta ao jogo sob seu comando.',
+         'Mahjong: Jogo tradicional com peças de bambu/marfim. O objetivo é ordenar melds (sequências ou trincas idênticas) e finalizar com um par perfeito.'
+       ],
+       dicaProfessor: 'Explique como a regra do Drop no Shogi torna o jogo altamente incisivo e dinâmico.'
+     },
+     {
+       type: 'texto_simples',
+       title: '3. Continente Europeu',
+       subtitle: 'Xadrez Clássico, Damas e Sueca',
+       content: 'O continente que refinou sistemas táticos feudais, esportes mentais olímpicos e hierarquias de poder.',
+       points: [
+         'Xadrez Clássico: Batalha geométrica com o intuito de dar Xeque-Mate no Rei. Cada classe de peça representa o sistema medieval europeu.',
+         'Damas: Jogo ágil focado na diagonal. Saltos obrigatórios de captura com a recompensa de promover a peça comum a Dama livre ao cruzar o tabuleiro.',
+         'Sueca: Clássico jogo de baralho em duplas. Vence quem obtiver a maior pontuação acumulada nas vazas definindo um naipe de trunfo surpresa.'
+       ],
+       dicaProfessor: 'Instigue os alunos explicando que o Xadrez clássico é um esporte da mente olímpico mundial.'
+     },
+     {
+       type: 'texto_simples',
+       title: '4. Continente Americano',
+       subtitle: 'Truco, Patolli e Conquian',
+       content: 'Uma combinação rica de misticismo, teatro e agilidade verbal para desequilibrar o oponente.',
+       points: [
+         'Truco: O rei do blefe e da expressão corporal na América do Sul. Vence quem convencer o rival que possui as melhores cartas na rodada.',
+         'Patolli: Herança mística Azteca. Um jogo ritual de corrida no formato de cruz, utilizando feijões marcados como dados divinos.',
+         'Conquian: Precursor astuto de rummy e buraco no México. Jogado com baralho espanhol de 40 cartas para compor de forma matemática trincas e sequências.'
+       ],
+       dicaProfessor: 'Fale de como o Truco utiliza da dramatização humana e gesticulação facial para intimidar o rival.'
+     },
+     {
+       type: 'texto_simples',
+       title: '5. Continente da Oceania',
+       subtitle: 'Mu Torere, Surakarta e Hawaiian Kōnane',
+       content: 'Desenhos simétricos conectados com as estrelas e a natureza, focados em asfixia espacial do rival.',
+       points: [
+         'Mu Torere: Jogo Maori (Nova Zelândia) jogado em uma grade de estrela de 8 pontas. O objetivo supremo é encurralar e travar o rival impedindo-o de mover.',
+         'Surakarta: Jogo tradicional da Indonésia/Oceania com loops de curvas na borda. Só se capturam peças rivais deslizando taticamente através dos círculos.',
+         'Hawaiian Kōnane: Semelhante a damas mas com pedras vulcânicas pretas e brancas na grelha. Salta-se peças para capturas abundantes até que não haja jogadas.'
+       ],
+       dicaProfessor: 'Discuta sobre a extraordinária facilidade visual e profundidade matemática do Mu Torere que intriga IA modernas.'
+     },
+     {
+       type: 'texto_simples',
+       title: 'Próxima Aula: Apresentação Científica',
+       subtitle: 'Criação dos Grupos e Oficinas de Trabalho',
+       content: 'Iremos formar grupos e produzir nossos próprios jogos de tabuleiro globais para experimentação prática.',
+       points: [
+         'Divisão da Turma: Organizar grupos estáveis de 4 a 5 alunos.',
+         'Escolha do Tema: Cada grupo escolhe um jogo internacional de interesse para pesquisar a fundo suas regras e construir de forma artesanal.',
+         'Oficina em Sala: Na próxima semana (22/06), traremos materiais recicláveis (cartolina, tampinhas, papelão) para desenhar e jogar!'
+       ],
+       dicaProfessor: 'Divida os grupos de forma respeitosa e garanta uma variedade cultural para as oficinas.'
+     }
   ],
   'Futebol de Botão': [
     createSlide('Futebol de Botão', 'Arte na mesa', 'Uma invenção brasileira que une tática, paciência e habilidade.', 'capa', 'hero'),

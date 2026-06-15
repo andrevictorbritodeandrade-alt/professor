@@ -769,7 +769,7 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
 
         {/* --- CRONOGRAMA POR MESES / RÉGUA DO TRIMESTRE (USER VISUAL ACCESS) --- */}
         <div className="mb-6 bg-slate-900 border border-white/10 rounded-[1.5rem] p-4 shadow-sm relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-sky-500/5 to-indigo-500/5" pointerEvents="none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-sky-500/5 to-indigo-500/5" style={{ pointerEvents: "none" }} />
           <div className="relative z-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4 border-b border-white/10 pb-3">
             <div>
               <p className="text-[10px] text-sky-400 font-extrabold uppercase tracking-widest leading-none mb-1">Régua do Trimestre</p>

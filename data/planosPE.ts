@@ -220,20 +220,20 @@ export const PE_PLAN: Record<string, AulaPlan[]> = {
             resumo: `🎯 **Objetivo da Aula:** Desenvolver movimentos de recepção tática na quadra.` 
         },
         { 
-            data: '12/06', tri: '2º Tri', modulo: 'Esportes de Campo e Quadra', titulo: 'Futsal: Regras Gerais (Aula 1/4 - TEÓRICA)', desc: 'Funções de goleiro, fixo, alas e pivô no futsal. Passagem do Trabalho.', 
+            data: '12/06', tri: '2º Tri', modulo: 'Esportes de Campo e Quadra', titulo: 'Handebol: Regras Gerais (Aula 1/4 - TEÓRICA)', desc: 'Funções de armador, alas, pivô e goleiro no handebol. Passagem do Trabalho.', 
             trabalho: 'passar',
             resumo: `🎯 **Objetivo da Aula:** Compreender as posições e passar instrução tática do trabalho.\n\n🗣️ **Dinâmica (Quadro):**\n• Desenho das áreas de meta oficiais e as funções de cada atleta.\n\n⚠️ **TRABALHO DE PESQUISA (Valor: 3 pontos) - Copiar do Quadro:**\n\n📋 **O QUE FAZER:** Pesquisa **teórica** individual. Escolha um esporte de quadra ou campo (Futsal, Basquete, Handebol ou Vôlei).\n\n🔍 **ONDE PESQUISAR:** No Google, livros ou sites esportivos oficiais.\n\n📑 **ESTRUTURA OBRIGATÓRIA:**\n1. **Capa:** Nome do CIEP, Educação Física, seu nome, número de chamada, com turma e ano (2026).\n2. **Introdução:** Quem criou o esporte, onde e em que ano nasceu.\n3. **Desenvolvimento:**\n   - Desenhar a quadra/campo e colocar os tamanhos oficiais (metros).\n   - Escrever as **3 regras principais** do esporte.\n   - Listar os principais movimentos (ex: passe, drible, arremesso).\n4. **Referências:** Escrever quais sites ou livros usou.` 
         },
         { 
-            data: '19/06', tri: '2º Tri', modulo: 'Esportes de Campo e Quadra', titulo: 'Futsal: Passes e Controle (Aula 2/4 - PRÁTICA)', desc: 'Controle de passes de bola rápidos e condução de equipe em rodízio.', 
+            data: '19/06', tri: '2º Tri', modulo: 'Esportes de Campo e Quadra', titulo: 'Handebol: Passes e Arremessos (Aula 2/4 - PRÁTICA)', desc: 'Controle de passes de bola rápidos e condução de equipe com a mão em rodízio.', 
             resumo: `🎯 **Objetivo da Aula:** Praticar fundamentos coordenados na quadra.\n\n🗣️ **Dinâmica (Prática):**\n• Treinos de passes curtos sob pressão em duplas na quadra.` 
         },
         { 
-            data: '26/06', tri: '2º Tri', modulo: 'Esportes de Campo e Quadra', titulo: 'Futsal: Rotações de Linha (Aula 3/4 - MEIO A MEIO)', desc: 'Esquema tático posicional 2-2 e passes táticos em triângulo.', 
+            data: '26/06', tri: '2º Tri', modulo: 'Esportes de Campo e Quadra', titulo: 'Handebol: Rotações de Linha (Aula 3/4 - MEIO A MEIO)', desc: 'Esquema tático posicional ofensivo e passes táticos em triângulo.', 
             resumo: `🎯 **Objetivo da Aula:** Conhecer as posições de retaguarda e ataque em quadra.` 
         },
         { 
-            data: '03/07', tri: '2º Tri', modulo: 'Esportes de Campo e Quadra', titulo: 'Futsal: Partidas e Jogo Técnico (Aula 4/4 - PRÁTICA)', desc: 'Jogo livre escolar de futsal e controle de turma. Recolhimento do Trabalho.', 
+            data: '03/07', tri: '2º Tri', modulo: 'Esportes de Campo e Quadra', titulo: 'Handebol: Partidas e Jogo Técnico (Aula 4/4 - PRÁTICA)', desc: 'Jogo livre escolar de handebol e controle de turma. Recolhimento do Trabalho.', 
             trabalho: 'recolher',
             resumo: `🎯 **Objetivo da Aula:** Praticar o espírito esportivo e recolher trabalhos escolares.\n\n🗣️ **Dinâmica (Prática):**\n• Jogo tático final focado em disciplina e espírito coletivo.\n\n📥 **TRABALHO:** Recolher a Pesquisa Escolar (3 pts) sobre Esportes de Campo e Quadra.` 
         },
@@ -254,8 +254,8 @@ export const PE_PLAN: Record<string, AulaPlan[]> = {
             resumo: `🎯 **Objetivo da Aula:** Integrar passes e rodízio em situação real de jogo escolar.` 
         },
         { 
-            data: '28/08', tri: '2º Tri', modulo: 'Esportes de Campo e Quadra', titulo: 'Basquete/Handebol: Prática Rápida (Aula 1/1 - MEIO A MEIO)', desc: 'Fundamentos expressos corporais rápidos de finalização na tabela/gol.', 
-            resumo: `🎯 **Objetivo da Aula:** Conhecer dinâmicas de basquete e handebol com controle de drible.` 
+            data: '28/08', tri: '2º Tri', modulo: 'Esportes de Campo e Quadra', titulo: 'Basquete/Futsal: Prática Rápida (Aula 1/1 - MEIO A MEIO)', desc: 'Fundamentos expressos corporais rápidos de finalização na tabela/gol.', 
+            resumo: `🎯 **Objetivo da Aula:** Conhecer dinâmicas de basquete e futsal com controle de drible.` 
         },
         { 
             data: '04/09', tri: '2º Tri', modulo: 'Recuperação', titulo: 'Recuperação e Segunda Chamada (SALA - sem prática)', desc: 'Reposição de prova final presencial em sala de aula.', 

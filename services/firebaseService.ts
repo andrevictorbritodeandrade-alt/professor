@@ -1,5 +1,5 @@
 import { initializeApp, getApps, getApp } from 'firebase/app';
-import { getFirestore, doc, onSnapshot, updateDoc, setDoc, collection, writeBatch, enableIndexedDbPersistence, getDocFromServer } from 'firebase/firestore';
+import { getFirestore, initializeFirestore, doc, onSnapshot, updateDoc, setDoc, collection, writeBatch, enableIndexedDbPersistence, getDocFromServer } from 'firebase/firestore';
 import { getAuth, signInAnonymously, onAuthStateChanged } from 'firebase/auth';
 import { DashboardCardData, ClassDataMap, GalleryData, OccurrenceData } from '../types';
 import firebaseAppletConfig from '../firebase-applet-config.json';
@@ -55,9 +55,9 @@ interface FirestoreErrorInfo {
   }
 }
 
-let db: any = null;
-let app: any = null;
-let auth: any = null;
+export let db: any = null;
+export let app: any = null;
+export let auth: any = null;
 let persistenceEnabled = false;
 
 function handleFirestoreError(error: unknown, operationType: OperationType, path: string | null) {
@@ -95,10 +95,14 @@ export const initFirebase = () => {
     }
     
     if (!db) {
+      const firestoreSettings = {
+        experimentalForceLongPolling: true
+      };
+
       if (config.firestoreDatabaseId) {
-        db = getFirestore(app, config.firestoreDatabaseId);
+        db = initializeFirestore(app, firestoreSettings, config.firestoreDatabaseId);
       } else {
-        db = getFirestore(app);
+        db = initializeFirestore(app, firestoreSettings);
       }
       
       // Enable offline persistence - only once
@@ -130,6 +134,13 @@ export const initFirebase = () => {
     return false;
   }
 };
+
+// Auto run initFirebase so instances are exported early
+try {
+  initFirebase();
+} catch (e) {
+  console.error("Early firebase initialization failed:", e);
+}
 
 async function testConnection() {
   try {

@@ -625,7 +625,7 @@ export const ChalkboardDiagram: React.FC<ChalkboardDiagramProps> = ({ title = ''
             </g>
 
             {/* Call guide spot behind opposition goal */}
-            <star points="360,140" stroke="yellow" strokeWidth="1" />
+            <polygon points="360,130 365,145 355,145" fill="none" stroke="yellow" strokeWidth="1" />
             <circle cx="360" cy="140" r="4" fill="yellow" />
             <text x="350" y="240" fontSize="8" fill="yellow" textAnchor="end">🔊 Direcionador/Guia (Atrás do Gol)</text>
 

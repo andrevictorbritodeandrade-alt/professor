@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import Markdown from 'react-markdown';
 import { ClassDataMap } from '../types';
 import { PE_PLAN } from '../data/planosPE';
 import { AI_SUMMARIES } from '../data/materiaisApoio';
@@ -221,19 +222,11 @@ export const AlunosView: React.FC<AlunosViewProps> = ({ onBack, classData }) => 
                     prose-h2:text-xl prose-h2:font-bold prose-h2:text-slate-800 prose-h2:mt-8
                     prose-p:text-slate-700 prose-p:leading-relaxed
                     prose-ul:list-disc prose-ul:ml-6 prose-ul:mb-6 prose-li:text-slate-700
-                    prose-strong:text-slate-900
+                    prose-strong:text-slate-900 prose-blockquote:border-l-4 prose-blockquote:border-slate-300 prose-blockquote:pl-4 prose-blockquote:italic
                   "
-                  dangerouslySetInnerHTML={{
-                    __html: (selectedMaterial.content || '')
-                      .replace(/^#\s(.*?)$/gm, '<h1>$1</h1>')
-                      .replace(/^##\s(.*?)$/gm, '<h2>$1</h2>')
-                      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-                      .replace(/^- (.*?)$/gm, '<li>$1</li>')
-                      .replace(/(<li>.*?<\/li>)/gs, '<ul>$1</ul>')
-                      .replace(/\n\n/g, '</p><p>')
-                      .replace(/^((?!<[hu]|<li).+)$/gm, '<p>$1</p>')
-                  }}
-                />
+                >
+                  <Markdown>{selectedMaterial.content || ''}</Markdown>
+                </div>
 
                 <div className="mt-16 pt-8 border-t border-slate-200 text-center print:mt-10">
                    <p className="text-xs text-slate-500 font-medium">

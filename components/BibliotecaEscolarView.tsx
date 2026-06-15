@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Folder, FileText, ArrowLeft, Upload, Users, BookOpen, Download, Trash2, Loader2, Presentation } from 'lucide-react';
-import { initializeApp } from 'firebase/app';
-import { getAuth, signInAnonymously, onAuthStateChanged } from 'firebase/auth';
-import { getFirestore, collection, onSnapshot, addDoc, doc, deleteDoc } from 'firebase/firestore';
+import { collection, onSnapshot, addDoc, doc, deleteDoc } from 'firebase/firestore';
+import { signInAnonymously, onAuthStateChanged } from 'firebase/auth';
 
-import { getStoredConfig } from '../services/firebaseService';
+import { getStoredConfig, db, auth, app } from '../services/firebaseService';
 import { FileViewer } from './FileViewer';
 
 const firebaseConfig = getStoredConfig();
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
-const appId = firebaseConfig.projectId;
+const appId = firebaseConfig ? firebaseConfig.projectId : '';
 
 const CATEGORIAS = [
   { id: '1º ANO', icon: Users, color: 'bg-blue-100 text-blue-800 border-blue-400' },
@@ -27,13 +23,14 @@ export const BibliotecaEscolarView: React.FC<{ onBack: () => void }> = ({ onBack
   const [isUploading, setIsUploading] = useState(false);
 
   useEffect(() => {
-    signInAnonymously(auth);
+    if (!auth) return;
+    signInAnonymously(auth).catch((err) => console.error("Biblioteca Auth Error:", err));
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => setUser(currentUser));
     return () => unsubscribe();
   }, []);
 
   useEffect(() => {
-    if (!user) return;
+    if (!user || !db || !appId) return;
     const arquivosRef = collection(db, 'artifacts', appId, 'users', user.uid, 'arquivos');
     const unsubscribe = onSnapshot(arquivosRef, (snapshot) => {
       const arquivosDoBanco = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));

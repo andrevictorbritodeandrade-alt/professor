@@ -27,7 +27,7 @@ export const PortalView: React.FC<PortalViewProps> = ({ onSelectAccess }) => {
     }
   };
 
-  const itemVariants = {
+  const itemVariants: any = {
     hidden: { opacity: 0, y: 30 },
     show: { 
       opacity: 1, 

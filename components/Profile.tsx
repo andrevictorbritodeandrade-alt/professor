@@ -11,13 +11,14 @@ interface ProfileProps {
 }
 
 export const Profile: React.FC<ProfileProps> = ({ 
-  user, 
+  user: userProp, 
   onBack, 
   classData, 
   setClassData,
   onLogout,
   onNavigateToStudents
 }) => {
+  const user = userProp as any;
   return (
     <div className="space-y-8 animate-fade-in">
        <button 

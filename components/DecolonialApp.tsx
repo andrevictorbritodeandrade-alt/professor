@@ -1026,7 +1026,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
             ];
           }
 
-          if (tUpper.includes('FUTSAL') && tUpper.includes('REGRAS GERAIS')) {
+          if (tUpper.includes('HANDEBOL') && tUpper.includes('REGRAS GERAIS')) {
             return [
               {
                 tipo: 'capa',
@@ -1044,7 +1044,8 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
                   "Comprimento oficial: Varia de 38 a 42 metros de extensão longitudinal nas linhas laterais de fundo.",
                   "Largura oficial: Varia de 20 a 25 metros de extensão lateral.",
                   "Balizas (traves de meta): Medem exatamente 3 metros de largura por 2 metros de altura útil.",
-                  "Área do goleiro: Um semicírculo circular perfeito com raio de 6 metros medidores a partir de cada poste de trave."
+                  "Área do goleiro: A área contínua do goleiro delimitada pela linha de 6 metros.",
+                  "Linha pontilhada: Fica a 9 marca a zona de tiro livre."
                 ],
                 dicaProfessor: "Chame atenção para a incrível diferença geométrica e de velocidade entre a quadra lisa e o campo de grama."
               },
@@ -1054,9 +1055,9 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
                 titulo: "✍️ Roteiro para Desenhar no Quadro",
                 topicos: [
                   "Passo 1: Desenhe um retângulo proporcional de 60x30cm e trace a linha central divisória.",
-                  "Passo 2: No meio da linha central, trace o círculo menor de saída correspondendo ao raio de 3m.",
-                  "Passo 3: Use o compasso ou giz em arco para desenhar as áreas de meta delimitando os 6m de proteção.",
-                  "Passo 4: No topo de cada área, faça um pontinho de Pênalti a 6m e o ponto de segundo pênalti a 10m."
+                  "Passo 2: Trace a área contínua do goleiro de 6m.",
+                  "Passo 3: Trace a zona pontilhada de Tiro Livre a 9m.",
+                  "Passo 4: No topo de cada área, faça a linha de 7m exata (linha do pênalti)."
                 ],
                 dicaProfessor: "Enquanto desenha, instigue os alunos a copiarem a simetria de marcas e linhas limites."
               },
@@ -1065,24 +1066,25 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
                 type: 'texto_simples',
                 titulo: "👥 Posições e Atribuições Técnicas",
                 topicos: [
-                  "1 Goleiro: Defensor máximo da meta, único com permissão de tocar a bola com as mãos na área restrita.",
-                  "1 Fixo: O pilar defensivo central do time, organiza a marcação e aciona passes de transição rápida.",
-                  "2 Alas (Esquerdo/Direito): Os motores de movimentação rápida pelas bordas laterais ofensivas do pátio.",
-                  "1 Pivô: O atacante de ponta que joga no ataque, de costas para o gol, segurando a bola e servindo os alas."
+                  "1 Goleiro: Defensor máximo da meta, único com permissão de tocar a bola com as pernas na área restrita.",
+                  "Armador Central: O pilar central do time, organiza a criação e aciona passes de transição.",
+                  "Alas/Meias (Esquerdo/Direito): Os motores de arremesso pelas laterais ofensivas.",
+                  "Pontas: Jogadores leves que atuam nas extremidades da quadra (cantos).",
+                  "Pivô: O atacante que infiltra na barreira adversária perto da área de 6 metros."
                 ],
-                dicaProfessor: "Demonstre no quadro como o pivô precisa jogar flutuando perto da área de meta adversária."
+                dicaProfessor: "Demonstre no quadro como o pivô precisa jogar infiltrado perto da área de meta adversária."
               },
               {
                 tipo: 'texto_simples',
                 type: 'texto_simples',
-                titulo: "🩹 Regras de Cartões e Tempo Limite",
+                titulo: "🩹 Regras de Punições e Passos",
                 topicos: [
-                  "Tempo de reposição: Cobranças de lateral, escanteio e faltas devem ser feitas em no máximo 4 segundos.",
-                  "Regra do Recuo ao Goleiro: O goleiro só pode reter a bola com os pés por 4 segundos em sua quadra de defesa.",
-                  "Acúmulo de Faltas: A partir da 5ª falta coletiva no período, todos os tiros livres viram diretos sem barreira do ponto de 10m.",
-                  "Substituições: Livres, ilimitadas e volantes dentro da zona de substituição demacada ao lado do banco."
+                  "Limite de passos: O jogador só pode dar no máximo 3 passos segurando a bola sem quicá-la no chão.",
+                  "Regra de Invasão: Nenhum jogador de linha pode pisar na linha ou dentro da área de 6m para atacar.",
+                  "Punição: Exclusões de 2 minutos para faltas consideradas desleais ou excessivamente agressivas.",
+                  "Substituições: Livres e ilimitadas dentro da zona de substituição demacada."
                 ],
-                dicaProfessor: "Destaque a necessidade de controle emocional rigoroso nas substituições rápidas do futsal."
+                dicaProfessor: "Destaque a necessidade de controle emocional rigoroso na dinâmica dos 2 minutos do handebol."
               },
               {
                 tipo: 'destaque_centro',
@@ -1094,70 +1096,70 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
             ];
           }
 
-          if (tUpper.includes('FUTSAL') && tUpper.includes('SISTEMAS')) {
+          if (tUpper.includes('HANDEBOL') && tUpper.includes('ROTAÇÕES DE LINHA')) {
             return [
               {
                 tipo: 'capa',
                 type: 'capa',
                 titulo: aula.titulo,
                 title: aula.titulo,
-                subtitulo: "Inteligência Tática: Movimentação Coletiva com Sistemas 2-2 e 3-1",
+                subtitulo: "Inteligência Tática: Movimentação Coletiva com Sistemas de Bloqueio",
                 dicaProfessor: "Esta é uma aula MEIO A MEIO. Primeiro ensinamos em sala projetada e depois na quadra escolar."
               },
               {
                 tipo: 'texto_simples',
                 type: 'texto_simples',
-                titulo: "🗺️ O Sistema Tático 2-2 (Quadrado)",
+                titulo: "🗺️ O Sistema Tático 6-0 (Linha Clássica)",
                 topicos: [
-                  "Estrutura: Dois jogadores posicionados atrás (defensores) e dois jogadores mais avançados (atacantes).",
-                  "Indicado para: Equipes de iniciantes ou quadras extremamente estreitas com pouco espaço de manobra lateral.",
-                  "Vantagem: Simples cobertura mútua que evita que a defesa fique totalmente exposta em contra-ataques.",
-                  "Desvantagem: Cria pouca mobilidade ofensiva, deixando o jogo estático se os atletas não flutuarem."
+                  "Estrutura: Seis jogadores posicionados de forma defensiva acompanhando a linha de 6 metros.",
+                  "Indicado para: Equipes de iniciantes; forma uma muralha sólida para evitar arremessos fáceis de proximidade.",
+                  "Vantagem: Simples cobertura e bloqueio eficiente contra as infiltrações de pivôs e pontas adversários.",
+                  "Desvantagem: Permite arremessos de longa distância (9m) livres, já que não há marcadores avançados."
                 ],
-                dicaProfessor: "Foque na simplicidade do quadrado no início da explicação tática básica de pátio."
+                dicaProfessor: "Foque na simplicidade da linha 6-0 no início da explicação tática básica de pátio."
               },
               {
                 tipo: 'texto_simples',
                 type: 'texto_simples',
-                titulo: "✍️ Desenho do Sistema 2-2 no Quadro",
+                titulo: "✍️ Desenho do Sistema 6-0 no Quadro",
                 topicos: [
-                  "Passo 1: Esboce a quadra de futsal reduzida.",
-                  "Passo 2: Marque dois círculos pretos com a letra 'D' (Defensores) posicionados lado a lado à frente da área metálica.",
-                  "Passo 3: Marque dois círculos pretos com a letra 'A' (Atacantes) posicionados em linha lado a lado no ataque.",
-                  "Passo 4: Mostre o contra-ataque traçando setas de recuo entre a linha de ataque e defesa."
+                  "Passo 1: Esboce a quadra de handebol e marque a área do goleiro de 6m bem visível.",
+                  "Passo 2: Marque seis círculos unidos acompanhando o contorno de toda a linha curvada de seis metros.",
+                  "Passo 3: Insira setas que mostrem a barreira deslizando para o lado em que a bola estiver na quadra.",
+                  "Passo 4: Mostre o contra-ataque rápido subindo pelas laterais caso ocorra uma interceptação no passe."
                 ],
-                dicaProfessor: "Explore o quadro destacando como a marcação em zona é muito facilitada no sistema quadrado."
+                dicaProfessor: "Explore o quadro destacando como a marcação em zona é muito facilitada no sistema 6-0."
               },
               {
                 tipo: 'texto_simples',
                 type: 'texto_simples',
-                titulo: "💎 O Sistema Tático 3-1 (Diamante)",
+                titulo: "💎 O Sistema Tático 5-1 (Um à frente)",
                 topicos: [
-                  "Estrutura: 1 Fixo recuado centralizado, 2 Alas bem abertos nas extremidades e 1 Pivô à frente.",
-                  "Triangulações de Passe: Oferece constantes apoios laterais e diagonais que facilitam trocas rápidas de passe.",
-                  "Vantagem: Altamente ofensivo e dinâmico, dificulta a marcação por zona adversária ao abrir o campo.",
-                  "Desvantagem: Exige excelente condicionamento físico dos alas para recuar e preencher o vácuo defensivo."
+                  "Estrutura: 5 jogadores recuados na linha de 6m e 1 jogador que flutua mais à frente, perto da linha de 9m (o 'Bico').",
+                  "Triangulações de Passe: O 'bico' atrapalha e pressiona intensamente a troca de bola dos armadores adversários.",
+                  "Vantagem: Altamente ativo e dinâmico, forçando o adversário aos errar passes na meia distância.",
+                  "Desvantagem: Exige excelente condicionamento físico do atleta que vai correr adiantado pressionando ('bico')."
                 ],
-                dicaProfessor: "Explique como o jogador de futsal profissional precisa flutuar nas posições para abrir as defesas montadas."
+                dicaProfessor: "Explique como o jogador 'bico' de handebol profissional precisa dar combates constantes abrindo espaços."
               },
               {
                 tipo: 'texto_simples',
                 type: 'texto_simples',
-                titulo: "✍️ Desenho do Sistema 3-1 no Quadro",
+                titulo: "✍️ Desenho do Sistema 5-1 no Quadro",
                 topicos: [
-                  "Passo 1: Desenhe a quadra reduzida com giz colorido para os jogadores táticos de quadra.",
-                  "Passo 2: Posicione a bolinha do Fixo bem centralizada à frente do goleiro na saída de defesa.",
-                  "Passo 3: Posicione o Ala Esquerdo e Ala Direito bem rente às linhas laterais, formando a linha média.",
-                  "Passo 4: Posicione o Pivô centralizado à frente, ligando as quatro pontas com linhas tracejadas (diamante)."
+                  "Passo 1: Desenhe a quadra reduzida com giz colorido e a área contínua de 6m e de 9m.",
+                  "Passo 2: Posicione cinco bolinhas da defesa seguindo o curvamento da área do goleiro, bem compactas.",
+                  "Passo 3: Mova um jogador (geralmente o Central) para um pouco a frente dos defensores, para perseguir a bola.",
+                  "Passo 4: Demonstre a intenção de atrapalhar armadores rivais, causando interceptações fáceis para correria de contra-ataque."
                 ],
-                dicaProfessor: "Trace flechas das alas cruzando para o centro mostrando as transições de triângulo do pivô."
+                dicaProfessor: "Trace flechas a partir do Bico subindo na pressão e da linha de 5 na basculação de bloco."
               },
               {
                 tipo: 'destaque_centro',
                 type: 'destaque_centro',
                 texto: "🏃‍♂️ COMPUTAÇÃO MOTORA ATIVA",
-                subtexto: "Vamos descer de forma organizada para a quadra para ensaiarmos drills táticos em grupos de 4 integrantes!",
-                dicaProfessor: "Estipule o quarteto tático de futsal antes da liberação e de descermos para o pátio esportivo."
+                subtexto: "Vamos descer de forma organizada para a quadra para ensaiarmos drills táticos em grupos limitando arremessos!",
+                dicaProfessor: "Estipule o paredão defensivo tático de handebol antes da liberação e de descermos para o pátio esportivo."
               }
             ];
           }
@@ -1801,7 +1803,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
                 type: 'texto_simples',
                 titulo: "✍️ Gráficos de Conteúdo de Recuperação no Quadro",
                 topicos: [
-                  "Passo 1: Escreva termos de equivalência estrutural no quadro (ex: Vôlei = Rodízio, Futsal = Quadra de 40m).",
+                  "Passo 1: Escreva termos de equivalência estrutural no quadro (ex: Vôlei = Rodízio, Handebol = Quadra de 40m).",
                   "Passo 2: Faça esquemas conceituais sobre a ética esportiva contra posturas rudes de quadra.",
                   "Passo 3: Escreva no quadro os critérios que o aluno deve seguir para conseguir reaver sua meta de notas.",
                   "Passo 4: Forneça pequenos exercícios avaliativos práticos para testar a retenção individual imediata."
@@ -1859,7 +1861,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
                 topicos: [
                   "O que aprendemos sobre fairplay, disciplina de pátio e cooperação ética ao longo do ano?",
                   "Seu comportamento individual foi respeitoso perante a diversidade estrutural dos colegas de classe?",
-                  "Os conceitos teóricos (impedimento, posições de vôlei e futsal) ficaram esclarecidos em sua mente?",
+                  "Os conceitos teóricos (impedimento, posições de vôlei e handebol) ficaram esclarecidos em sua mente?",
                   "Divulgação e consulta transparente de notas finais de Educação Física."
                 ],
                 dicaProfessor: "Coordene a roda de bate-papo de forma organizada permitindo que cada um expresse sua opinião."
