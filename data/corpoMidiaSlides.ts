@@ -131,6 +131,166 @@ export const SLIDES_GENERICOS = {
   ]
 };
 
+export const SLIDES_HANDEBOL = [
+  {
+    title: "HANDEBOL: ROTAÇÕES DE LINHA",
+    subtitle: "2º Tri • Aula 26/06 (Correção de Fluxo)",
+    content: "OBJETIVO: Conhecer as posições de retaguarda e ataque em quadra.",
+    type: "hero",
+    theme: "hero"
+  },
+  {
+    title: "A QUADRA DE JOGO",
+    points: [
+      "LINHA DE 6m: Área exclusiva do goleiro. Ninguém mais pisa!",
+      "LINHA DE 9m: Linha pontilhada para cobrança de faltas (Tiro Livre).",
+      "DIMENSÕES: 40m de comprimento por 20m de largura."
+    ],
+    type: "list",
+    theme: "cards"
+  },
+  {
+    title: "POSIÇÕES DE ATAQUE",
+    points: [
+      "PONTAS: Jogam nas extremidades. São rápidos e finalizam com saltos laterais.",
+      "ARMADORES: Ficam na linha de 9m. Organizam o jogo e chutam de longe.",
+      "PIVÔ: Joga infiltrado no meio da defesa adversária (linha de 6m)."
+    ],
+    type: "list",
+    theme: "theory"
+  },
+  {
+    title: "RETAGUARDA (DEFESA)",
+    points: [
+      "GOLEIRO: Único que pode tocar a bola com os pés na área.",
+      "DEFENSORES BASE: Posicionam-se entre a linha de 6m e 9m.",
+      "MARCAÇÃO: O objetivo é bloquear o arremesso e impedir a infiltração."
+    ],
+    type: "list",
+    theme: "theory"
+  },
+  {
+    title: "SISTEMAS TÁTICOS",
+    subtitle: "O sistema é escolhido conforme a força do adversário!",
+    points: [
+      "6:0: Todos os 6 jogadores na linha de área. Barreira humana!",
+      "3:3 (MEIO A MEIO): 3 defensores na frente e 3 atrás. Divide a quadra ao meio.",
+      "5:1: 5 jogadores na linha e 1 adiantado para atrapalhar o armador."
+    ],
+    type: "list",
+    theme: "cards"
+  },
+  {
+    title: "RESUMO PARA A PROVA",
+    points: [
+      "PIVÔ: Joga de costas para o gol, criando espaços.",
+      "ARMADOR CENTRAL: O 'cérebro' do time, inicia as jogadas.",
+      "LINHA DE 6m: Limite máximo para o ataque (não pode pisar).",
+      "MEIO A MEIO: Equilíbrio entre defesa recuada e agressiva.",
+      "FALTA NO TIRO LIVRE: Cobrada na linha pontilhada (9m)."
+    ],
+    type: "list",
+    theme: "timeline"
+  }
+];
+
+export const SLIDES_POVOS_ORIGINARIOS = [
+  {
+    title: "FORMAÇÃO DAS SOCIEDADES GLOBAIS",
+    subtitle: "POVOS ORIGINÁRIOS | 1º Ano Ensino Médio | Aula 26/06",
+    type: "hero",
+    theme: "hero"
+  },
+  {
+    title: "O APAGAMENTO HISTÓRICO",
+    content: "A história sob a ótica dos vencidos.",
+    type: "hero",
+    theme: "quote"
+  },
+  {
+    title: "O MITO DO 'DESCOBRIMENTO'",
+    points: [
+      "A história oficial frequentemente ignora milênios de evolução social e tecnológica.",
+      "A colonização impôs uma visão que apagou a memória de sociedades complexas.",
+      "Não houve 'descobrimento', mas sim a invasão de territórios já amplamente habitados e estruturados."
+    ],
+    type: "list",
+    theme: "cards"
+  },
+  {
+    title: "O MUNDO ANTES DE 1500",
+    points: [
+      "ÁFRICA E ÁSIA: Rotas comerciais globais complexas, universidades antigas e grandes impérios já estabelecidos.",
+      "AMÉRICAS: Metrópoles gigantescas como Tenochtitlán (México) e Cahokia (EUA), maiores que as cidades europeias da época.",
+      "OCEANIA: Navegadores mestres com profundo conhecimento estelar, perfeitamente integrados ao oceano."
+    ],
+    type: "list",
+    theme: "theory"
+  },
+  {
+    title: "ENGENHARIA NAS AMÉRICAS",
+    subtitle: "COMPLEXIDADE PURA",
+    content: "Dos terraços agrícolas Incas nas montanhas dos Andes às ilhas flutuantes (chinampas) construídas pelos Astecas no México. Havia um domínio absoluto da matemática, astronomia e uma adaptação arquitetônica.",
+    type: "text",
+    theme: "cards"
+  },
+  {
+    title: "A TERRA DE PINDORAMA",
+    content: "Afunilando para o Brasil antes de 1500.",
+    type: "hero",
+    theme: "hero"
+  },
+  {
+    title: "DIVERSIDADE ESTRUTURAL",
+    points: [
+      "AMAZÔNIA: Caciques poderosos, grandes aldeias interligadas e manejo florestal milenar.",
+      "LITORAL: Domínio dos povos Tupi-Guarani, organizados em vastas e eficientes redes de trocas.",
+      "INTERIOR: Povos Macro-Jê com total domínio das estações, rios e geografia do Cerrado."
+    ],
+    type: "list",
+    theme: "timeline"
+  },
+  {
+    title: "ECONOMIA E CULTURA",
+    points: [
+      "Agricultura Avançada: Domesticação essencial da mandioca e do milho.",
+      "Tecnologia do Solo: A 'Terra Preta de Índio' é uma biotecnologia que fertilizou a Amazônia.",
+      "Estruturas Sociais: Decisões tomadas em conselho, rompendo com a rigidez hierárquica feudal da Europa."
+    ],
+    type: "list",
+    theme: "theory"
+  },
+  {
+    title: "UM TERRITORIO POVOADO",
+    subtitle: "5 MILHÕES DE HABITANTES (ESTIMATIVA 1500)",
+    content: "NÃO ERA UM VAZIO! Havia mais de 1.000 línguas diferentes sendo faladas. O continente era cortado por uma teia impressionante de estradas e alianças, como o famoso Caminho do Peabiru, ligando regiões distantes.",
+    type: "text",
+    theme: "cards"
+  },
+  {
+    title: "PERSPECTIVA",
+    content: "\"O Brasil originário era uma civilização tropical complexa, não um vazio demográfico à espera do colonizador.\" — INSPIRADO EM DARCY RIBEIRO",
+    type: "hero",
+    theme: "quote"
+  },
+  {
+    title: "NOSSA DÍVIDA TECNOLÓGICA",
+    points: [
+      "ALIMENTAÇÃO: Mandioca, milho, batata e cacau domesticados por nativos garantem a segurança alimentar mundial hoje.",
+      "SUSTENTABILIDADE: O manejo florestal originário é o grande modelo para manter a Floresta Amazônica viva e produtiva.",
+      "MEDICINA: Grande parte da ciência médica atual deriva diretamente de princípios ativos botânicos descobertos por eles."
+    ],
+    type: "list",
+    theme: "cards"
+  },
+  {
+    title: "REFLEXÃO FINAL",
+    content: "Como a nossa sociedade atual pode honrar e aplicar as engenharias e o conhecimento dos povos nativos?",
+    type: "hero",
+    theme: "hero"
+  }
+];
+
 export const CORPO_MIDIA_SLIDES = [
   { title: "DEBATE: CORPO E MÍDIA", subtitle: "Desconstruindo estereótipos com Frantz Fanon e Cida Bento.", type: "text", theme: "hero" },
   { title: "O PONTO DE PARTIDA", content: "Uma reflexão sociológica sobre como a TV e a internet limitam as narrativas sobre corpos negros e periféricos.", type: "text", theme: "quote" },

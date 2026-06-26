@@ -8,8 +8,10 @@ import {
 import { PE_PLAN } from '../data/planosPE';
 import { PlanoAnualPE } from './PlanoAnualPE';
 import { OcorrenciasView } from './OcorrenciasView';
+import { GradesView } from './GradesView';
+import { ExamRepositoryView } from './ExamRepositoryView';
 import { ChalkboardDiagram } from './ChalkboardDiagram';
-import { ALTINHA_FUTVOLEI_SLIDES, SLIDES_3TRI, SLIDES_JOGOS_TABULEIRO, SLIDES_GENERICOS } from '../data/corpoMidiaSlides';
+import { ALTINHA_FUTVOLEI_SLIDES, SLIDES_3TRI, SLIDES_JOGOS_TABULEIRO, SLIDES_GENERICOS, SLIDES_HANDEBOL, SLIDES_POVOS_ORIGINARIOS } from '../data/corpoMidiaSlides';
 
 // ================= DADOS DO CRONOGRAMA =================
 const cronograma = PE_PLAN['ilgch'] || [];
@@ -37,6 +39,16 @@ const slidesData: Record<string, Slide[]> = {
   'ilgch_06/11': SLIDES_3TRI['Debate Integrador'].map(s => ({...s, tipo: s.type || 'texto'})),
   'ilgch_13/11': SLIDES_3TRI['Síntese Final'].map(s => ({...s, tipo: s.type || 'texto'})),
 
+  // POVOS ORIGINÁRIOS
+  'ilgch_26/06': SLIDES_POVOS_ORIGINARIOS.map(s => ({...s, tipo: s.type || 'texto_simples'})),
+
+  // HANDEBOL
+  'ap_sexta_12/06': SLIDES_HANDEBOL.map(s => ({...s, tipo: s.type || 'texto_simples'})),
+  'ap_sexta_19/06': SLIDES_HANDEBOL.map(s => ({...s, tipo: s.type || 'texto_simples'})),
+  'ap_sexta_26/06': SLIDES_HANDEBOL.map(s => ({...s, tipo: s.type || 'texto_simples'})),
+  'ap_10/08': SLIDES_HANDEBOL.map(s => ({...s, tipo: s.type || 'texto_simples'})),
+  'ap_17/08': SLIDES_HANDEBOL.map(s => ({...s, tipo: s.type || 'texto_simples'})),
+
   // AULAS FUTEVOLEI (REGULAR)
   '8ano_18/05': ALTINHA_FUTVOLEI_SLIDES.map(s => ({...s, tipo: s.type || 'texto_simples'})),
   '8ano_25/05': ALTINHA_FUTVOLEI_SLIDES.map(s => ({...s, tipo: s.type || 'texto_simples'})),
@@ -50,7 +62,6 @@ const slidesData: Record<string, Slide[]> = {
   '8ano_15/06': SLIDES_GENERICOS['Jogos do Mundo'].map((s: any) => ({...s, tipo: s.type || 'texto'})),
   '8ano_22/06': SLIDES_GENERICOS['Jogos Cooperativos'].map((s: any) => ({...s, tipo: s.type || 'texto'})),
   'ap_12/06': SLIDES_JOGOS_TABULEIRO.map(s => ({...s, tipo: s.tipo || 'texto'})),
-  'ap_sexta_19/06': SLIDES_JOGOS_TABULEIRO.map(s => ({...s, tipo: s.tipo || 'texto'})),
 
   // AULA 1: INTRO / CULTURA CORPORAL
   'ilgch_22/05': [
@@ -245,7 +256,7 @@ const slidesData: Record<string, Slide[]> = {
     }
   ],
   // AULA FUTSAL (REGULAR - TEÓRICA EXPLICATIVA)
-  'ap_sexta_12/06': [
+  'ap_01/06': [
     {
       tipo: 'capa',
       titulo: 'Futsal: Regras Gerais',
@@ -371,7 +382,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6 w-full max-w-7xl">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full max-w-7xl">
           {[
             {
               id: 'planejamento',
@@ -404,6 +415,22 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
               image: '/src/assets/images/ocorrencias_card_premium_1780922149802.png',
               action: () => setCurrentView('ocorrencias'),
               delay: 0.6
+            },
+            {
+              id: 'notas',
+              title: 'NOTAS',
+              subtitle: 'Acesse notas por trimestre.',
+              image: '/src/assets/images/estatisticas_premium_1779983211882.png',
+              action: () => setCurrentView('notas'),
+              delay: 0.7
+            },
+            {
+              id: 'repositorio_provas',
+              title: 'REPOSITÓRIO DE PROVAS',
+              subtitle: 'Crie e acesse avaliações teóricas.',
+              image: '/src/assets/images/estatisticas_premium_1779983211882.png', // Reusing an existing icon
+              action: () => setCurrentView('repositorio_provas'),
+              delay: 0.8
             }
           ].map((card) => (
             <motion.div 
@@ -2502,6 +2529,8 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
       {currentView === 'repositorio_aulas_lista' && renderRepositorioAulas()}
       {currentView === 'player' && <SlidePlayer />}
       {currentView === 'ocorrencias' && <OcorrenciasView onBack={() => setCurrentView('menu')} />}
+      {currentView === 'notas' && <GradesView onBack={() => setCurrentView('menu')} />}
+      {currentView === 'repositorio_provas' && <ExamRepositoryView onBack={() => setCurrentView('menu')} />}
     </div>
   );
 };

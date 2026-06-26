@@ -346,6 +346,13 @@ export const initialClassData: ClassDataMap = {
         plannedActivity: "",
         actualActivity: "Apresentação teórica do tema Jogos do Mundo com registro escrito no quadro do conteúdo dos slides até a página 4, abordando os jogos tradicionais dos continentes africano, asiático e europeu.",
         observations: ""
+      },
+      {
+        id: "cordelia-801-2026-06-22",
+        date: "2026-06-22T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "Proposta de construção de tabuleiros de damas. Organizamos a turma em quartetos e distribuímos a responsabilidade para que tragam na próxima semana (29/06): papelão, canetinha, piloto e tampinhas de refrigerante (mínimo de 12 claras e 12 escuras) para a montagem dos tabuleiros.",
+        observations: ""
       }
     ]
   },
@@ -355,34 +362,36 @@ export const initialClassData: ClassDataMap = {
     grade: "8", 
     school: "EE Cordelia Paiva",
     students: [
-      { id: 802001, name: "Henzo Martins da Silva Evangelista", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-      { id: 802002, name: "Isabella Ribeiro Gomes", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "F", "08/06 - 2º T": "F" } },
-      { id: 802003, name: "Isabella Vitoria Correa Pereira", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-      { id: 802004, name: "Isabelly Lopes do Nascimento", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-      { id: 802005, name: "Jhully Victoria C. S. Oliveira", attendance: { "11/05": "F", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-      { id: 802006, name: "João Davi Gomes Pereira", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-      { id: 802007, name: "João Gabriel Alves da Costa", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-      { id: 802008, name: "João Marcos Oliveira Ribeiro", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-      { id: 802009, name: "Julia Oliveira da Silva", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-      { id: 802010, name: "Juliana Arueira Luparelli", attendance: { "11/05": "F", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "F", "08/06 - 2º T": "F" } },
-      { id: 802011, name: "Kaique Cruz Gonçalves Damião", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-      { id: 802028, name: "Kauã Richard Ferreira da Silva", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "F", "08/06 - 2º T": "F" } },
-      { id: 802012, name: "Kevin Gabriel Gomes da Silva", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-      { id: 802013, name: "Lara Maria de Sousa Soares", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-      { id: 802014, name: "Lara Monteiro dos Santos", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-      { id: 802015, name: "Lara Vieira de Andrade", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-      { id: 802016, name: "Lavinnya de Souza de Araújo", attendance: { "11/05": "F", "18/05 - 1º T": "F", "18/05 - 2º T": "F", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-      { id: 802017, name: "Laysa Ambrozio Claudio", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-      { id: 802018, name: "Leticia Costa Santos", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "F", "08/06 - 2º T": "F" } },
-      { id: 802019, name: "Livia Duarte Soares de Lima", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-      { id: 802020, name: "Livia Fernandes Gaiani", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-      { id: 802021, name: "Luis Fernando Amorim de Deus", attendance: { "11/05": "P", "18/05 - 1º T": "F", "18/05 - 2º T": "F", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-      { id: 802022, name: "Manuela Figueiredo da Silva", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-      { id: 802023, name: "Manuela Ribeiro dos Santos", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "F", "08/06 - 2º T": "F" } },
-      { id: 802024, name: "Manuella Magalhães Martins", attendance: { "11/05": "F", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-      { id: 802025, name: "Maria Rita de Jesus Sergio", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-      { id: 802026, name: "Mellyna Santos Spatafora", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } },
-      { id: 802027, name: "Sophia Oliveira Ribeiro", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P" } }
+      { id: 802001, name: "Henzo Martins da Silva Evangelista", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P", "15/06": "F", "22/06": "P" } },
+      { id: 802002, name: "Isabella Ribeiro Gomes", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "F", "08/06 - 2º T": "F", "15/06": "P", "22/06": "P" }, grades: { "jogos_do_mundo_802_2026_06_22": 2.5 } },
+      { id: 802003, name: "Isabella Vitoria Correa Pereira", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P", "15/06": "P", "22/06": "P" }, grades: { "jogos_do_mundo_802_2026_06_22": 3.0 } },
+      { id: 802004, name: "Isabelly Lopes do Nascimento", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P", "15/06": "P", "22/06": "P" }, grades: { "jogos_do_mundo_802_2026_06_22": 3.0 } },
+      { id: 802005, name: "Jhully Victoria C. S. Oliveira", attendance: { "11/05": "F", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P", "15/06": "P", "22/06": "P" } },
+      { id: 802006, name: "João Davi Gomes Pereira", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P", "15/06": "P", "22/06": "P" } },
+      { id: 802007, name: "João Gabriel Alves da Costa", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P", "15/06": "P", "22/06": "P" } },
+      { id: 802008, name: "João Marcos Oliveira Ribeiro", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P", "15/06": "P", "22/06": "P" } },
+      { id: 802009, name: "Julia Oliveira da Silva", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P", "15/06": "P", "22/06": "P" } },
+      { id: 802010, name: "Juliana Arueira Luparelli", attendance: { "11/05": "F", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "F", "08/06 - 2º T": "F", "15/06": "P", "22/06": "P" } },
+      { id: 802011, name: "Kaique Cruz Gonçalves Damião", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P", "15/06": "P", "22/06": "P" } },
+      { id: 802028, name: "Kauã Richard Ferreira da Silva", attendance: { "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "F", "08/06 - 2º T": "F", "15/06": "F", "22/06": "P" } },
+      { id: 802012, name: "Kevin Gabriel Gomes da Silva", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P", "15/06": "P", "22/06": "P" } },
+      { id: 802013, name: "Lara Maria de Sousa Soares", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P", "15/06": "F", "22/06": "P" }, grades: { "jogos_do_mundo_802_2026_06_22": 3.0 } },
+      { id: 802014, name: "Lara Monteiro dos Santos", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P", "15/06": "P", "22/06": "P" } },
+      { id: 802015, name: "Lara Vieira de Andrade", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P", "15/06": "F", "22/06": "F" } },
+      { id: 802016, name: "Lavinnya de Souza de Araújo", attendance: { "11/05": "F", "18/05 - 1º T": "F", "18/05 - 2º T": "F", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P", "15/06": "F", "22/06": "P" }, grades: { "jogos_do_mundo_802_2026_06_22": 3.0 } },
+      { id: 802017, name: "Laysa Ambrozio Claudio", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P", "15/06": "P", "22/06": "P" } },
+      { id: 802018, name: "Leticia Costa Santos", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "F", "08/06 - 2º T": "F", "15/06": "P", "22/06": "P" }, grades: { "jogos_do_mundo_802_2026_06_22": 3.0 } },
+      { id: 802019, name: "Livia Duarte Soares de Lima", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P", "15/06": "P", "22/06": "P" }, grades: { "jogos_do_mundo_802_2026_06_22": 2.5 } },
+      { id: 802020, name: "Livia Fernandes Gaiani", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P", "15/06": "P", "22/06": "P" } },
+      { id: 802021, name: "Luis Fernando Amorim de Deus", attendance: { "11/05": "P", "18/05 - 1º T": "F", "18/05 - 2º T": "F", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P", "15/06": "P", "22/06": "P" } },
+      { id: 802022, name: "Manuela Figueiredo da Silva", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P", "15/06": "P", "22/06": "P" }, grades: { "jogos_do_mundo_802_2026_06_22": 2.2 } },
+      { id: 802023, name: "Manuela Ribeiro dos Santos", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "P", "25/05 - 2º T": "P", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "F", "08/06 - 2º T": "F", "15/06": "P", "22/06": "P" }, grades: { "jogos_do_mundo_802_2026_06_22": 2.5 } },
+      { id: 802024, name: "Manuella Magalhães Martins", attendance: { "11/05": "F", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P", "15/06": "P", "22/06": "P" } },
+      { id: 802025, name: "Maria Rita de Jesus Sergio", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P", "15/06": "P", "22/06": "P" }, grades: { "jogos_do_mundo_802_2026_06_22": 2.2 } },
+      { id: 802026, name: "Mellyna Santos Spatafora", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P", "15/06": "P", "22/06": "F" } },
+      { id: 802027, name: "Sophia Oliveira Ribeiro", attendance: { "11/05": "P", "18/05 - 1º T": "P", "18/05 - 2º T": "P", "25/05 - 1º T": "F", "25/05 - 2º T": "F", "01/06 - 1º T": "P", "01/06 - 2º T": "P", "08/06 - 1º T": "P", "08/06 - 2º T": "P", "15/06": "P", "22/06": "P" } },
+      { id: 802029, name: "Gabriel Miguel da Hora", attendance: { "15/06": "P", "22/06": "P" } },
+      { id: 802030, name: "Ana Cristina Silva Pereira", attendance: { "15/06": "P", "22/06": "F" } }
     ],
     schedule: "07:00 – 08:40",
     days: ["Segunda"],
@@ -438,6 +447,13 @@ export const initialClassData: ClassDataMap = {
         date: "2026-06-15T12:00:00.000Z",
         plannedActivity: "",
         actualActivity: "Apresentação teórica do tema Jogos do Mundo com registro escrito no quadro do conteúdo dos slides até a página 4, abordando os jogos tradicionais dos continentes africano, asiático e europeu.",
+        observations: ""
+      },
+      {
+        id: "cordelia-802-2026-06-22",
+        date: "2026-06-22T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "Proposta de construção de tabuleiros de damas. Organizamos a turma em quartetos e distribuímos a responsabilidade para que tragam na próxima semana (29/06): papelão, canetinha, piloto e tampinhas de refrigerante (mínimo de 12 claras e 12 escuras) para a montagem dos tabuleiros.",
         observations: ""
       }
     ]
@@ -530,6 +546,13 @@ export const initialClassData: ClassDataMap = {
         date: "2026-06-15T12:00:00.000Z",
         plannedActivity: "",
         actualActivity: "Apresentação teórica do tema Jogos do Mundo com registro escrito no quadro do conteúdo dos slides até a página 4, abordando os jogos tradicionais dos continentes africano, asiático e europeu.",
+        observations: ""
+      },
+      {
+        id: "cordelia-803-2026-06-22",
+        date: "2026-06-22T12:00:00.000Z",
+        plannedActivity: "",
+        actualActivity: "Proposta de construção de tabuleiros de damas. Organizamos a turma em quartetos e distribuímos a responsabilidade para que tragam na próxima semana (29/06): papelão, canetinha, piloto e tampinhas de refrigerante (mínimo de 12 claras e 12 escuras) para a montagem dos tabuleiros.",
         observations: ""
       }
     ]

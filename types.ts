@@ -22,6 +22,7 @@ export interface Student {
   id: number;
   name: string;
   attendance: { [date: string]: 'P' | 'F' | null };
+  grades?: { [assignmentId: string]: number };
 }
 
 export interface Assignment {
