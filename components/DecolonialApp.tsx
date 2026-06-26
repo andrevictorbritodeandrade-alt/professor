@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import { 
   BookOpen, Presentation, ChevronLeft, ChevronRight, Home, 
   Info, Printer, LayoutGrid, Calendar, Activity, Shield, 
-  Zap, Search, CheckCircle2 
+  Zap, Search, CheckCircle2, FileText, Map, Projector, ShieldAlert, BarChart3
 } from 'lucide-react';
 import { PE_PLAN } from '../data/planosPE';
 import { PlanoAnualPE } from './PlanoAnualPE';
@@ -388,7 +388,8 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
               id: 'planejamento',
               title: 'PLANEJAMENTO',
               subtitle: 'Cronograma oficial e resumos.',
-              image: '/src/assets/images/planejamento_card_premium_1779985671332.png',
+              icon: <Calendar className="w-24 h-24 text-white/20 group-hover:text-emerald-400/40 transition-colors duration-500 absolute -bottom-4 -right-4 rotate-12" />,
+              gradient: 'from-slate-900 to-slate-800',
               action: () => setCurrentView('planejamento'),
               delay: 0.3
             },
@@ -396,7 +397,8 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
               id: 'plano_anual',
               title: 'PLANO ANUAL',
               subtitle: 'Gestão completa das aulas de PE.',
-              image: '/src/assets/images/plano_anual_card_premium_1779985689437.png',
+              icon: <Map className="w-24 h-24 text-white/20 group-hover:text-emerald-400/40 transition-colors duration-500 absolute -bottom-4 -right-4 -rotate-12" />,
+              gradient: 'from-slate-800 to-slate-900',
               action: () => setCurrentView('plano_anual_pe'),
               delay: 0.4
             },
@@ -404,7 +406,8 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
               id: 'aulas',
               title: 'AULAS (Datashow)',
               subtitle: 'Slides para apresentação.',
-              image: '/src/assets/images/aulas_datashow_card_premium_1779985704354.png',
+              icon: <Projector className="w-24 h-24 text-white/20 group-hover:text-emerald-400/40 transition-colors duration-500 absolute -bottom-4 -right-4 rotate-6" />,
+              gradient: 'from-zinc-900 to-zinc-800',
               action: () => setCurrentView('repositorio_aulas'),
               delay: 0.5
             },
@@ -412,7 +415,8 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
               id: 'ocorrencias',
               title: 'OCORRÊNCIAS',
               subtitle: 'Registro de fatos e relatórios de alunos.',
-              image: '/src/assets/images/ocorrencias_card_premium_1780922149802.png',
+              icon: <ShieldAlert className="w-24 h-24 text-white/20 group-hover:text-emerald-400/40 transition-colors duration-500 absolute -bottom-4 -right-4 -rotate-6" />,
+              gradient: 'from-stone-900 to-stone-800',
               action: () => setCurrentView('ocorrencias'),
               delay: 0.6
             },
@@ -420,7 +424,8 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
               id: 'notas',
               title: 'NOTAS',
               subtitle: 'Acesse notas por trimestre.',
-              image: '/src/assets/images/estatisticas_premium_1779983211882.png',
+              icon: <BarChart3 className="w-24 h-24 text-white/20 group-hover:text-emerald-400/40 transition-colors duration-500 absolute -bottom-4 -right-4 rotate-12" />,
+              gradient: 'from-neutral-900 to-neutral-800',
               action: () => setCurrentView('notas'),
               delay: 0.7
             },
@@ -428,7 +433,8 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
               id: 'repositorio_provas',
               title: 'REPOSITÓRIO DE PROVAS',
               subtitle: 'Crie e acesse avaliações teóricas.',
-              image: '/src/assets/images/estatisticas_premium_1779983211882.png', // Reusing an existing icon
+              icon: <BookOpen className="w-24 h-24 text-white/20 group-hover:text-emerald-400/40 transition-colors duration-500 absolute -bottom-4 -right-4 -rotate-12" />,
+              gradient: 'from-gray-900 to-gray-800',
               action: () => setCurrentView('repositorio_provas'),
               delay: 0.8
             }
@@ -439,17 +445,12 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: card.delay, duration: 0.6 }}
               onClick={card.action}
-              className="group relative aspect-[4/3] rounded-[2rem] overflow-hidden cursor-pointer shadow-2xl border border-white/5 hover:border-emerald-500/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-emerald-500/10"
+              className={`group relative aspect-[4/3] rounded-[2rem] overflow-hidden cursor-pointer shadow-2xl border border-white/10 hover:border-emerald-500/50 transition-all duration-500 hover:-translate-y-2 hover:shadow-emerald-500/20 bg-gradient-to-br ${card.gradient}`}
             >
-              {/* Card Illustration */}
-              <div className="absolute inset-0 z-0">
-                <img 
-                  src={card.image} 
-                  alt={card.title} 
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-1000"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-90 group-hover:opacity-70 transition-opacity"></div>
+              {/* Card Illustration Fallback (Gradient & Icon) */}
+              <div className="absolute inset-0 z-0 flex items-center justify-center overflow-hidden">
+                {card.icon}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-90 group-hover:opacity-70 transition-opacity"></div>
               </div>
 
               {/* Status Badge */}
@@ -464,7 +465,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
                 <h3 className="text-2xl md:text-3xl font-black text-white mb-2 leading-none tracking-tighter uppercase group-hover:text-emerald-400 transition-colors">
                   {card.title}
                 </h3>
-                <p className="text-xs font-bold text-white/40 uppercase tracking-widest group-hover:text-white/70 transition-colors">
+                <p className="text-xs font-bold text-white/60 uppercase tracking-widest group-hover:text-white/90 transition-colors">
                   {card.subtitle}
                 </p>
               </div>
