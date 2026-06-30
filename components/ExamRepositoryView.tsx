@@ -59,12 +59,12 @@ const EXAMS: Exam[] = [
       {
         id: 'q3',
         type: 'multiple_choice',
-        text: 'Como funciona a regra de rotação (rodízio) no Voleibol?',
+        text: 'No Futevôlei, o esporte possui uma dinâmica semelhante ao Vôlei. No entanto, em relação aos toques na bola, é correto afirmar que:',
         options: [
-          'A) O rodízio é realizado no sentido anti-horário, sempre que a equipe ganha o direito de sacar.',
-          'B) Os jogadores giram no sentido horário pelas posições de 1 a 6 quando conquistam a vantagem do saque.',
-          'C) Os jogadores só trocam de posição quando o treinador pede tempo.',
-          'D) O rodízio acontece a cada 10 pontos marcados.'
+          'A) É permitido usar as mãos e os braços para realizar passes e recepções.',
+          'B) Os jogadores utilizam principalmente pés, coxas, peito e cabeça para manter a bola no ar.',
+          'C) Cada equipe pode dar apenas um toque na bola antes de passá-la para o outro lado.',
+          'D) A bola pode quicar no chão da quadra antes de ser tocada pelo jogador.'
         ],
         correctAnswer: 'B',
         points: 0.5
@@ -98,13 +98,13 @@ const EXAMS: Exam[] = [
       {
         id: 'q6',
         type: 'discursive',
-        text: 'No Handebol, estudamos os sistemas táticos 6:0, 5:1 e 3:3 (Meio a Meio). Escolha um desses sistemas e explique como os defensores se posicionam em quadra.',
+        text: 'Desenhe uma quadra de Handebol contendo as linhas de 6 metros e 9 metros. Em seguida, desenhe e posicione corretamente os 7 jogadores de uma equipe (incluindo o goleiro) para representar o sistema tático defensivo 5:1.',
         points: 0.5
       },
       {
         id: 'q7',
         type: 'discursive',
-        text: 'Explique a diferença de posicionamento entre o esquema tático 2-2 (quadrado) e o 3-1 (losango) utilizado no Futsal.',
+        text: 'No Futsal, além do goleiro, estudamos as funções táticas de linha. Cite as posições escolares do Futsal (Fixo, Alas e Pivô) e explique a função principal de uma delas.',
         points: 0.5
       },
       {
@@ -116,7 +116,7 @@ const EXAMS: Exam[] = [
       {
         id: 'q9',
         type: 'discursive',
-        text: 'No Voleibol escolar, estudamos as posições numeradas de 1 a 6. Em qual posição da quadra (número) o jogador deve estar para realizar o Saque?',
+        text: 'O Futevôlei foi um dos primeiros esportes de rede praticados no trimestre. Cite duas partes do corpo que foram estimuladas e praticadas para realizar a recepção e o passe da bola.',
         points: 0.5
       },
       {
@@ -301,11 +301,11 @@ export const ExamRepositoryView = ({ onBack }: { onBack: () => void }) => {
                     <h2 className="text-3xl md:text-4xl font-black tracking-tighter uppercase">{selectedExam.title}</h2>
                     <p className="text-slate-300 mt-2 font-medium">{selectedExam.subject} • {selectedExam.trimester}</p>
                   </div>
-                  <div className="flex gap-3">
-                    <button className="flex items-center gap-2 bg-white text-slate-900 hover:bg-slate-100 px-4 py-2 rounded-lg font-bold text-sm transition-colors">
+                  <div className="flex gap-3 print:hidden">
+                    <button onClick={() => window.print()} className="flex items-center gap-2 bg-white text-slate-900 hover:bg-slate-100 px-4 py-2 rounded-lg font-bold text-sm transition-colors">
                       <Printer size={16} /> Imprimir Prova
                     </button>
-                    <button className="flex items-center gap-2 bg-blue-600 text-white hover:bg-blue-500 px-4 py-2 rounded-lg font-bold text-sm transition-colors">
+                    <button onClick={() => window.print()} className="flex items-center gap-2 bg-blue-600 text-white hover:bg-blue-500 px-4 py-2 rounded-lg font-bold text-sm transition-colors">
                       <Download size={16} /> Baixar PDF
                     </button>
                   </div>
@@ -321,6 +321,42 @@ export const ExamRepositoryView = ({ onBack }: { onBack: () => void }) => {
             </div>
 
             <div className="p-8 md:p-12 space-y-12">
+              {/* Cabeçalho da Prova para o Aluno preencher */}
+              <div className="border-2 border-slate-900 p-6 rounded-xl space-y-4 mb-8 bg-white print:border-black print:text-black">
+                <div className="flex flex-col md:flex-row justify-between gap-6">
+                  <div className="flex-1 space-y-5">
+                    <div className="flex items-end gap-2 border-b border-slate-400 print:border-black pb-1">
+                      <span className="font-black text-slate-800 uppercase whitespace-nowrap text-lg">Escola:</span>
+                      <div className="flex-1 h-6"></div>
+                    </div>
+                    <div className="flex items-end gap-2 border-b border-slate-400 print:border-black pb-1">
+                      <span className="font-black text-slate-800 uppercase whitespace-nowrap text-lg">Aluno(a):</span>
+                      <div className="flex-1 h-6"></div>
+                    </div>
+                  </div>
+                  <div className="md:w-1/3 flex flex-col gap-5">
+                    <div className="flex items-end gap-2 border-b border-slate-400 print:border-black pb-1">
+                      <span className="font-black text-slate-800 uppercase whitespace-nowrap text-lg">Turma:</span>
+                      <div className="flex-1 h-6"></div>
+                    </div>
+                    <div className="flex items-end gap-2 border-b border-slate-400 print:border-black pb-1">
+                      <span className="font-black text-slate-800 uppercase whitespace-nowrap text-lg">Data:</span>
+                      <div className="flex-1 h-6"></div>
+                    </div>
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 pt-4 border-t-2 border-slate-200 print:border-black">
+                  <div className="flex items-center gap-2">
+                    <span className="font-black text-slate-800 uppercase text-lg">Professor:</span>
+                    <span className="text-slate-700 uppercase font-bold text-lg">André Brito</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="font-black text-slate-800 uppercase text-lg">Disciplina:</span>
+                    <span className="text-slate-700 uppercase font-bold text-lg">Educação Física</span>
+                  </div>
+                </div>
+              </div>
+
               <div className="flex justify-between items-end border-b border-slate-200 pb-4">
                 <h3 className="text-2xl font-black text-slate-800 uppercase tracking-tight">Caderno de Questões</h3>
                 <p className="font-bold text-slate-500 uppercase tracking-wider text-sm">
