@@ -236,18 +236,50 @@ const EXAMS: Exam[] = [
 
 export const ExamRepositoryView = ({ onBack }: { onBack: () => void }) => {
   const [selectedExam, setSelectedExam] = useState<Exam | null>(null);
+  const [showPrintWarning, setShowPrintWarning] = useState(false);
+
+  const handlePrint = () => {
+    if (window.self !== window.top) {
+      setShowPrintWarning(true);
+      setTimeout(() => setShowPrintWarning(false), 5000);
+    }
+    try {
+      window.print();
+    } catch (e) {
+      console.error("Print failed", e);
+    }
+  };
 
   return (
-    <div className="p-6 md:p-12 font-sans bg-white/70 backdrop-blur-md rounded-2xl border border-slate-300 shadow-xl min-h-screen">
-      <div className="max-w-6xl mx-auto">
-        <button 
-          onClick={selectedExam ? () => setSelectedExam(null) : onBack} 
-          className="mb-8 flex items-center gap-2 text-slate-600 hover:text-slate-900 font-bold transition-colors bg-white px-4 py-2 rounded-lg shadow-sm w-fit border border-slate-200"
-        >
-          <ChevronLeft size={20} /> {selectedExam ? 'Voltar para Lista de Provas' : 'Voltar para Gestão'}
-        </button>
+    <>
+      <style>{`
+        @media print {
+          @page { size: portrait; margin: 15mm; }
+          body { 
+            -webkit-print-color-adjust: exact; 
+            print-color-adjust: exact; 
+            background: white !important; 
+          }
+          .print\\:hidden { display: none !important; }
+          .print-avoid-break { break-inside: avoid; page-break-inside: avoid; }
+          /* Reset backgrounds and shadows for print */
+          .print\\:bg-white { background-color: white !important; }
+          .print\\:shadow-none { box-shadow: none !important; }
+          .print\\:border-none { border: none !important; }
+          .print\\:p-0 { padding: 0 !important; }
+          .print\\:m-0 { margin: 0 !important; }
+        }
+      `}</style>
+      <div className="p-6 md:p-12 font-sans bg-white/70 backdrop-blur-md rounded-2xl border border-slate-300 shadow-xl min-h-screen print:p-0 print:shadow-none print:border-none print:bg-white print:min-h-0">
+        <div className="max-w-6xl mx-auto print:max-w-none">
+          <button 
+            onClick={selectedExam ? () => setSelectedExam(null) : onBack} 
+            className="mb-8 flex items-center gap-2 text-slate-600 hover:text-slate-900 font-bold transition-colors bg-white px-4 py-2 rounded-lg shadow-sm w-fit border border-slate-200 print:hidden"
+          >
+            <ChevronLeft size={20} /> {selectedExam ? 'Voltar para Lista de Provas' : 'Voltar para Gestão'}
+          </button>
 
-        {!selectedExam ? (
+          {!selectedExam ? (
           <>
             <header className="mb-12 flex flex-col items-center text-center">
               <h2 className="text-4xl md:text-5xl font-black text-slate-900 flex items-center gap-4 uppercase tracking-tighter drop-shadow-[0_4px_4px_rgba(0,0,0,0.15)]">
@@ -293,26 +325,33 @@ export const ExamRepositoryView = ({ onBack }: { onBack: () => void }) => {
             </div>
           </>
         ) : (
-          <div className="bg-white rounded-2xl shadow-xl border border-slate-300 overflow-hidden">
-            <div className="bg-slate-900 text-white p-8 md:p-12 relative overflow-hidden">
+          <div className="bg-white rounded-2xl shadow-xl border border-slate-300 overflow-hidden print:border-none print:shadow-none">
+            <div className="bg-slate-900 text-white p-8 md:p-12 relative overflow-hidden print:hidden">
               <div className="relative z-10">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-6">
                   <div>
-                    <h2 className="text-3xl md:text-4xl font-black tracking-tighter uppercase">{selectedExam.title}</h2>
-                    <p className="text-slate-300 mt-2 font-medium">{selectedExam.subject} • {selectedExam.trimester}</p>
+                    <h2 className="text-3xl md:text-4xl font-black tracking-tighter uppercase print:text-2xl">{selectedExam.title}</h2>
+                    <p className="text-slate-300 mt-2 font-medium print:text-black">{selectedExam.subject} • {selectedExam.trimester}</p>
                   </div>
-                  <div className="flex gap-3 print:hidden">
-                    <button onClick={() => window.print()} className="flex items-center gap-2 bg-white text-slate-900 hover:bg-slate-100 px-4 py-2 rounded-lg font-bold text-sm transition-colors">
+                  <div className="flex gap-3 print:hidden relative">
+                    <button onClick={handlePrint} className="flex items-center gap-2 bg-white text-slate-900 hover:bg-slate-100 px-4 py-2 rounded-lg font-bold text-sm transition-colors">
                       <Printer size={16} /> Imprimir Prova
                     </button>
-                    <button onClick={() => window.print()} className="flex items-center gap-2 bg-blue-600 text-white hover:bg-blue-500 px-4 py-2 rounded-lg font-bold text-sm transition-colors">
+                    <button onClick={handlePrint} className="flex items-center gap-2 bg-blue-600 text-white hover:bg-blue-500 px-4 py-2 rounded-lg font-bold text-sm transition-colors">
                       <Download size={16} /> Baixar PDF
                     </button>
+
+                    {showPrintWarning && (
+                      <div className="absolute top-full mt-4 right-0 w-64 bg-amber-100 border border-amber-300 text-amber-900 text-sm font-medium p-4 rounded-lg shadow-lg z-50 flex items-start gap-3">
+                        <div className="shrink-0 mt-0.5">⚠️</div>
+                        <p>Para imprimir ou salvar em PDF, abra o aplicativo em uma <strong>nova guia</strong> clicando no ícone superior direito do navegador.</p>
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {selectedExam.classes.map(cls => (
-                    <span key={cls} className="bg-white/20 text-white text-xs px-3 py-1 rounded-full font-medium">
+                    <span key={cls} className="bg-white/20 text-white text-xs px-3 py-1 rounded-full font-medium print:bg-transparent print:text-black print:border print:border-black print:rounded-sm">
                       Turma: {cls}
                     </span>
                   ))}
@@ -320,81 +359,90 @@ export const ExamRepositoryView = ({ onBack }: { onBack: () => void }) => {
               </div>
             </div>
 
-            <div className="p-8 md:p-12 space-y-12">
+            <div className="p-8 md:p-12 space-y-12 print:p-0 print:space-y-6">
+              {/* Título da Prova apenas na Impressão */}
+              <div className="hidden print:block text-center border-b-2 border-slate-900 pb-4 mb-4">
+                <h2 className="text-xl font-extrabold uppercase tracking-tight">{selectedExam.title}</h2>
+                <p className="text-sm font-bold uppercase text-slate-600 mt-1">{selectedExam.subject} • {selectedExam.trimester}</p>
+              </div>
+
               {/* Cabeçalho da Prova para o Aluno preencher */}
-              <div className="border-2 border-slate-900 p-6 rounded-xl space-y-4 mb-8 bg-white print:border-black print:text-black">
-                <div className="flex flex-col md:flex-row justify-between gap-6">
-                  <div className="flex-1 space-y-5">
+              <div className="border-2 border-slate-900 p-6 rounded-xl space-y-4 mb-8 bg-white print:border-black print:text-black print:p-4 print:mb-4 print:space-y-2">
+                <div className="flex flex-col md:flex-row justify-between gap-6 print:flex-row print:gap-4">
+                  <div className="flex-1 space-y-5 print:space-y-3">
                     <div className="flex items-end gap-2 border-b border-slate-400 print:border-black pb-1">
-                      <span className="font-black text-slate-800 uppercase whitespace-nowrap text-lg">Escola:</span>
-                      <div className="flex-1 h-6"></div>
+                      <span className="font-black text-slate-800 uppercase whitespace-nowrap text-lg print:text-xs">Escola:</span>
+                      <div className="flex-1 h-6 print:h-5"></div>
                     </div>
                     <div className="flex items-end gap-2 border-b border-slate-400 print:border-black pb-1">
-                      <span className="font-black text-slate-800 uppercase whitespace-nowrap text-lg">Aluno(a):</span>
-                      <div className="flex-1 h-6"></div>
+                      <span className="font-black text-slate-800 uppercase whitespace-nowrap text-lg print:text-xs">Aluno(a):</span>
+                      <div className="flex-1 h-6 print:h-5"></div>
                     </div>
                   </div>
-                  <div className="md:w-1/3 flex flex-col gap-5">
+                  <div className="md:w-1/3 flex flex-col gap-5 print:w-1/4 print:gap-3">
                     <div className="flex items-end gap-2 border-b border-slate-400 print:border-black pb-1">
-                      <span className="font-black text-slate-800 uppercase whitespace-nowrap text-lg">Turma:</span>
-                      <div className="flex-1 h-6"></div>
+                      <span className="font-black text-slate-800 uppercase whitespace-nowrap text-lg print:text-xs">Turma:</span>
+                      <div className="flex-1 h-6 print:h-5"></div>
                     </div>
                     <div className="flex items-end gap-2 border-b border-slate-400 print:border-black pb-1">
-                      <span className="font-black text-slate-800 uppercase whitespace-nowrap text-lg">Data:</span>
-                      <div className="flex-1 h-6"></div>
+                      <span className="font-black text-slate-800 uppercase whitespace-nowrap text-lg print:text-xs">Data:</span>
+                      <div className="flex-1 h-6 print:h-5"></div>
                     </div>
                   </div>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 pt-4 border-t-2 border-slate-200 print:border-black">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-8 pt-4 border-t-2 border-slate-200 print:border-black print:grid-cols-2 print:mt-4 print:pt-2 print:gap-2">
                   <div className="flex items-center gap-2">
-                    <span className="font-black text-slate-800 uppercase text-lg">Professor:</span>
-                    <span className="text-slate-700 uppercase font-bold text-lg">André Brito</span>
+                    <span className="font-black text-slate-800 uppercase text-lg print:text-xs">Professor:</span>
+                    <span className="text-slate-700 uppercase font-bold text-lg print:text-xs">André Brito</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <span className="font-black text-slate-800 uppercase text-lg">Disciplina:</span>
-                    <span className="text-slate-700 uppercase font-bold text-lg">Educação Física</span>
+                    <span className="font-black text-slate-800 uppercase text-lg print:text-xs">Disciplina:</span>
+                    <span className="text-slate-700 uppercase font-bold text-lg print:text-xs">Educação Física</span>
                   </div>
                 </div>
               </div>
 
-              <div className="flex justify-between items-end border-b border-slate-200 pb-4">
-                <h3 className="text-2xl font-black text-slate-800 uppercase tracking-tight">Caderno de Questões</h3>
-                <p className="font-bold text-slate-500 uppercase tracking-wider text-sm">
-                  10 Questões ({selectedExam.totalPoints.toFixed(1)} Pontos Totais)
+              <div className="flex justify-between items-end border-b border-slate-200 pb-4 print:border-black print:mt-2">
+                <h3 className="text-2xl font-black text-slate-800 uppercase tracking-tight print:text-sm print:text-black">Caderno de Questões</h3>
+                <p className="font-bold text-slate-500 uppercase tracking-wider text-sm print:text-xs print:text-black">
+                  {selectedExam.questions.length} Questões ({selectedExam.totalPoints.toFixed(1)} Pontos Totais)
                 </p>
               </div>
 
               {selectedExam.questions.map((q, idx) => (
-                <div key={q.id} className="relative pl-8 md:pl-12 border-l-4 border-slate-200 hover:border-blue-500 transition-colors">
-                  <span className="absolute -left-5 md:-left-6 top-0 bg-white border-4 border-slate-200 text-slate-600 font-black rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-lg md:text-xl shadow-sm">
-                    {idx + 1}
+                <div key={q.id} className="relative pl-8 md:pl-12 border-l-4 border-slate-200 hover:border-blue-500 transition-colors print-avoid-break print:border-l-0 print:pl-0 print:mb-4">
+                  <span className="absolute -left-5 md:-left-6 top-0 bg-white border-4 border-slate-200 text-slate-600 font-black rounded-full w-10 h-10 md:w-12 md:h-12 flex items-center justify-center text-lg md:text-xl shadow-sm print:static print:w-auto print:h-auto print:border-none print:bg-transparent print:text-black print:mb-1 print:text-xs print:font-extrabold">
+                    Questão {idx + 1}
                   </span>
                   
-                  <div className="mb-4">
+                  <div className="mb-4 print:mb-2">
                     <div className="flex justify-between items-start gap-4">
-                      <h4 className="text-lg text-slate-900 font-medium leading-relaxed">{q.text}</h4>
-                      <span className="shrink-0 bg-slate-100 text-slate-600 text-xs font-bold px-2 py-1 rounded-md">
+                      <h4 className="text-lg text-slate-900 font-medium leading-relaxed print:text-xs print:font-semibold">{q.text}</h4>
+                      <span className="shrink-0 bg-slate-100 text-slate-600 text-xs font-bold px-2 py-1 rounded-md print:bg-transparent print:text-black print:text-[10px] print:font-bold">
                         {q.points.toFixed(1)} pts
                       </span>
                     </div>
                   </div>
 
                   {q.type === 'multiple_choice' && q.options && (
-                    <div className="space-y-3 mt-6">
+                    <div className="space-y-3 mt-6 print:space-y-1 print:mt-2">
                       {q.options.map((opt, oIdx) => {
                         const isCorrect = q.correctAnswer === opt.charAt(0);
                         return (
                           <div 
                             key={oIdx} 
-                            className={`p-4 rounded-xl border-2 transition-all ${isCorrect ? 'border-emerald-500 bg-emerald-50/50' : 'border-slate-200 bg-slate-50'}`}
+                            className={`p-4 rounded-xl border-2 transition-all ${isCorrect ? 'border-emerald-500 bg-emerald-50/50 print:!border-slate-200 print:!bg-white' : 'border-slate-200 bg-slate-50 print:!bg-white print:!border-slate-200'}`}
                           >
                             <div className="flex items-start gap-3">
                               {isCorrect ? (
-                                <CheckCircle2 className="text-emerald-500 shrink-0 mt-0.5" size={20} />
+                                <>
+                                  <CheckCircle2 className="text-emerald-500 shrink-0 mt-0.5 print:hidden" size={20} />
+                                  <div className="hidden print:block w-5 h-5 rounded-full border-2 border-slate-300 shrink-0 mt-0.5 print:w-4 print:h-4 print:border" />
+                                </>
                               ) : (
-                                <div className="w-5 h-5 rounded-full border-2 border-slate-300 shrink-0 mt-0.5" />
+                                <div className="w-5 h-5 rounded-full border-2 border-slate-300 shrink-0 mt-0.5 print:w-4 print:h-4 print:border" />
                               )}
-                              <span className={`text-base ${isCorrect ? 'text-emerald-900 font-semibold' : 'text-slate-700'}`}>
+                              <span className={`text-base ${isCorrect ? 'text-emerald-900 font-semibold print:!text-slate-900 print:!font-normal' : 'text-slate-700 print:!text-slate-900'} print:text-xs`}>
                                 {opt}
                               </span>
                             </div>
@@ -405,11 +453,11 @@ export const ExamRepositoryView = ({ onBack }: { onBack: () => void }) => {
                   )}
 
                   {q.type === 'discursive' && (
-                    <div className="mt-6 space-y-4">
-                      <div className="p-4 bg-slate-50 border-2 border-dashed border-slate-300 rounded-xl min-h-[120px] flex items-center justify-center">
-                        <span className="text-slate-400 font-medium text-sm">Espaço para resposta do aluno (5 a 8 linhas)</span>
+                    <div className="mt-6 space-y-4 print:mt-2 print:space-y-2">
+                      <div className="p-4 bg-slate-50 border-2 border-dashed border-slate-300 rounded-xl min-h-[120px] flex items-center justify-center print:border-solid print:border-slate-300 print:bg-white print:min-h-[80px] print:p-2">
+                        <span className="text-slate-400 font-medium text-sm print:hidden">Espaço para resposta do aluno (5 a 8 linhas)</span>
                       </div>
-                      <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl">
+                      <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl print:hidden">
                         <p className="text-sm text-amber-800 font-medium">
                           <strong>Gabarito Esperado (Professor):</strong> A resposta deve ser elaborada com base nos conceitos apresentados nos slides e anotações teóricas da aula.
                         </p>
@@ -423,5 +471,6 @@ export const ExamRepositoryView = ({ onBack }: { onBack: () => void }) => {
         )}
       </div>
     </div>
+    </>
   );
 };
