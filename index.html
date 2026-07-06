@@ -60,6 +60,24 @@
         font-family: 'Arial', 'Helvetica', sans-serif !important;
       }
       
+      /* Global Typography Constraints: Font size 12px for body, 14px for heavy titles */
+      p, span, li, td, th, input, select, textarea, button, a, label,
+      .text-xs, .text-sm, .text-base,
+      [class*="text-xs"], [class*="text-sm"], [class*="text-base"] {
+        font-size: 12px !important;
+      }
+      
+      h1, h2, h3, h4, h5, h6, 
+      h1 *, h2 *, h3 *, h4 *, h5 *, h6 *, 
+      .app-title, .font-title, .uppercase-text,
+      .text-lg, .text-xl, .text-2xl, .text-3xl, .text-4xl,
+      [class*="text-lg"], [class*="text-xl"], [class*="text-2xl"], [class*="text-3xl"], [class*="text-4xl"],
+      .font-semibold, .font-bold, .font-extrabold, .font-black,
+      [class*="font-semibold"], [class*="font-bold"], [class*="font-extrabold"], [class*="font-black"] {
+        font-size: 14px !important;
+        font-weight: 900 !important;
+      }
+      
       h1, h2, h3, h4, h5, h6, header, header *, .uppercase-text {
         text-transform: uppercase !important;
       }

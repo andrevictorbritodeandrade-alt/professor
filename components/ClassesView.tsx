@@ -493,9 +493,9 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
   // NÍVEL 1: SELEÇÃO DE ESCOLA
   if (!selectedGrade) {
     return (
-      <div className="bg-slate-900 min-h-[500px] p-6 rounded-[2.5rem] shadow-2xl border border-white/10 animate-fade-in text-white font-sans w-full py-10 relative overflow-hidden">
+      <div className="bg-white/90 backdrop-blur-xl min-h-[500px] p-6 rounded-[2.5rem] shadow-xl border border-slate-200 animate-fade-in text-slate-800 font-sans w-full py-10 relative overflow-hidden">
         {/* Decorative Background */}
-        <div className="absolute top-0 right-0 p-32 opacity-5 pointer-events-none">
+        <div className="absolute top-0 right-0 p-32 opacity-[0.03] pointer-events-none text-slate-900">
           <svg className="w-96 h-96" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72M12 12.72v-3.72l-5 2.73 5 2.73z" /></svg>
         </div>
 
@@ -503,13 +503,13 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
           <div className="inline-flex items-center justify-center p-5 bg-gradient-to-br from-indigo-500 to-sky-500 rounded-[2rem] mb-6 shadow-lg shadow-sky-500/20">
             <svg className="w-12 h-12 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
           </div>
-          <h2 className="text-4xl md:text-5xl font-black mb-3 tracking-tighter text-white">DIÁRIO DE CLASSE</h2>
-          <p className="text-sky-400 uppercase tracking-[0.3em] text-[10px] md:text-xs font-black">Selecione a Unidade Escolar</p>
+          <h2 className="text-4xl md:text-5xl font-black mb-3 tracking-tighter text-slate-900">DIÁRIO DE CLASSE</h2>
+          <p className="text-sky-600 uppercase tracking-[0.3em] text-[10px] md:text-xs font-black">Selecione a Unidade Escolar</p>
         </div>
 
         <button 
           onClick={onBack}
-          className="relative z-10 mb-10 w-full sm:w-auto px-6 h-12 flex items-center justify-center gap-3 bg-white/5 border border-white/10 text-white text-xs font-black uppercase rounded-xl hover:bg-white/10 transition-all active:scale-95 group shadow-sm backdrop-blur-md"
+          className="relative z-10 mb-10 w-full sm:w-auto px-6 h-12 flex items-center justify-center gap-3 bg-slate-100 border border-slate-200 text-slate-800 text-xs font-black uppercase rounded-xl hover:bg-slate-200 transition-all active:scale-95 group shadow-sm"
         >
           <svg className="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
           Voltar ao Portal
@@ -522,38 +522,38 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
               <button
                 key={school}
                 onClick={() => setSelectedGrade(school)}
-                className="group relative bg-[#262626] border border-white/10 rounded-2xl p-4 hover:bg-[#2a2a2a] transition-all text-left overflow-hidden flex flex-col justify-between h-[170px] shadow-md"
+                className="group relative bg-white border border-slate-200 rounded-2xl p-4 hover:bg-slate-50 hover:border-sky-500/50 transition-all text-left overflow-hidden flex flex-col justify-between h-[170px] shadow-sm"
               >
                 {/* Background Watermark (similar to Calendar in Image 1) */}
-                <div className="absolute top-3 right-3 opacity-5 pointer-events-none group-hover:scale-110 transition-transform duration-500">
-                  <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 20 20"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-2.682.565 1 1 0 00-.639.913V17a1 1 0 01-2 0v-.427a1 1 0 00-.639-.913z" /></svg>
+                <div className="absolute top-3 right-3 opacity-[0.08] pointer-events-none group-hover:scale-110 transition-transform duration-500 text-slate-400">
+                  <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 20 20"><path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-2.682.565 1 1 0 00-.639.913V17a1 1 0 01-2 0v-.427a1 1 0 00-.639-.913z" /></svg>
                 </div>
                 
                 <div className="relative z-10 w-full">
                   {/* Icon Container resembling Image 1 */}
-                  <div className="w-8 h-8 bg-[#2b3544] rounded-lg flex items-center justify-center mb-2 shadow-inner border border-white/5">
-                    <svg className="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="w-8 h-8 bg-sky-50 rounded-lg flex items-center justify-center mb-2 shadow-inner border border-sky-100">
+                    <svg className="w-4 h-4 text-sky-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
                     </svg>
                   </div>
                   
-                  <h3 className="text-base font-black text-white tracking-tight uppercase leading-none mb-1">
+                  <h3 className="text-base font-black text-slate-800 tracking-tight uppercase leading-none mb-1">
                     {school}
                   </h3>
                   
-                  <p className="text-xs text-neutral-400 font-medium leading-snug max-w-[95%]">
+                  <p className="text-xs text-slate-500 font-medium leading-snug max-w-[95%]">
                     Controle de frequência e notas para {schoolClasses.length} turmas ativas.
                   </p>
                 </div>
                 
-                <div className="relative z-10 mt-3 flex items-center text-blue-400 text-[10px] font-black tracking-widest uppercase group-hover:text-blue-300 transition-colors">
+                <div className="relative z-10 mt-3 flex items-center text-sky-600 text-[10px] font-black tracking-widest uppercase group-hover:text-sky-500 transition-colors">
                   ACESSAR TURMAS
                   <svg className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
                 </div>
               </button>
             );
           }) : (
-            <div className="col-span-full py-20 text-center text-slate-500 uppercase tracking-[0.4em] text-xs font-black opacity-30">
+            <div className="col-span-full py-20 text-center text-slate-400 uppercase tracking-[0.4em] text-xs font-black opacity-30">
               Nenhuma escola carregada
             </div>
           )}
@@ -566,24 +566,24 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
   if (!selectedClassId) {
     const classes = getClassesBySchool(selectedGrade);
     return (
-      <div className="bg-slate-900 min-h-[500px] p-6 lg:p-10 rounded-[2.5rem] shadow-2xl border border-white/10 animate-fade-in text-white font-sans w-full relative overflow-hidden">
+      <div className="bg-white/90 backdrop-blur-xl min-h-[500px] p-6 lg:p-10 rounded-[2.5rem] shadow-xl border border-slate-200 animate-fade-in text-slate-800 font-sans w-full relative overflow-hidden">
         {/* Decorative Background */}
-        <div className="absolute top-0 right-0 p-32 opacity-5 pointer-events-none">
+        <div className="absolute top-0 right-0 p-32 opacity-[0.03] pointer-events-none text-slate-900">
           <svg className="w-96 h-96" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72M12 12.72v-3.72l-5 2.73 5 2.73z" /></svg>
         </div>
 
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 mb-12 relative z-10">
           <button 
             onClick={() => setSelectedGrade(null)}
-            className="px-6 h-12 flex items-center justify-center gap-3 bg-white/5 border border-white/10 text-white text-xs font-black uppercase rounded-xl hover:bg-white/10 transition-all active:scale-95 group shadow-sm backdrop-blur-md"
+            className="px-6 h-12 flex items-center justify-center gap-3 bg-slate-100 border border-slate-200 text-slate-800 text-xs font-black uppercase rounded-xl hover:bg-slate-200 transition-all active:scale-95 group shadow-sm"
           >
             <svg className="w-4 h-4 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
             Voltar
           </button>
           
-          <div className="flex flex-col sm:text-right bg-black/20 p-4 rounded-2xl border border-white/5 backdrop-blur-md">
-             <p className="text-[10px] text-sky-400 font-black uppercase tracking-[0.2em] mb-1">Unidade Escolar selecionada</p>
-             <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-white">{selectedGrade}</h2>
+          <div className="flex flex-col sm:text-right bg-slate-50 p-4 rounded-2xl border border-slate-200">
+             <p className="text-[10px] text-sky-600 font-black uppercase tracking-[0.2em] mb-1">Unidade Escolar selecionada</p>
+             <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-slate-900">{selectedGrade}</h2>
           </div>
         </div>
 
@@ -592,11 +592,11 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
             <button
               key={cls.id}
               onClick={() => setSelectedClassId(cls.id)}
-              className="group relative bg-[#262626] border border-[#333] rounded-2xl p-4 hover:bg-[#2a2a2a] transition-all text-left overflow-hidden flex flex-col justify-between h-[170px] shadow-md"
+              className="group relative bg-white border border-slate-200 rounded-2xl p-4 hover:bg-slate-50 hover:border-sky-500/50 transition-all text-left overflow-hidden flex flex-col justify-between h-[170px] shadow-sm"
             >
               {/* Background Watermark */}
-              <div className="absolute top-3 right-3 opacity-5 pointer-events-none group-hover:scale-110 transition-transform duration-500">
-                <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
+              <div className="absolute top-3 right-3 opacity-[0.08] pointer-events-none group-hover:scale-110 transition-transform duration-500 text-slate-400">
+                <svg className="w-10 h-10" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 14l9-5-9-5-9 5 9 5z" />
                   <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 14l9-5-9-5-9 5 9 5zm0 0v6m0-6l-9-5m9 5l9-5" />
@@ -605,22 +605,22 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
 
               <div className="relative z-10 w-full animate-fade-in">
                 {/* Icon Container matching Image 1 */}
-                <div className="w-8 h-8 bg-[#2b3544] rounded-lg flex items-center justify-center mb-2 shadow-inner border border-[#3f4a5c]">
-                  <svg className="w-4 h-4 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="w-8 h-8 bg-sky-50 rounded-lg flex items-center justify-center mb-2 shadow-inner border border-sky-100">
+                  <svg className="w-4 h-4 text-sky-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
                   </svg>
                 </div>
                 
-                <h3 className="text-base font-black tracking-tight text-white leading-none mb-1">
+                <h3 className="text-base font-black tracking-tight text-slate-900 leading-none mb-1">
                   {cls.name.startsWith('Turma') ? cls.name.replace('Turma ', '') : cls.name}
                 </h3>
                 
-                <p className="text-xs text-[#9ca3af] font-medium leading-snug">
+                <p className="text-xs text-slate-500 font-medium leading-snug">
                   {cls.students.length} alunos · {cls.schedule || '--:--'}
                 </p>
               </div>
               
-              <div className="relative z-10 mt-3 flex items-center text-blue-400 text-[10px] font-black tracking-widest uppercase group-hover:text-blue-300 transition-colors">
+              <div className="relative z-10 mt-3 flex items-center text-sky-600 text-[10px] font-black tracking-widest uppercase group-hover:text-sky-500 transition-colors">
                 FAZER CHAMADA
                 <svg className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
               </div>
@@ -638,32 +638,32 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
 
   return (
     <>
-    <div className="bg-slate-950 min-h-screen rounded-[2rem] shadow-2xl border border-white/10 overflow-hidden animate-fade-in relative pb-10 text-white font-sans">
+    <div className="bg-white/95 backdrop-blur-xl min-h-screen rounded-[2rem] shadow-2xl border border-slate-200 overflow-hidden animate-fade-in relative pb-10 text-slate-800 font-sans">
       
-      {/* Header View - Toolbar Dark Studio Style */}
-      <div className="p-4 md:p-6 border-b border-white/10 flex flex-wrap justify-between items-center bg-slate-900/90 backdrop-blur-xl sticky top-0 z-20 shadow-sm">
+      {/* Header View - Toolbar Light Studio Style */}
+      <div className="p-4 md:p-6 border-b border-slate-200 flex flex-wrap justify-between items-center bg-slate-50/95 backdrop-blur-xl sticky top-0 z-20 shadow-sm">
         <div className="flex items-center gap-4">
           <button 
             onClick={() => setSelectedClassId(null)}
-            className="w-10 h-10 flex items-center justify-center bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 text-white transition-all shadow-sm active:scale-95"
+            className="w-10 h-10 flex items-center justify-center bg-slate-100 border border-slate-200 rounded-xl hover:bg-slate-200 text-slate-850 transition-all shadow-sm active:scale-95"
           >
             <svg className="w-5 h-5 font-bold" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
           </button>
           
           <div className="flex flex-col">
              <div className="flex items-center gap-3">
-               <p className="text-[10px] text-slate-400 font-black uppercase tracking-widest">Data da Chamada</p>
+               <p className="text-[10px] text-slate-550 font-black uppercase tracking-widest">Data da Chamada</p>
                {syncStatus === 'saving' ? (
-                 <span className="flex items-center text-[9px] font-black text-sky-400 animate-pulse bg-sky-400/10 px-2 py-0.5 rounded border border-sky-400/20">
+                 <span className="flex items-center text-[9px] font-black text-sky-600 animate-pulse bg-sky-50 px-2 py-0.5 rounded border border-sky-200">
                    <svg className="animate-spin h-2.5 w-2.5 mr-1.5" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
                    SINCRONIZANDO...
                  </span>
                ) : syncStatus === 'error' ? (
-                 <span className="flex items-center text-[9px] font-black text-rose-400 bg-rose-400/10 px-2 py-0.5 rounded border border-rose-400/20">
+                 <span className="flex items-center text-[9px] font-black text-rose-600 bg-rose-50 px-2 py-0.5 rounded border border-rose-200">
                    ERRO DE SYNC
                  </span>
                ) : (
-                 <span className="flex items-center text-[9px] font-black text-emerald-400 bg-emerald-400/10 px-2 py-0.5 rounded border border-emerald-400/20 shadow-[0_0_10px_rgba(52,211,153,0.1)]">
+                 <span className="flex items-center text-[9px] font-black text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 shadow-[0_0_10px_rgba(16,185,129,0.05)]">
                    <svg className="w-2.5 h-2.5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={4} d="M5 13l4 4L19 7" /></svg>
                    CONECTADO
                  </span>
@@ -673,17 +673,17 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
                type="date" 
                value={selectedDate}
                onChange={(e) => setSelectedDate(e.target.value)}
-               className="text-lg font-black text-white bg-transparent opacity-95 border-none p-0 focus:ring-0 cursor-pointer appearance-none outline-none"
+               className="text-lg font-black text-slate-900 bg-transparent opacity-95 border-none p-0 focus:ring-0 cursor-pointer appearance-none outline-none"
              />
           </div>
 
-          <div className="hidden md:flex flex-col border-l border-white/10 pl-6">
-            <p className="text-[10px] text-slate-400 font-black uppercase tracking-widest">Horário</p>
-            <p className="text-sm font-bold text-sky-400">{currentClass.schedule || 'Não definido'}</p>
+          <div className="hidden md:flex flex-col border-l border-slate-200 pl-6">
+            <p className="text-[10px] text-slate-550 font-black uppercase tracking-widest">Horário</p>
+            <p className="text-sm font-bold text-sky-700">{currentClass.schedule || 'Não definido'}</p>
           </div>
 
-          <div className="hidden md:flex flex-col border-l border-slate-300 pl-6">
-            <p className="text-[10px] text-slate-500 font-black uppercase tracking-widest">Dia de Aula</p>
+          <div className="hidden md:flex flex-col border-l border-slate-200 pl-6">
+            <p className="text-[10px] text-slate-550 font-black uppercase tracking-widest">Dia de Aula</p>
             <p className={`text-sm font-black uppercase tracking-tight ${isCorrectDay ? 'text-green-700' : 'text-red-700'}`}>
                {dayOfWeek}
             </p>
@@ -693,7 +693,7 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
         <div className="flex items-center gap-2 mt-4 sm:mt-0 flex-wrap">
            <button
              onClick={() => (window as any).setView('schedule')}
-             className="px-3 h-10 flex items-center justify-center bg-white/5 border border-white/10 text-white text-xs font-black uppercase rounded-xl hover:bg-white/10 shadow-sm transition-all active:scale-95 backdrop-blur-sm"
+             className="px-3 h-10 flex items-center justify-center bg-slate-100 border border-slate-200 text-slate-800 text-xs font-black uppercase rounded-xl hover:bg-slate-200 shadow-sm transition-all active:scale-95"
            >
              <svg className="w-4 h-4 mr-2 opacity-60" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
              Quadro
@@ -715,10 +715,10 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
               )}
            </button>
 
-           <div className="flex items-center gap-1.5 p-1 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm">
+           <div className="flex items-center gap-1.5 p-1 bg-slate-100 border border-slate-200 rounded-xl">
               <button
                 onClick={() => setShowPrintModal(true)}
-                className="w-8 h-8 flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 rounded-lg transition-all"
+                className="w-8 h-8 flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-200 rounded-lg transition-all"
                 title="Imprimir"
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" /></svg>
@@ -730,7 +730,7 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
                     setClassData(prev => ({ ...prev, [selectedClassId!]: initialClassData[selectedClassId!] }));
                   }
                 }}
-                className="w-8 h-8 flex items-center justify-center text-slate-400 hover:text-amber-400 hover:bg-amber-400/10 rounded-lg transition-all"
+                className="w-8 h-8 flex items-center justify-center text-slate-600 hover:text-amber-600 hover:bg-amber-100 rounded-lg transition-all"
                 title="Sincronizar/Restaurar"
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" /></svg>
@@ -738,7 +738,7 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
               
               <button 
                 onClick={() => { setNewStudentName(''); setShowAddModal(true); }}
-                className="w-8 h-8 flex items-center justify-center text-slate-400 hover:text-emerald-400 hover:bg-emerald-400/10 rounded-lg transition-all"
+                className="w-8 h-8 flex items-center justify-center text-slate-600 hover:text-emerald-600 hover:bg-emerald-100 rounded-lg transition-all"
                 title="Adicionar Aluno"
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 4v16m8-8H4" /></svg>
@@ -747,7 +747,7 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
               <button 
                 onClick={() => document.getElementById('ai-scan-input')?.click()}
                 disabled={isScanning}
-                className={`w-8 h-8 flex items-center justify-center text-slate-400 hover:text-purple-400 hover:bg-purple-400/10 rounded-lg transition-all ${isScanning ? 'animate-pulse' : ''}`}
+                className={`w-8 h-8 flex items-center justify-center text-slate-600 hover:text-purple-600 hover:bg-purple-100 rounded-lg transition-all ${isScanning ? 'animate-pulse' : ''}`}
                 title="Injetar Lista (IA)"
               >
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -761,23 +761,23 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
       {/* --- TABELA DE CHAMADA ESTILO DIÁRIO DE CLASSE (BLACK MODE) --- */}
       <div className="p-4 sm:p-6">
         <div className="mb-4 flex items-center gap-2">
-            <h3 className="text-xl font-black text-white">Diário de Classe</h3>
-            <span className="px-2 py-0.5 bg-sky-500/10 border border-sky-500/20 rounded text-[10px] font-black text-sky-400 uppercase tracking-widest">
+            <h3 className="text-xl font-black text-slate-900">Diário de Classe</h3>
+            <span className="px-2 py-0.5 bg-sky-50 border border-sky-200 rounded text-[10px] font-black text-sky-700 uppercase tracking-widest">
                 Turma {currentClass.name}
             </span>
         </div>
 
         {/* --- CRONOGRAMA POR MESES / RÉGUA DO TRIMESTRE (USER VISUAL ACCESS) --- */}
-        <div className="mb-6 bg-slate-900 border border-white/10 rounded-[1.5rem] p-4 shadow-sm relative overflow-hidden">
+        <div className="mb-6 bg-slate-50 border border-slate-200 rounded-[1.5rem] p-4 shadow-sm relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-sky-500/5 to-indigo-500/5" style={{ pointerEvents: "none" }} />
-          <div className="relative z-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4 border-b border-white/10 pb-3">
+          <div className="relative z-10 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4 border-b border-slate-200 pb-3">
             <div>
-              <p className="text-[10px] text-sky-400 font-extrabold uppercase tracking-widest leading-none mb-1">Régua do Trimestre</p>
-              <h4 className="text-sm font-black text-white uppercase tracking-tighter">Cronograma de Dias de Aula</h4>
+              <p className="text-[10px] text-sky-700 font-extrabold uppercase tracking-widest leading-none mb-1">Régua do Trimestre</p>
+              <h4 className="text-sm font-black text-slate-900 uppercase tracking-tighter">Cronograma de Dias de Aula</h4>
             </div>
             
             {/* Trimester Tabs */}
-            <div className="flex gap-1 bg-slate-200/60 p-1 rounded-xl">
+            <div className="flex gap-1 bg-slate-100 p-1 rounded-xl">
               {TRIMESTERS.map(t => (
                 <button
                   key={t.id}
@@ -827,9 +827,9 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
               return sortedMonthsList.map(monthIdx => {
                 const mDates = groupedDates[monthIdx];
                 return (
-                  <div key={monthIdx} className="flex-shrink-0 bg-white/5 border border-white/10 rounded-xl p-3 min-w-[130px] shadow-sm">
+                  <div key={monthIdx} className="flex-shrink-0 bg-white border border-slate-200 rounded-xl p-3 min-w-[130px] shadow-sm">
                     {/* Month Heading */}
-                    <div className="text-center text-[10px] font-black uppercase text-slate-300 border-b border-white/10 pb-2 mb-2.5 tracking-widest">
+                    <div className="text-center text-[10px] font-black uppercase text-slate-600 border-b border-slate-100 pb-2 mb-2.5 tracking-widest">
                       {MONTH_NAMES[monthIdx]}
                     </div>
                     
@@ -854,10 +854,10 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
                               isSelected
                                 ? 'bg-sky-600 border border-sky-600 text-white shadow-md scale-105 z-10'
                                 : isHolidayOrRecess
-                                  ? 'bg-amber-500/20 border border-amber-500/30 text-amber-400 hover:bg-amber-500/30'
+                                  ? 'bg-amber-100 border border-amber-200 text-amber-700 hover:bg-amber-200'
                                   : hasAttendance
-                                    ? 'bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/30'
-                                    : 'bg-white/5 border border-white/10 text-slate-400 hover:bg-white/10'
+                                    ? 'bg-emerald-50 border border-emerald-200 text-emerald-700 hover:bg-emerald-100'
+                                    : 'bg-slate-100 border border-slate-200 text-slate-500 hover:bg-slate-200'
                             }`}
                             title={`${dayNum} de ${MONTH_NAMES[monthIdx]} - ${isHolidayOrRecess ? 'Feriado/Recesso' : hasAttendance ? 'Presença lançada' : 'Nenhuma aula ainda'}`}
                           >

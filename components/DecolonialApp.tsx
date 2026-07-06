@@ -320,9 +320,18 @@ const slidesData: Record<string, Slide[]> = {
 interface DecolonialAppProps {
   onBack: () => void;
   setSlideViewerOpen?: (value: any) => void;
+  classData?: any;
+  setClassData?: any;
+  onSave?: (newData: any) => void;
 }
 
-export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideViewerOpen }) => {
+export const DecolonialApp: React.FC<DecolonialAppProps> = ({ 
+  onBack, 
+  setSlideViewerOpen,
+  classData,
+  setClassData,
+  onSave
+}) => {
   const [currentView, setCurrentView] = useState('menu');
   const [selectedAulaData, setSelectedAulaData] = useState<string | null>(null);
   const [planningSubView, setPlanningSubView] = useState<null | '8ano' | 'ap' | 'ap_sexta' | 'gestao'>(null);
@@ -389,7 +398,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
               title: 'PLANEJAMENTO',
               subtitle: 'Cronograma oficial e resumos.',
               icon: <Calendar className="w-24 h-24 text-white/20 group-hover:text-emerald-400/40 transition-colors duration-500 absolute -bottom-4 -right-4 rotate-12" />,
-              gradient: 'from-slate-900 to-slate-800',
+              gradient: 'from-blue-900 to-blue-950',
               action: () => setCurrentView('planejamento'),
               delay: 0.3
             },
@@ -398,7 +407,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
               title: 'PLANO ANUAL',
               subtitle: 'Gestão completa das aulas de PE.',
               icon: <Map className="w-24 h-24 text-white/20 group-hover:text-emerald-400/40 transition-colors duration-500 absolute -bottom-4 -right-4 -rotate-12" />,
-              gradient: 'from-slate-800 to-slate-900',
+              gradient: 'from-emerald-900 to-emerald-950',
               action: () => setCurrentView('plano_anual_pe'),
               delay: 0.4
             },
@@ -407,7 +416,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
               title: 'AULAS (Datashow)',
               subtitle: 'Slides para apresentação.',
               icon: <Projector className="w-24 h-24 text-white/20 group-hover:text-emerald-400/40 transition-colors duration-500 absolute -bottom-4 -right-4 rotate-6" />,
-              gradient: 'from-zinc-900 to-zinc-800',
+              gradient: 'from-purple-900 to-purple-950',
               action: () => setCurrentView('repositorio_aulas'),
               delay: 0.5
             },
@@ -416,7 +425,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
               title: 'OCORRÊNCIAS',
               subtitle: 'Registro de fatos e relatórios de alunos.',
               icon: <ShieldAlert className="w-24 h-24 text-white/20 group-hover:text-emerald-400/40 transition-colors duration-500 absolute -bottom-4 -right-4 -rotate-6" />,
-              gradient: 'from-stone-900 to-stone-800',
+              gradient: 'from-rose-900 to-rose-950',
               action: () => setCurrentView('ocorrencias'),
               delay: 0.6
             },
@@ -425,7 +434,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
               title: 'NOTAS',
               subtitle: 'Acesse notas por trimestre.',
               icon: <BarChart3 className="w-24 h-24 text-white/20 group-hover:text-emerald-400/40 transition-colors duration-500 absolute -bottom-4 -right-4 rotate-12" />,
-              gradient: 'from-neutral-900 to-neutral-800',
+              gradient: 'from-amber-900 to-amber-950',
               action: () => setCurrentView('notas'),
               delay: 0.7
             },
@@ -434,7 +443,7 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
               title: 'REPOSITÓRIO DE PROVAS',
               subtitle: 'Crie e acesse avaliações teóricas.',
               icon: <BookOpen className="w-24 h-24 text-white/20 group-hover:text-emerald-400/40 transition-colors duration-500 absolute -bottom-4 -right-4 -rotate-12" />,
-              gradient: 'from-gray-900 to-gray-800',
+              gradient: 'from-cyan-900 to-cyan-950',
               action: () => setCurrentView('repositorio_provas'),
               delay: 0.8
             }
@@ -2530,7 +2539,14 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({ onBack, setSlideVi
       {currentView === 'repositorio_aulas_lista' && renderRepositorioAulas()}
       {currentView === 'player' && <SlidePlayer />}
       {currentView === 'ocorrencias' && <OcorrenciasView onBack={() => setCurrentView('menu')} />}
-      {currentView === 'notas' && <GradesView onBack={() => setCurrentView('menu')} />}
+      {currentView === 'notas' && (
+        <GradesView 
+          onBack={() => setCurrentView('menu')} 
+          classData={classData}
+          setClassData={setClassData}
+          onSave={onSave}
+        />
+      )}
       {currentView === 'repositorio_provas' && <ExamRepositoryView onBack={() => setCurrentView('menu')} />}
     </div>
   );

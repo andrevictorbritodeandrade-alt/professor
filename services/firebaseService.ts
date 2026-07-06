@@ -112,9 +112,6 @@ export const initFirebase = () => {
       signInAnonymously(auth).catch((err) => console.error("Auth Error:", err));
     }
     
-    // Test connection
-    testConnection();
-    
     return true;
   } catch (e) {
     console.error("Erro ao iniciar Firebase", e);

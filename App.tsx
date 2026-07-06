@@ -108,33 +108,41 @@ const App: React.FC = () => {
     const stored = localStorage.getItem('app_classData');
     const base = stored ? JSON.parse(stored) : { ...initialClassData };
 
-    // Migration for CIEP320_AP101: ensure the 19 correct students remain and any other ones (like the previous 7) are removed
+    // Migration for CIEP320_AP101: ensure the 26 correct students remain with correct attendance
     if (base["CIEP320_AP101"]) {
       const correctStudents: any[] = [
-        { id: 10107, name: "Danyelle Thomaz Canêdo", attendance: { "15/05": "P", "08/05": "P" } },
-        { id: 10106, name: "Diego Rafael da Silva Zan Pires", attendance: { "15/05": "P", "08/05": "P" } },
-        { id: 10120, name: "Emylly Vitória Nascimento dos Santos", attendance: { "15/05": "P", "08/05": "P" } },
-        { id: 10116, name: "Enzo de Jesus Rodrigues", attendance: { "15/05": "P", "08/05": "P" } },
-        { id: 10113, name: "Ester Senes Magela", attendance: { "15/05": "P", "08/05": "P" } },
-        { id: 10109, name: "Heverton Lima Xavier", attendance: { "15/05": "P", "08/05": "P" } },
-        { id: 10108, name: "Ícaro Martins França", attendance: { "15/05": "P", "08/05": "P" } },
-        { id: 10115, name: "Kevin Lucas Oliveira dos Santos", attendance: { "15/05": "P", "08/05": "P" } },
-        { id: 10104, name: "Lucas Gabryel da Silva Nascimento", attendance: { "15/05": "P", "08/05": "P" } },
-        { id: 10105, name: "Lucas Rodrigues da Silva Lima", attendance: { "15/05": "P", "08/05": "P" } },
-        { id: 10123, name: "Maria Tayryne de Souza de Lima", attendance: { "15/05": "P", "08/05": "P" } },
-        { id: 10103, name: "Micaelly Avolio Falsetta", attendance: { "15/05": "P", "08/05": "P" } },
-        { id: 10102, name: "Millena Vitoria da Silva Jesus", attendance: { "15/05": "P", "08/05": "P" } },
-        { id: 10110, name: "Nathan Galvão Bastos", attendance: { "15/05": "P", "08/05": "P" } },
-        { id: 10119, name: "Nayara Vytorya dos Santos", attendance: { "15/05": "P", "08/05": "P" } },
-        { id: 10101, name: "Sophia Lourenço da Silva", attendance: { "15/05": "P", "08/05": "P" } },
-        { id: 10111, name: "Walbert Leonardo Lima Novaes", attendance: { "15/05": "P", "08/05": "P" } },
-        { id: 10118, name: "Yuri da Silva Ribeiro", attendance: { "15/05": "P", "08/05": "P" } },
-        { id: 10112, name: "Yuri Ryan Jesus Nascimento", attendance: { "15/05": "P", "08/05": "P" } }
+        { id: 10101, name: "Ana Biatris Sena de Oliveira", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "F", "19/06": "F", "26/06": "P", "03/07": "P" } },
+        { id: 10102, name: "Ana Clara Souza da Silva", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "P", "03/07": "P" } },
+        { id: 10103, name: "Benjamin Lucca Araújo Pereira", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "F", "26/06": "P", "03/07": "P" } },
+        { id: 10104, name: "Danielly Thomaz Canêdo", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "F", "03/07": "P" } },
+        { id: 10105, name: "Diego Rafael da Silva Zampilis", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "P", "03/07": "P" } },
+        { id: 10106, name: "Eduardo da Silva Coelho", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "F", "19/06": "F", "26/06": "P", "03/07": "P" } },
+        { id: 10107, name: "Enzo de Jesus Rodrigues", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "F", "19/06": "F", "26/06": "F", "03/07": "F" } },
+        { id: 10108, name: "Esther Sines Magela", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "F", "26/06": "P", "03/07": "F" } },
+        { id: 10109, name: "Heverson Lima Xavier", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "P", "03/07": "P" } },
+        { id: 10110, name: "Íkaro Martins França", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "P", "03/07": "F" } },
+        { id: 10111, name: "Jeferson de Freitas Filho", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "F", "19/06": "F", "26/06": "P", "03/07": "P" } },
+        { id: 10112, name: "Keven Lucas Oliveira dos Santos", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "P", "03/07": "P" } },
+        { id: 10113, name: "Lucas Gabryel da Silva Nascimento", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "P", "03/07": "P" } },
+        { id: 10114, name: "Lucas Rodrigues da Silva Lima", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "F", "03/07": "P" } },
+        { id: 10115, name: "Maria Thayriny de Souza de Lima", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "F", "03/07": "P" } },
+        { id: 10116, name: "Micaelly Avolio Falsetta", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "F", "26/06": "F", "03/07": "F" } },
+        { id: 10117, name: "Miguel Angelo de Mendonça Lopes", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "P", "03/07": "P" } },
+        { id: 10118, name: "Milena Vitória da Silva de Jesus", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "P", "03/07": "P" } },
+        { id: 10119, name: "Murilo Marcos Caito da Silva", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "F", "26/06": "F", "03/07": "F" } },
+        { id: 10120, name: "Nathan Galvão Bastos", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "P", "03/07": "F" } },
+        { id: 10121, name: "Nayara Vytória dos Santos", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "P", "03/07": "P" } },
+        { id: 10122, name: "Pedro Henrique dos Santos da Paixão", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "F", "03/07": "P" } },
+        { id: 10123, name: "Sophia Lourenço da Silva", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "F", "03/07": "P" } },
+        { id: 10124, name: "Walbert Leonardo Lima Novaes", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "F", "03/07": "P" } },
+        { id: 10125, name: "Yuri da Silva Ribeiro", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "F", "19/06": "F", "26/06": "P", "03/07": "F" } },
+        { id: 10126, name: "Yuri Ryan de Jesus Nascimento", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "F", "19/06": "F", "26/06": "F", "03/07": "P" } }
       ];
 
       const studs = base["CIEP320_AP101"].students || [];
-      const hasEduardo = studs.some((s: any) => s.id === 10124 || s.name.includes("Eduardo"));
-      if (hasEduardo || studs.length !== 19) {
+      const hasAnaBiatris = studs.some((s: any) => s.name.includes("Ana Biatris"));
+      const hasJuneAttendance = studs.some((s: any) => s.attendance && s.attendance["12/06"] !== undefined);
+      if (!hasAnaBiatris || studs.length !== 26 || !hasJuneAttendance) {
         base["CIEP320_AP101"].students = correctStudents;
       }
     }
@@ -475,34 +483,74 @@ const App: React.FC = () => {
               }
             }
 
-            // Clean up CIEP320_AP101 to contain ONLY the correct 19 students in Firestore
+            // Clean up CIEP320_AP101 to contain ONLY the correct 26 students in Firestore
             if (migratedClasses["CIEP320_AP101"]) {
               const correctStudents: any[] = [
-                { id: 10107, name: "Danyelle Thomaz Canêdo", attendance: { "15/05": "P", "08/05": "P" } },
-                { id: 10106, name: "Diego Rafael da Silva Zan Pires", attendance: { "15/05": "P", "08/05": "P" } },
-                { id: 10120, name: "Emylly Vitória Nascimento dos Santos", attendance: { "15/05": "P", "08/05": "P" } },
-                { id: 10116, name: "Enzo de Jesus Rodrigues", attendance: { "15/05": "P", "08/05": "P" } },
-                { id: 10113, name: "Ester Senes Magela", attendance: { "15/05": "P", "08/05": "P" } },
-                { id: 10109, name: "Heverton Lima Xavier", attendance: { "15/05": "P", "08/05": "P" } },
-                { id: 10108, name: "Ícaro Martins França", attendance: { "15/05": "P", "08/05": "P" } },
-                { id: 10115, name: "Kevin Lucas Oliveira dos Santos", attendance: { "15/05": "P", "08/05": "P" } },
-                { id: 10104, name: "Lucas Gabryel da Silva Nascimento", attendance: { "15/05": "P", "08/05": "P" } },
-                { id: 10105, name: "Lucas Rodrigues da Silva Lima", attendance: { "15/05": "P", "08/05": "P" } },
-                { id: 10123, name: "Maria Tayryne de Souza de Lima", attendance: { "15/05": "P", "08/05": "P" } },
-                { id: 10103, name: "Micaelly Avolio Falsetta", attendance: { "15/05": "P", "08/05": "P" } },
-                { id: 10102, name: "Millena Vitoria da Silva Jesus", attendance: { "15/05": "P", "08/05": "P" } },
-                { id: 10110, name: "Nathan Galvão Bastos", attendance: { "15/05": "P", "08/05": "P" } },
-                { id: 10119, name: "Nayara Vytorya dos Santos", attendance: { "15/05": "P", "08/05": "P" } },
-                { id: 10101, name: "Sophia Lourenço da Silva", attendance: { "15/05": "P", "08/05": "P" } },
-                { id: 10111, name: "Walbert Leonardo Lima Novaes", attendance: { "15/05": "P", "08/05": "P" } },
-                { id: 10118, name: "Yuri da Silva Ribeiro", attendance: { "15/05": "P", "08/05": "P" } },
-                { id: 10112, name: "Yuri Ryan Jesus Nascimento", attendance: { "15/05": "P", "08/05": "P" } }
+                { id: 10101, name: "Ana Biatris Sena de Oliveira", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "F", "19/06": "F", "26/06": "P", "03/07": "P" }, trimestreGrades: { "2": { participation: 0.5, assignment: 0, exam: 1.6 } } },
+                { id: 10102, name: "Ana Clara Souza da Silva", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "P", "03/07": "P" }, trimestreGrades: { "2": { participation: 0.5, assignment: 0, exam: 0.1 } } },
+                { id: 10103, name: "Benjamin Lucca Araújo Pereira", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "F", "26/06": "P", "03/07": "P" }, trimestreGrades: { "2": { participation: 0.5, assignment: 0, exam: 2.1 } } },
+                { id: 10104, name: "Danielly Thomaz Canêdo", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "F", "03/07": "P" }, trimestreGrades: { "2": { participation: 0.5, assignment: 0, exam: 1.2 } } },
+                { id: 10105, name: "Diego Rafael da Silva Zampilis", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "P", "03/07": "P" }, trimestreGrades: { "2": { participation: 1.0, assignment: 0, exam: 0.8 } } },
+                { id: 10106, name: "Eduardo da Silva Coelho", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "F", "19/06": "F", "26/06": "P", "03/07": "P" }, trimestreGrades: { "2": { participation: 0.5, assignment: 0, exam: 0.6 } } },
+                { id: 10107, name: "Enzo de Jesus Rodrigues", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "F", "19/06": "F", "26/06": "F", "03/07": "F" }, trimestreGrades: { "2": { participation: 0, assignment: 0, exam: 0 } } },
+                { id: 10108, name: "Esther Sines Magela", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "F", "26/06": "P", "03/07": "F" }, trimestreGrades: { "2": { participation: 0, assignment: 0, exam: 0 } } },
+                { id: 10109, name: "Heverson Lima Xavier", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "P", "03/07": "P" }, trimestreGrades: { "2": { participation: 1.0, assignment: 0, exam: 1.9 } } },
+                { id: 10110, name: "Íkaro Martins França", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "P", "03/07": "F" }, trimestreGrades: { "2": { participation: 0.5, assignment: 0, exam: 0 } } },
+                { id: 10111, name: "Jeferson de Freitas Filho", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "F", "19/06": "F", "26/06": "P", "03/07": "P" }, trimestreGrades: { "2": { participation: 0, assignment: 0, exam: 1.9 } } },
+                { id: 10112, name: "Keven Lucas Oliveira dos Santos", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "P", "03/07": "P" }, trimestreGrades: { "2": { participation: 0.5, assignment: 0, exam: 0.5 } } },
+                { id: 10113, name: "Lucas Gabryel da Silva Nascimento", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "P", "03/07": "P" }, trimestreGrades: { "2": { participation: 1.0, assignment: 0, exam: 2.6 } } },
+                { id: 10114, name: "Lucas Rodrigues da Silva Lima", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "F", "03/07": "P" }, trimestreGrades: { "2": { participation: 0.5, assignment: 0, exam: 2.7 } } },
+                { id: 10115, name: "Maria Thayriny de Souza de Lima", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "F", "03/07": "P" }, trimestreGrades: { "2": { participation: 0, assignment: 0, exam: 1.3 } } },
+                { id: 10116, name: "Micaelly Avolio Falsetta", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "F", "26/06": "F", "03/07": "F" }, trimestreGrades: { "2": { participation: 0.5, assignment: 0, exam: 0.5 } } },
+                { id: 10117, name: "Miguel Angelo de Mendonça Lopes", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "P", "03/07": "P" }, trimestreGrades: { "2": { participation: 0.5, assignment: 0, exam: 4.5 } } },
+                { id: 10118, name: "Milena Vitória da Silva de Jesus", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "P", "03/07": "P" }, trimestreGrades: { "2": { participation: 0, assignment: 0, exam: 1.3 } } },
+                { id: 10119, name: "Murilo Marcos Caito da Silva", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "F", "26/06": "F", "03/07": "F" }, trimestreGrades: { "2": { participation: 0, assignment: 0, exam: 0 } } },
+                { id: 10120, name: "Nathan Galvão Bastos", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "P", "03/07": "F" }, trimestreGrades: { "2": { participation: 0.5, assignment: 0, exam: 2.0 } } },
+                { id: 10121, name: "Nayara Vytória dos Santos", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "P", "03/07": "P" }, trimestreGrades: { "2": { participation: 0.5, assignment: 0, exam: 1.1 } } },
+                { id: 10122, name: "Pedro Henrique dos Santos da Paixão", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "F", "03/07": "P" }, trimestreGrades: { "2": { participation: 0.5, assignment: 0, exam: 3.6 } } },
+                { id: 10123, name: "Sophia Lourenço da Silva", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "F", "03/07": "P" }, trimestreGrades: { "2": { participation: 0.5, assignment: 0, exam: 1.1 } } },
+                { id: 10124, name: "Walbert Leonardo Lima Novaes", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "P", "19/06": "P", "26/06": "F", "03/07": "P" }, trimestreGrades: { "2": { participation: 0.5, assignment: 0, exam: 0 } } },
+                { id: 10125, name: "Yuri da Silva Ribeiro", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "F", "19/06": "F", "26/06": "P", "03/07": "F" }, trimestreGrades: { "2": { participation: 0, assignment: 0, exam: 1.35 } } },
+                { id: 10126, name: "Yuri Ryan de Jesus Nascimento", attendance: { "08/05": "P", "15/05": "P", "22/05": "P", "29/05": "P", "12/06": "F", "19/06": "F", "26/06": "F", "03/07": "P" }, trimestreGrades: { "2": { participation: 0, assignment: 0, exam: 0 } } }
               ];
 
               const studs = migratedClasses["CIEP320_AP101"].students || [];
-              const hasEduardo = studs.some((s: any) => s.id === 10124 || s.name.includes("Eduardo"));
-              if (hasEduardo || studs.length !== 19) {
+              const hasAnaBiatris = studs.some((s: any) => s.name.includes("Ana Biatris"));
+              const hasJuneAttendance = studs.some((s: any) => s.attendance && s.attendance["12/06"] !== undefined);
+              const hasJuneGrades = studs.some((s: any) => s.trimestreGrades && s.trimestreGrades["2"] !== undefined);
+              if (!hasAnaBiatris || studs.length !== 26 || !hasJuneAttendance || !hasJuneGrades) {
                 migratedClasses["CIEP320_AP101"].students = correctStudents;
+                needsUpdateRemote = true;
+              }
+            }
+
+            // Clean up CIEP320_AP301 to contain correct students and grades in Firestore
+            if (migratedClasses["CIEP320_AP301"]) {
+              const correctStudents301: any[] = [
+                { id: 30101, name: "Ana Karollina Silva Ávila", attendance: { "15/05": "P", "22/05": "F", "29/05": "P" }, trimestreGrades: { "2": { participation: 2.0, assignment: 0, exam: 1.2 } } },
+                { id: 30102, name: "Breno Carneiro Roque da Cruz", attendance: { "15/05": "F", "22/05": "F", "29/05": "F" }, trimestreGrades: { "2": { participation: 0.5, assignment: 0, exam: 0.6 } } },
+                { id: 30103, name: "Emilly Souza Lima", attendance: { "15/05": "F", "22/05": "P", "29/05": "F" }, trimestreGrades: { "2": { participation: 1.0, assignment: 3.0, exam: 1.1 } } },
+                { id: 30104, name: "Gabriel Costa Santana", attendance: { "15/05": "F", "22/05": "P", "29/05": "F" }, trimestreGrades: { "2": { participation: 0, assignment: 0, exam: 0 } } },
+                { id: 30105, name: "Iuri Klinger Soares dos Santos", attendance: { "15/05": "F", "22/05": "F", "29/05": "F" }, trimestreGrades: { "2": { participation: 0, assignment: 0, exam: 0 } } },
+                { id: 30106, name: "Kaio Klinger Soares dos Santos", attendance: { "15/05": "F", "22/05": "F", "29/05": "F" }, trimestreGrades: { "2": { participation: 0, assignment: 0, exam: 0 } } },
+                { id: 30107, name: "Kaylanne Ribeiro Canuto", attendance: { "15/05": "P", "22/05": "P", "29/05": "F" }, trimestreGrades: { "2": { participation: 2.0, assignment: 0, exam: 0.6 } } },
+                { id: 30108, name: "Leonardo Kauã Oliveira de Paiva", attendance: { "15/05": "P", "22/05": "P", "29/05": "P" }, trimestreGrades: { "2": { participation: 2.0, assignment: 0, exam: 1.5 } } },
+                { id: 30109, name: "Lorena Ribeiro de Almeida", attendance: { "15/05": "F", "22/05": "P", "29/05": "P" }, trimestreGrades: { "2": { participation: 2.0, assignment: 0, exam: 0.7 } } },
+                { id: 30110, name: "Luiz André Lima Bezerra", attendance: { "15/05": "P", "22/05": "P", "29/05": "P" }, trimestreGrades: { "2": { participation: 2.0, assignment: 0, exam: 1.7 } } },
+                { id: 30111, name: "Marcelly Gomes Serra", attendance: { "15/05": "F", "22/05": "F", "29/05": "F" }, trimestreGrades: { "2": { participation: 0, assignment: 0, exam: 0 } } },
+                { id: 30112, name: "Maria Alyndy Lopes da Cunha", attendance: { "15/05": "F", "22/05": "F", "29/05": "F" }, trimestreGrades: { "2": { participation: 0, assignment: 0, exam: 0 } } },
+                { id: 30113, name: "Rodrigo Rafael Silva de Oliveira", attendance: { "15/05": "P", "22/05": "P", "29/05": "P" }, trimestreGrades: { "2": { participation: 2.0, assignment: 0, exam: 1.3 } } },
+                { id: 30114, name: "Ryan Bruno Arcanjo da Cruz", attendance: { "15/05": "P", "22/05": "P", "29/05": "P" }, trimestreGrades: { "2": { participation: 2.0, assignment: 0, exam: 4.3 } } },
+                { id: 30115, name: "Eduardo da Silva Coelho", attendance: { "15/05": "P", "22/05": "P", "29/05": "P" }, trimestreGrades: { "2": { participation: 0, assignment: 0, exam: 0 } } },
+                { id: 30116, name: "Murilo Marcos", attendance: { "15/05": "P", "22/05": "P", "29/05": "P" }, trimestreGrades: { "2": { participation: 0, assignment: 0, exam: 0 } } },
+                { id: 30117, name: "Caito da Silva", attendance: { "15/05": "P", "22/05": "P", "29/05": "P" }, trimestreGrades: { "2": { participation: 0, assignment: 0, exam: 0 } } }
+              ];
+
+              const studs = migratedClasses["CIEP320_AP301"].students || [];
+              const hasAnaKarollina = studs.some((s: any) => s.name.includes("Ana Karollina"));
+              const hasGrades = studs.some((s: any) => s.trimestreGrades && s.trimestreGrades["2"] !== undefined);
+              if (!hasAnaKarollina || studs.length !== 17 || !hasGrades) {
+                migratedClasses["CIEP320_AP301"].students = correctStudents301;
                 needsUpdateRemote = true;
               }
             }
@@ -870,7 +918,15 @@ const App: React.FC = () => {
           classData={classData}
         />
       );
-      case 'decolonial': return <DecolonialApp onBack={goBack} setSlideViewerOpen={setSlideViewerOpen} />;
+      case 'decolonial': return (
+        <DecolonialApp 
+          onBack={goBack} 
+          setSlideViewerOpen={setSlideViewerOpen} 
+          classData={classData}
+          setClassData={setClassData}
+          onSave={handleSaveClasses}
+        />
+      );
       case 'calendar': return <CalendarView onBack={goBack} />;
       case 'daily-activities': return (
         <DailyActivityLogView 

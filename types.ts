@@ -18,11 +18,19 @@ export interface Achievement {
   unlockedAt?: string;
 }
 
+export interface TrimestreGrade {
+  participation?: number; // max 2
+  assignment?: number;    // max 3
+  exam?: number;          // max 5
+  recovery?: number;      // max 10
+}
+
 export interface Student {
   id: number;
   name: string;
   attendance: { [date: string]: 'P' | 'F' | null };
   grades?: { [assignmentId: string]: number };
+  trimestreGrades?: { [trimestre: string]: TrimestreGrade };
 }
 
 export interface Assignment {

@@ -9,6 +9,7 @@ interface Question {
   options?: string[];
   correctAnswer?: string;
   points: number;
+  expectedAnswer?: React.ReactNode;
 }
 
 interface Exam {
@@ -99,31 +100,63 @@ const EXAMS: Exam[] = [
         id: 'q6',
         type: 'discursive',
         text: 'Desenhe uma quadra de Handebol contendo as linhas de 6 metros e 9 metros. Em seguida, desenhe e posicione corretamente os 7 jogadores de uma equipe (incluindo o goleiro) para representar o sistema tático defensivo 5:1.',
-        points: 0.5
+        points: 0.5,
+        expectedAnswer: (
+          <div className="flex flex-col items-center mt-2 space-y-4">
+            <p>O aluno deve desenhar a meia quadra com a área de 6m (contínua) e 9m (tracejada). O goleiro fica dentro da área de 6m. 5 defensores formam uma linha (meio círculo) ao redor da linha de 6m e 1 defensor fica mais adiantado (o "bico" ou "ponta de lança"), entre as linhas de 6m e 9m ou próximo à de 9m.</p>
+            <div className="w-full max-w-[280px] h-[200px] border-4 border-slate-700 bg-orange-100/50 rounded-sm relative flex flex-col items-center justify-end overflow-hidden shadow-inner">
+              {/* Goal */}
+              <div className="absolute top-0 w-24 h-4 border-4 border-t-0 border-slate-700 bg-slate-300"></div>
+              
+              {/* 6m Line */}
+              <div className="absolute top-0 w-[240px] h-[100px] border-b-4 border-slate-700 rounded-b-full"></div>
+              
+              {/* 9m Line */}
+              <div className="absolute top-0 w-[300px] h-[150px] border-b-4 border-dashed border-slate-700 rounded-b-full opacity-50"></div>
+              
+              {/* Players (Red Dots) */}
+              <div className="absolute top-8 w-4 h-4 bg-red-500 rounded-full border-2 border-white shadow-sm flex items-center justify-center text-[8px] text-white font-bold">G</div>
+              
+              {/* 5 line */}
+              <div className="absolute top-[85px] left-[25px] w-4 h-4 bg-blue-600 rounded-full border-2 border-white shadow-sm"></div>
+              <div className="absolute top-[102px] left-[65px] w-4 h-4 bg-blue-600 rounded-full border-2 border-white shadow-sm"></div>
+              <div className="absolute top-[108px] left-[132px] w-4 h-4 bg-blue-600 rounded-full border-2 border-white shadow-sm"></div>
+              <div className="absolute top-[102px] right-[65px] w-4 h-4 bg-blue-600 rounded-full border-2 border-white shadow-sm"></div>
+              <div className="absolute top-[85px] right-[25px] w-4 h-4 bg-blue-600 rounded-full border-2 border-white shadow-sm"></div>
+              
+              {/* 1 advanced */}
+              <div className="absolute top-[135px] left-[132px] w-4 h-4 bg-blue-600 rounded-full border-2 border-white shadow-sm"></div>
+            </div>
+          </div>
+        )
       },
       {
         id: 'q7',
         type: 'discursive',
         text: 'No Futsal, além do goleiro, estudamos as funções táticas de linha. Cite as posições escolares do Futsal (Fixo, Alas e Pivô) e explique a função principal de uma delas.',
-        points: 0.5
+        points: 0.5,
+        expectedAnswer: "Fixo (Defesa e armação de jogadas desde o campo defensivo); Alas (Apoio pelas laterais, velocidade, ajudam na defesa e no ataque); Pivô (Referência no ataque, joga mais adiantado, muitas vezes de costas para o gol, para segurar a bola e preparar jogadas)."
       },
       {
         id: 'q8',
         type: 'discursive',
         text: 'Quais são as principais funções desempenhadas pelo Pivô no Futsal e no Handebol? Aponte uma semelhança no estilo de jogo dessa posição nos dois esportes.',
-        points: 0.5
+        points: 0.5,
+        expectedAnswer: "Futsal: Atua avançado, segura a bola no ataque de costas para o gol e distribui o jogo. Handebol: Joga infiltrado na defesa adversária (próximo à linha de 6m) criando espaços e bloqueios. Semelhança: Ambos jogam avançados, perto da área de gol do adversário, muitas vezes de costas para a marcação, servindo como referência ofensiva."
       },
       {
         id: 'q9',
         type: 'discursive',
         text: 'O Futevôlei foi um dos primeiros esportes de rede praticados no trimestre. Cite duas partes do corpo que foram estimuladas e praticadas para realizar a recepção e o passe da bola.',
-        points: 0.5
+        points: 0.5,
+        expectedAnswer: "Pés, coxas, peito e/ou cabeça."
       },
       {
         id: 'q10',
         type: 'discursive',
         text: 'Tanto o Handebol quanto o Futsal possuem regras rígidas sobre as áreas próximas ao gol (linha de 6m). O que acontece no Handebol se um jogador de ataque pisar nessa área durante um arremesso?',
-        points: 0.5
+        points: 0.5,
+        expectedAnswer: "Se o jogador de ataque pisar na área de 6m antes de soltar a bola no arremesso, a jogada é invalidada (invasão) e é marcado tiro livre para a equipe defensora. Obs: é permitido saltar para dentro da área desde que a bola seja lançada antes do jogador tocar o solo."
       }
     ]
   },
@@ -458,9 +491,14 @@ export const ExamRepositoryView = ({ onBack }: { onBack: () => void }) => {
                         <span className="text-slate-400 font-medium text-sm print:hidden">Espaço para resposta do aluno (5 a 8 linhas)</span>
                       </div>
                       <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl print:hidden">
-                        <p className="text-sm text-amber-800 font-medium">
-                          <strong>Gabarito Esperado (Professor):</strong> A resposta deve ser elaborada com base nos conceitos apresentados nos slides e anotações teóricas da aula.
-                        </p>
+                        <div className="text-sm text-amber-800 font-medium">
+                          <strong>Gabarito Esperado (Professor):</strong>
+                          {q.expectedAnswer ? (
+                            <div className="mt-2 text-slate-800 font-normal">{q.expectedAnswer}</div>
+                          ) : (
+                            <span className="ml-1">A resposta deve ser elaborada com base nos conceitos apresentados nos slides e anotações teóricas da aula.</span>
+                          )}
+                        </div>
                       </div>
                     </div>
                   )}

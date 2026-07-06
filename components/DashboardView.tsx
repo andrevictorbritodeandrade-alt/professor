@@ -95,67 +95,65 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ setView, classData
   ];
 
   return (
-    <div className="relative min-h-[calc(100vh-100px)] bg-black animate-fade-in -mx-3 md:-mx-6 -mt-3 md:-mt-6 p-4 md:p-8 overflow-hidden">
-      {/* Pure Deep Black Background with subtle top ambient glow */}
-      <div className="absolute inset-0 z-0 bg-black">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[180px] bg-sky-500/5 blur-[130px] pointer-events-none rounded-full" />
-      </div>
+    <div className="relative min-h-[calc(100vh-100px)] animate-fade-in -mx-3 md:-mx-6 -mt-3 md:-mt-6 p-4 md:p-8 overflow-hidden">
+      {/* Light Overlay to let background slider shine through elegantly */}
+      <div className="absolute inset-0 z-0 bg-[#fdfaf6]/10" />
 
       <div className="relative z-10 space-y-6 md:space-y-10 w-full px-4 md:px-8">
         {/* Header (Integrated for Premium Feel) */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-2 border-b border-white/10">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-2 border-b border-slate-300/80">
           <div>
-            <h2 className="text-4xl md:text-5xl font-black text-white tracking-tighter uppercase leading-none">Prof. André Brito</h2>
-            <p className="text-xs md:text-sm font-bold text-sky-400 tracking-[0.3em] uppercase mt-1">Controle de Aulas • Ed. Física & Geografia</p>
+            <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter uppercase leading-none">Prof. André Brito</h2>
+            <p className="text-xs md:text-sm font-bold text-sky-600 tracking-[0.3em] uppercase mt-1">Controle de Aulas • Ed. Física & Geografia</p>
           </div>
           <div className="hidden md:block text-right">
-            <p className="text-[10px] font-black text-white/40 uppercase tracking-widest">Status do Sistema</p>
-            <p className="text-xs font-bold text-green-400">ONLINE • SINCRONIZADO</p>
+            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Status do Sistema</p>
+            <p className="text-xs font-bold text-green-600">ONLINE • SINCRONIZADO</p>
           </div>
         </div>
 
-        {/* Real-time Stats Panel - Premium Cards */}
+        {/* Real-time Stats Panel - Premium Light Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-            <div className="bg-slate-950/80 backdrop-blur-xl border border-white/5 p-6 rounded-[2rem] flex items-center gap-5 shadow-[0_15px_30px_rgba(0,0,0,0.5)] group hover:border-sky-500/30 transition-all duration-500">
-              <div className="w-14 h-14 bg-gradient-to-br from-slate-900 to-black rounded-2xl flex items-center justify-center text-2xl shadow-inner border border-white/5 ring-1 ring-white/10">👥</div>
+            <div className="bg-white/80 backdrop-blur-xl border border-slate-200 p-6 rounded-[2rem] flex items-center gap-5 shadow-md group hover:border-sky-500/50 transition-all duration-500">
+              <div className="w-14 h-14 bg-gradient-to-br from-slate-100 to-white rounded-2xl flex items-center justify-center text-2xl shadow-inner border border-slate-200">👥</div>
               <div>
                 <p className="text-[10px] font-bold uppercase text-slate-500 tracking-[0.2em] mb-1">Total de Alunos</p>
-                <p className="text-3xl font-black text-white group-hover:text-sky-400 transition-colors">201</p>
+                <p className="text-3xl font-black text-slate-900 group-hover:text-sky-600 transition-colors">201</p>
               </div>
             </div>
-            <div className="bg-slate-950/80 backdrop-blur-xl border border-white/5 p-6 rounded-[2rem] flex items-center gap-5 shadow-[0_15px_30px_rgba(0,0,0,0.5)] group hover:border-emerald-500/30 transition-all duration-500">
-              <div className="w-14 h-14 bg-gradient-to-br from-slate-900 to-black rounded-2xl flex items-center justify-center text-2xl shadow-inner border border-white/5 ring-1 ring-white/10">📈</div>
+            <div className="bg-white/80 backdrop-blur-xl border border-slate-200 p-6 rounded-[2rem] flex items-center gap-5 shadow-md group hover:border-emerald-500/50 transition-all duration-500">
+              <div className="w-14 h-14 bg-gradient-to-br from-slate-100 to-white rounded-2xl flex items-center justify-center text-2xl shadow-inner border border-slate-200">📈</div>
               <div>
                 <p className="text-[10px] font-bold uppercase text-slate-500 tracking-[0.2em] mb-1">Média Assiduidade</p>
-                <p className="text-3xl font-black text-white group-hover:text-emerald-400 transition-colors">87%</p>
+                <p className="text-3xl font-black text-slate-900 group-hover:text-emerald-600 transition-colors">87%</p>
               </div>
             </div>
-            <div className="bg-slate-950/80 backdrop-blur-xl border border-white/5 p-6 rounded-[2rem] flex items-center gap-5 shadow-[0_15px_30px_rgba(0,0,0,0.5)] group hover:border-amber-500/30 transition-all duration-500">
-              <div className="w-14 h-14 bg-gradient-to-br from-slate-900 to-black rounded-2xl flex items-center justify-center text-2xl shadow-inner border border-white/5 ring-1 ring-white/10">🏫</div>
+            <div className="bg-white/80 backdrop-blur-xl border border-slate-200 p-6 rounded-[2rem] flex items-center gap-5 shadow-md group hover:border-amber-500/50 transition-all duration-500">
+              <div className="w-14 h-14 bg-gradient-to-br from-slate-100 to-white rounded-2xl flex items-center justify-center text-2xl shadow-inner border border-slate-200">🏫</div>
               <div>
                 <p className="text-[10px] font-bold uppercase text-slate-500 tracking-[0.2em] mb-1">Turmas Ativas</p>
-                <p className="text-3xl font-black text-white group-hover:text-amber-400 transition-colors">9</p>
+                <p className="text-3xl font-black text-slate-900 group-hover:text-amber-600 transition-colors">9</p>
               </div>
             </div>
         </div>
 
-        {/* Cards Grid - High Fidelity Illustrations */}
+        {/* Cards Grid - High Fidelity Illustrations with Light-Translucent protection */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {menuCards.map((card) => (
             <div 
               key={card.id}
               onClick={card.action}
-              className="relative aspect-video sm:aspect-square lg:aspect-[4/5] overflow-hidden rounded-[2.5rem] cursor-pointer group shadow-[0_25px_50px_rgba(0,0,0,0.8)] border border-white/5 bg-slate-950/90 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-sky-500/30 hover:shadow-sky-500/5"
+              className="relative aspect-video sm:aspect-square lg:aspect-[4/5] overflow-hidden rounded-[2.5rem] cursor-pointer group shadow-lg border border-slate-200 bg-white/95 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-sky-500/50"
             >
               {/* Card Illustration Background - Beautifully visible illustrations with smooth text protection gradient */}
               <div className="absolute inset-0 z-0">
                 <img 
                   src={card.image} 
                   alt={card.title}
-                  className="w-full h-full object-cover opacity-65 group-hover:opacity-85 transform group-hover:scale-105 transition-all duration-700"
+                  className="w-full h-full object-cover opacity-75 group-hover:opacity-95 transform group-hover:scale-105 transition-all duration-700"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-black/10 transition-all duration-500"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent transition-all duration-500"></div>
               </div>
               
               {/* Content Overlay */}
@@ -163,16 +161,16 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ setView, classData
                 {/* Small indicator bar */}
                 <div className="w-10 h-[3px] bg-sky-400 rounded-full mb-4 group-hover:w-16 transition-all duration-300"></div>
 
-                <h3 className="text-2xl md:text-3xl font-black text-white mb-2 tracking-tight group-hover:text-sky-300 group-hover:translate-x-1 transition-all uppercase leading-tight">
+                <h3 className="text-2xl md:text-3xl font-black text-white mb-2 tracking-tight group-hover:text-sky-200 group-hover:translate-x-1 transition-all uppercase leading-tight">
                   {card.title}
                 </h3>
-                <p className="text-xs md:text-sm text-slate-400 font-light leading-relaxed group-hover:text-slate-200 transition-colors">
+                <p className="text-xs md:text-sm text-slate-200 font-bold leading-relaxed group-hover:text-slate-100 transition-colors">
                   {card.description}
                 </p>
               </div>
 
               {/* Selection Indicator Glow */}
-              <div className="absolute inset-0 ring-1 ring-white/5 group-hover:ring-sky-500/20 rounded-[2.5rem] transition-all duration-300"></div>
+              <div className="absolute inset-0 ring-1 ring-slate-900/5 group-hover:ring-sky-500/20 rounded-[2.5rem] transition-all duration-300"></div>
             </div>
           ))}
         </div>
