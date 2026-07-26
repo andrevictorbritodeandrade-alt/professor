@@ -41,56 +41,112 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ setView, classData
       title: 'FREQUÊNCIAS',
       description: 'Gestão de turmas e chamadas diárias.',
       image: '/src/assets/images/frequencias_premium_1779983180555.png',
-      action: () => setView('classes')
+      action: () => setView('classes'),
+      colorName: 'Azul Celeste',
+      badgeClass: 'bg-sky-50 text-sky-700 border border-sky-200/60 shadow-sm',
+      barBg: 'bg-sky-500',
+      hoverBorder: 'hover:border-sky-500/80 hover:shadow-sky-500/10',
+      hoverText: 'group-hover:text-sky-200',
+      glowGradient: 'from-sky-600/20',
+      glowRing: 'group-hover:ring-sky-500/30'
     },
     {
       id: 'schedule',
       title: 'GRADE DE HORÁRIOS',
       description: 'Cronograma semanal das aulas.',
       image: '/src/assets/images/grade_horarios_premium_1779983196214.png',
-      action: () => setView('schedule')
+      action: () => setView('schedule'),
+      colorName: 'Esmeralda',
+      badgeClass: 'bg-emerald-50 text-emerald-700 border border-emerald-200/60 shadow-sm',
+      barBg: 'bg-emerald-500',
+      hoverBorder: 'hover:border-emerald-500/80 hover:shadow-emerald-500/10',
+      hoverText: 'group-hover:text-emerald-200',
+      glowGradient: 'from-emerald-600/20',
+      glowRing: 'group-hover:ring-emerald-500/30'
     },
     {
       id: 'statistics',
       title: 'ESTATÍSTICAS',
       description: 'Métricas de assiduidade e progresso.',
       image: '/src/assets/images/estatisticas_premium_1779983211882.png',
-      action: () => setView('statistics')
+      action: () => setView('statistics'),
+      colorName: 'Índigo Violeta',
+      badgeClass: 'bg-indigo-50 text-indigo-700 border border-indigo-200/60 shadow-sm',
+      barBg: 'bg-indigo-500',
+      hoverBorder: 'hover:border-indigo-500/80 hover:shadow-indigo-500/10',
+      hoverText: 'group-hover:text-indigo-200',
+      glowGradient: 'from-indigo-600/20',
+      glowRing: 'group-hover:ring-indigo-500/30'
     },
     {
       id: 'ementa',
       title: 'EMENTA',
       description: 'Fundamentos, objetivos e referências.',
       image: '/src/assets/images/ementa_premium_1779983243784.png',
-      action: () => setView('ementa')
+      action: () => setView('ementa'),
+      colorName: 'Âmbar Dourado',
+      badgeClass: 'bg-amber-50 text-amber-700 border border-amber-200/60 shadow-sm',
+      barBg: 'bg-amber-400',
+      hoverBorder: 'hover:border-amber-500/80 hover:shadow-amber-500/10',
+      hoverText: 'group-hover:text-amber-200',
+      glowGradient: 'from-amber-600/20',
+      glowRing: 'group-hover:ring-amber-500/30'
     },
     {
       id: 'plano',
       title: 'PLANO DE CURSO',
       description: 'Cronograma trimestral dos conteúdos.',
       image: '/src/assets/images/plano_curso_premium_1779983225779.png',
-      action: () => setView('plano')
+      action: () => setView('plano'),
+      colorName: 'Rosa Coral',
+      badgeClass: 'bg-rose-50 text-rose-700 border border-rose-200/60 shadow-sm',
+      barBg: 'bg-rose-500',
+      hoverBorder: 'hover:border-rose-500/80 hover:shadow-rose-500/10',
+      hoverText: 'group-hover:text-rose-200',
+      glowGradient: 'from-rose-600/20',
+      glowRing: 'group-hover:ring-rose-500/30'
     },
     {
       id: 'decolonial',
       title: 'GESTÃO DO PROFESSOR',
       description: 'Decolonização de corpos, identidades e mídias.',
       image: '/src/assets/images/gestao_professor_premium_1779983261744.png',
-      action: () => setView('decolonial')
+      action: () => setView('decolonial'),
+      colorName: 'Púrpura',
+      badgeClass: 'bg-purple-50 text-purple-700 border border-purple-200/60 shadow-sm',
+      barBg: 'bg-purple-500',
+      hoverBorder: 'hover:border-purple-500/80 hover:shadow-purple-500/10',
+      hoverText: 'group-hover:text-purple-200',
+      glowGradient: 'from-purple-600/20',
+      glowRing: 'group-hover:ring-purple-500/30'
     },
     {
       id: 'calendar',
       title: 'CALENDÁRIO ESCOLAR 2026',
       description: 'Calendário letivo oficial da Rede SEEDUC/RJ.',
       image: '/src/assets/images/calendario_2026_premium_1779983280133.png',
-      action: () => setView('calendar')
+      action: () => setView('calendar'),
+      colorName: 'Laranja Flame',
+      badgeClass: 'bg-orange-50 text-orange-700 border border-orange-200/60 shadow-sm',
+      barBg: 'bg-orange-500',
+      hoverBorder: 'hover:border-orange-500/80 hover:shadow-orange-500/10',
+      hoverText: 'group-hover:text-orange-200',
+      glowGradient: 'from-orange-600/20',
+      glowRing: 'group-hover:ring-orange-500/30'
     },
     {
       id: 'daily-activities',
       title: 'REGISTRO DIÁRIO',
       description: 'Lançamento e diário de atividades das aulas.',
       image: '/src/assets/images/registro_diario_premium_1779983296811.png',
-      action: () => setView('daily-activities')
+      action: () => setView('daily-activities'),
+      colorName: 'Menta / Teal',
+      badgeClass: 'bg-teal-50 text-teal-700 border border-teal-200/60 shadow-sm',
+      barBg: 'bg-teal-400',
+      hoverBorder: 'hover:border-teal-500/80 hover:shadow-teal-500/10',
+      hoverText: 'group-hover:text-teal-200',
+      glowGradient: 'from-teal-600/20',
+      glowRing: 'group-hover:ring-teal-500/30'
     }
   ];
 
@@ -143,8 +199,15 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ setView, classData
             <div 
               key={card.id}
               onClick={card.action}
-              className="relative aspect-video sm:aspect-square lg:aspect-[4/5] overflow-hidden rounded-[2.5rem] cursor-pointer group shadow-lg border border-slate-200 bg-white/95 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:border-sky-500/50"
+              className={`relative aspect-video sm:aspect-square lg:aspect-[4/5] overflow-hidden rounded-[2.5rem] cursor-pointer group shadow-lg border border-slate-200 bg-white/95 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 ${card.hoverBorder}`}
             >
+              {/* Category / Color Tag */}
+              <div className="absolute top-5 left-5 z-20">
+                <span className={`px-3 py-1 text-[9px] md:text-[10px] font-black uppercase tracking-widest rounded-xl shadow-sm ${card.badgeClass}`}>
+                  {card.colorName}
+                </span>
+              </div>
+
               {/* Card Illustration Background - Beautifully visible illustrations with smooth text protection gradient */}
               <div className="absolute inset-0 z-0">
                 <img 
@@ -153,15 +216,19 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ setView, classData
                   className="w-full h-full object-cover opacity-75 group-hover:opacity-95 transform group-hover:scale-105 transition-all duration-700"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent transition-all duration-500"></div>
+                {/* Dynamic colored wash overlay */}
+                <div className={`absolute inset-0 bg-gradient-to-tr ${card.glowGradient} via-transparent to-transparent opacity-45 group-hover:opacity-75 transition-opacity duration-500 z-[1]`} />
+                
+                {/* Text protection dark gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent transition-all duration-500 z-[2]"></div>
               </div>
               
               {/* Content Overlay */}
               <div className="absolute inset-0 p-6 md:p-8 z-10 flex flex-col justify-end h-full">
                 {/* Small indicator bar */}
-                <div className="w-10 h-[3px] bg-sky-400 rounded-full mb-4 group-hover:w-16 transition-all duration-300"></div>
+                <div className={`w-10 h-[3px] ${card.barBg} rounded-full mb-4 group-hover:w-16 transition-all duration-300`}></div>
 
-                <h3 className="text-2xl md:text-3xl font-black text-white mb-2 tracking-tight group-hover:text-sky-200 group-hover:translate-x-1 transition-all uppercase leading-tight">
+                <h3 className={`text-2xl md:text-3xl font-black text-white mb-2 tracking-tight ${card.hoverText} group-hover:translate-x-1 transition-all uppercase leading-tight`}>
                   {card.title}
                 </h3>
                 <p className="text-xs md:text-sm text-slate-200 font-bold leading-relaxed group-hover:text-slate-100 transition-colors">
@@ -170,7 +237,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ setView, classData
               </div>
 
               {/* Selection Indicator Glow */}
-              <div className="absolute inset-0 ring-1 ring-slate-900/5 group-hover:ring-sky-500/20 rounded-[2.5rem] transition-all duration-300"></div>
+              <div className={`absolute inset-0 ring-1 ring-slate-900/5 ${card.glowRing} rounded-[2.5rem] transition-all duration-300 z-20`}></div>
             </div>
           ))}
         </div>
