@@ -13,17 +13,19 @@
     <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/3001/3001787.png">
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/3001/3001787.png">
     
-    <!-- Import Arial/Helvetica fallback style -->
-    
+    <!-- Premium Modern Typography: Plus Jakarta Sans & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
             fontFamily: {
-              sans: ['Arial', 'Helvetica', 'sans-serif'],
-              serif: ['Arial', 'Helvetica', 'sans-serif'],
-              mono: ['Arial', 'Helvetica', 'sans-serif'],
+              sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+              display: ['"Outfit"', '"Plus Jakarta Sans"', 'sans-serif'],
             },
             keyframes: {
               fadeIn: {
@@ -51,63 +53,43 @@
 
     <style>
       body {
-        background-color: #fdfaf6; /* Pérola/Champagne claro */
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background-color: #f8fafc;
+        color: #0f172a;
         margin: 0;
-        overflow-x: hidden; /* Prevent horizontal scroll */
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
+        line-height: 1.5;
+        letter-spacing: -0.011em;
       }
 
-      * {
-        font-family: 'Arial', 'Helvetica', sans-serif !important;
+      h1, h2, h3, h4, h5, h6, .font-display {
+        font-family: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
       }
-      
-      /* Global Typography Constraints: Font size 12px for body, 14px for heavy titles */
-      p, span, li, td, th, input, select, textarea, button, a, label,
-      .text-xs, .text-sm, .text-base,
-      [class*="text-xs"], [class*="text-sm"], [class*="text-base"] {
-        font-size: 12px !important;
-      }
-      
-      h1, h2, h3, h4, h5, h6, 
-      h1 *, h2 *, h3 *, h4 *, h5 *, h6 *, 
-      .app-title, .font-title, .uppercase-text,
-      .text-lg, .text-xl, .text-2xl, .text-3xl, .text-4xl,
-      [class*="text-lg"], [class*="text-xl"], [class*="text-2xl"], [class*="text-3xl"], [class*="text-4xl"],
-      .font-semibold, .font-bold, .font-extrabold, .font-black,
-      [class*="font-semibold"], [class*="font-bold"], [class*="font-extrabold"], [class*="font-black"] {
-        font-size: 14px !important;
-        font-weight: 900 !important;
-      }
-      
-      h1, h2, h3, h4, h5, h6, header, header *, .uppercase-text {
-        text-transform: uppercase !important;
-      }
-      
-      /* Cabeçalho padrão (Sky Blue) - aplicável via classe no React */
-      .header-sky-blue {
-        background-color: #0ea5e9; /* Sky Blue */
-      }
+
       /* Custom scrollbar */
       ::-webkit-scrollbar {
         width: 8px;
         height: 8px;
       }
       ::-webkit-scrollbar-track {
-        background: #f1f1f1; 
+        background: #f1f5f9; 
       }
       ::-webkit-scrollbar-thumb {
-        background: #888; 
-        border-radius: 4px;
+        background: #cbd5e1; 
+        border-radius: 9999px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #555; 
+        background: #94a3b8; 
       }
       
-      /* ESTILO DE VIDRO ATUALIZADO */
       .glass-panel {
-        background-color: rgba(255, 255, 255, 0.85); /* Mais transparência (era 0.96) */
-        backdrop-filter: blur(16px); /* Blur mais forte para suavizar o fundo */
-        border: 1px solid rgba(255, 255, 255, 0.6); /* Borda mais definida */
-        box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15); /* Sombra suave para profundidade */
+        background-color: rgba(255, 255, 255, 0.88);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(226, 232, 240, 0.8);
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
       }
       
       .custom-scrollbar::-webkit-scrollbar {
@@ -115,20 +97,20 @@
         height: 6px;
       }
       .custom-scrollbar::-webkit-scrollbar-track {
-        background: rgba(0,0,0,0.05);
+        background: rgba(0,0,0,0.03);
         border-radius: 4px;
       }
       .custom-scrollbar::-webkit-scrollbar-thumb {
-        background: rgba(0,0,0,0.2);
+        background: rgba(0,0,0,0.15);
         border-radius: 4px;
       }
       .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-        background: rgba(0,0,0,0.3);
+        background: rgba(0,0,0,0.25);
       }
 
       /* Animated Gradient Text */
       .animate-gradient-text {
-        background: linear-gradient(to right, #60a5fa, #c084fc, #f472b6, #60a5fa);
+        background: linear-gradient(to right, #2563eb, #7c3aed, #db2777, #2563eb);
         background-size: 200% auto;
         color: transparent;
         -webkit-background-clip: text;

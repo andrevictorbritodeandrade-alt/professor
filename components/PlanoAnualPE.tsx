@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Calendar, Info, X, Filter, Users, BookOpen, ClipboardList, CheckCircle, Bell, Download, ChevronLeft } from 'lucide-react';
+import { Calendar, Info, X, Filter, Users, BookOpen, ClipboardList, CheckCircle, Bell, Download, ChevronLeft, Presentation } from 'lucide-react';
 import { PE_PLAN } from '../data/planosPE';
 
 // Mapeamento de IDs de turma para chaves do plano
@@ -69,7 +69,7 @@ const AULA_VARZEA = { title: 'Futebol, Racismo e Várzea', description: 'Teoria:
 const AULA_ESPORTS = { title: 'E-Sports e o Corpo', description: 'Teoria: O lucro da indústria dos games, o sedentarismo e o "roubo do tempo" da juventude.\\n\\nPrática: "Stop" (Adedonha) Esportivo no caderno. Categorias: Esporte com bola, Atleta negro histórico, Jogo de rua, Músculo do corpo. Ganha quem tiver mais vocabulário.' };
 const AULA_ONCA = { title: 'Jogos Indígenas (Onça)', description: 'Teoria: A cultura dos povos originários e o "Jogo da Onça" (Bororo/Guarani), que ensina estratégia e preservação.\\n\\nPrática: Desenhar o tabuleiro no caderno e jogar com bolinhas de papel amssado (1 onça vs 14 cachorros).' };
 const AULA_TABULEIROS = { title: 'Festival de Tabuleiros', description: 'Atividade focada: Aula livre para que os alunos joguem Xadrez e Damas. O professor atua como instrutor e orienta as estratégias.' };
-const AULA_PARALIMPICO = { title: 'Esporte Paralímpico', description: 'Teoria: História das Paralimpíadas, acessibilidade urbana e o direito ao esporte para PCDs.\\n\\nPrática: Vôlei de Balão Sentado. Afastar as carteiras. Todos devem jogar sentados e passar a bexiga sem deixar cair.' };
+const AULA_PARALIMPICO = { title: 'Retorno de Férias & Teoria Paralímpica', description: 'Acolhimento de volta das férias de julho com roda de conversa quebra-gelo.\\n\\nAula 100% teórica em sala sobre Inclusão, Acessibilidade e Esporte Paralímpico (Apresentação de slides intercalando fala do professor e conteúdo para cópia no quadro).' };
 const AULA_PADROES = { title: 'Corpo, Mídia e Padrões', description: 'Teoria: Estudo sobre racismo estético (Cida Bento/Fanon). Como a mídia constrói um "padrão de beleza" irreal que adoece os jovens.\\n\\nPrática: Jogo "Quem sou eu?" com post-its na testa, usando nomes de atletas e personalidades para quebrar estereótipos.' };
 const AULA_PRECISAO = { title: 'Esportes de Precisão', description: 'Teoria: A diferença entre esportes de invasão, rede e precisão (como arco e flecha, bocha).\\n\\nPrática: Arremesso de bolinha de papel em lixeiras com distâncias e pontuações variadas.' };
 const AULA_ILHA = { title: 'Competição vs Cooperação', description: 'Teoria: A lógica capitalista de "vencer o outro" vs a lógica coletiva de "crescer junto".\\n\\nPrática: Jogo "A Ilha" na sala de aula. Eles recebem folhas de jornal e todos precisam caber dentro sem rasgar, exigindo estratégia e ajuda mútua.' };
@@ -770,6 +770,21 @@ export const PlanoAnualPE: React.FC<{ onBack: () => void }> = ({ onBack }) => {
             {/* Rodapé do Modal */}
             <div className="p-6 bg-slate-900 border-t border-slate-700 flex flex-col sm:flex-row justify-between items-center gap-4">
               
+              {(modalData.activity.title.toLowerCase().includes('paralímpic') || modalData.activity.title.toLowerCase().includes('retorno') || modalData.date === '27/07') && (
+                <button 
+                  onClick={() => {
+                    setModalData(null);
+                    if ((window as any).openSlideViewer) {
+                      (window as any).openSlideViewer('paralimpico');
+                    }
+                  }}
+                  className="w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 bg-indigo-600 hover:bg-indigo-500 text-white font-black uppercase tracking-widest text-xs rounded-xl shadow-lg transition-all border border-indigo-400/30"
+                >
+                  <Presentation size={20} />
+                  Abrir Slides & Lousa (7 Slides Intercalados)
+                </button>
+              )}
+
               <button 
                 onClick={() => toggleCompletion(modalData.classId, modalData.date)}
                 className={`w-full sm:w-auto flex items-center justify-center gap-3 px-8 py-4 font-black uppercase tracking-widest text-xs rounded-xl transition-all ${

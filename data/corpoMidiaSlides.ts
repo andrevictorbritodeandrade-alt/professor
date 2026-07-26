@@ -451,3 +451,80 @@ export const ALTINHA_FUTVOLEI_SLIDES = [
     theme: "hero"
   }
 ];
+
+export const SLIDES_PARALIMPICO = [
+  {
+    title: "1/7 • 🗣️ FALA DO PROFESSOR: RODA DE ACOLHIMENTO",
+    subtitle: "Acolhimento de Volta das Férias de Julho • 2º Trimestre 2026",
+    content: "Bem-vindos de volta! Como foram as férias de vocês? Vamos iniciar com uma roda de conversa de acolhimento para compartilharmos vivências do recesso e nos reconectarmos com a rotina escolar.",
+    points: [
+      "Escuta Ativa: Quem conseguiu descansar, brincar, passear ou praticar algum esporte nas férias?",
+      "Reconexão Corporal: Como nosso corpo reage ao retorno à rotina de estudos?",
+      "A transição pedagógica: Hoje nossa aula será 100% TEÓRICA em sala, intercalando momentos de conversa e anotações no quadro."
+    ],
+    dicaProfessor: "Inicie a aula em tom acolhedor e descontraído. Deixe os alunos falarem brevemente sobre as férias antes de puxar o gancho para o tema de inclusão."
+  },
+  {
+    title: "2/7 • ✍️ CONTEÚDO NO QUADRO: COPIAR NO CADERNO (BLOCO 1)",
+    subtitle: "Assunto: Módulo de Inclusão e Conceito de Acessibilidade",
+    points: [
+      "1. Acolhimento e Convivência: O reinício das aulas marca o fortalecimento da empatia e do respeito às diferenças no ambiente escolar.",
+      "2. Conceito de Inclusão: Inclusão significa garantir que todas as pessoas, com ou sem deficiência, tenham o direito de pertencer e participar plenamente da sociedade.",
+      "3. Adaptação do Meio: O espaço físico e a sociedade devem se adaptar às necessidades das pessoas, e não o contrário."
+    ],
+    dicaProfessor: "Escreva este bloco no quadro. Aguarde todos copiarem antes de avançar para a próxima explicação verbal."
+  },
+  {
+    title: "3/7 • 🗣️ FALA DO PROFESSOR: O ESPORTE PARALÍMPICO",
+    subtitle: "Da Reabilitação ao Alto Rendimento Global",
+    content: "Exposição oral do professor introduzindo a história do desporto adaptado no Brasil e no mundo.",
+    points: [
+      "Origem Histórica: O esporte adaptado começou após a 2ª Guerra Mundial para reabilitar soldados feridos (Hospital de Stoke Mandeville).",
+      "Quebrando Preconceitos: Atletas paralímpicos NÃO são 'coitadinhos'. São atletas de elite com alto nível de rendimento, disciplina e superação física.",
+      "Tecnologia e Adaptação: Próteses de carbono, cadeiras esportivas e bolas com guizo como extensão do corpo do atleta."
+    ],
+    dicaProfessor: "Converse sobre a diferença entre 'capacitismo' (olhar de pena) e o respeito à performance atlética do paratleta."
+  },
+  {
+    title: "4/7 • ✍️ CONTEÚDO NO QUADRO: COPIAR NO CADERNO (BLOCO 2)",
+    subtitle: "Assunto: História e Modalidades do Esporte Paralímpico",
+    points: [
+      "1. Movimento Paralímpico: Surgiu na Inglaterra em 1948 (Stoke Mandeville) e teve sua primeira edição de Jogos Paralímpicos em Roma (1960).",
+      "2. Classificação Funcional: Os atletas são agrupados conforme seu grau de funcionalidade motora/sensorial para garantir disputas justas.",
+      "3. Modalidades de Destaque: Vôlei Sentado, Futebol de 5 (cegos), Atletismo Adaptado, Basquete em Cadeira de Rodas, Natação e Bocha Paralímpica."
+    ],
+    dicaProfessor: "Passe o bloco 2 para o quadro com letra legível e tópicos bem espaçados."
+  },
+  {
+    title: "5/7 • 🗣️ FALA DO PROFESSOR: DEBATE DE ACESSIBILIDADE",
+    subtitle: "Barreiras Arquitetônicas e Atitudinais no Nosso Cotidiano",
+    content: "Debate guiado pelo professor conectando o esporte adaptado à realidade local da escola e do município.",
+    points: [
+      "Barreiras Arquitetônicas: Calçadas esburacadas, ausência de rampas, ônibus sem elevador e banheiros inacessíveis.",
+      "Barreiras Atitudinais: O preconceito, a falta de paciência e as piadas ofensivas contra pessoas com deficiência.",
+      "Reflexão em Grupo: 'A nossa escola e o nosso bairro em Maricá/Baixada são acessíveis para um aluno cego ou cadeirante?'"
+    ],
+    dicaProfessor: "Estimule os alunos a identificarem barreiras físicas e atitudinais no caminho de casa até a escola."
+  },
+  {
+    title: "6/7 • ✍️ CONTEÚDO NO QUADRO: COPIAR NO CADERNO (BLOCO 3)",
+    subtitle: "Assunto: Capacitismo, Acessibilidade e Exercício",
+    points: [
+      "1. Capacitismo: Preconceito estrutural que discrimina, inferioriza ou duvida da capacidade de pessoas com deficiência.",
+      "2. Acessibilidade Atitudinal: Ação consciente de combater preconceitos, usar linguagem respeitosa e incluir todos nas dinâmicas sociais.",
+      "3. Exercício de Fixação: Escreva no caderno: 'Cite 2 barreiras físicas que você observa no seu cotidiano e proponha uma solução prática de acessibilidade.'"
+    ],
+    dicaProfessor: "Escreva as 3 questões/pontos no quadro e dê 10 minutos para os alunos responderem individualmente."
+  },
+  {
+    title: "7/7 • 🗣️ FALA DO PROFESSOR: FECHAMENTO & PRÓXIMOS PASSO",
+    subtitle: "Visto nos Cadernos e Expectativas do 2º Trimestre",
+    content: "Encerramento da aula teórica de retorno e preparação para a sequência do trimestre.",
+    points: [
+      "Visto de Caderno: O professor passará nas carteiras dando o visto no registro teórico do dia.",
+      "Sequência Curricular: Na próxima aula, aprofundaremos as modalidades paralímpicas e a crítica sobre Mídia e Padrões de Beleza.",
+      "Compromisso do Trimestre: Manter os cadernos em dia e cultivar o respeito e a inclusão em todas as nossas aulas de Educação Física!"
+    ],
+    dicaProfessor: "Dê o visto nos cadernos organizadamente e parabenize a turma pelo foco e pela maturidade na discussão teórica."
+  }
+];
