@@ -22,9 +22,29 @@ export const GradesView: React.FC<GradesViewProps> = ({
   setClassData, 
   onSave 
 }) => {
-  const [selectedSchool, setSelectedSchool] = useState<string | null>(null);
-  const [selectedClassId, setSelectedClassId] = useState<string | null>(null);
-  const [selectedTrimestre, setSelectedTrimestre] = useState<string>("2"); // Defaults to 2nd Quarter
+  const [selectedSchool, setSelectedSchool] = useState<string | null>(() => {
+    return localStorage.getItem('grades_selectedSchool') || null;
+  });
+  const [selectedClassId, setSelectedClassId] = useState<string | null>(() => {
+    return localStorage.getItem('grades_selectedClassId') || null;
+  });
+  const [selectedTrimestre, setSelectedTrimestre] = useState<string>(() => {
+    return localStorage.getItem('grades_selectedTrimestre') || "2";
+  });
+
+  useEffect(() => {
+    if (selectedSchool) localStorage.setItem('grades_selectedSchool', selectedSchool);
+    else localStorage.removeItem('grades_selectedSchool');
+  }, [selectedSchool]);
+
+  useEffect(() => {
+    if (selectedClassId) localStorage.setItem('grades_selectedClassId', selectedClassId);
+    else localStorage.removeItem('grades_selectedClassId');
+  }, [selectedClassId]);
+
+  useEffect(() => {
+    if (selectedTrimestre) localStorage.setItem('grades_selectedTrimestre', selectedTrimestre);
+  }, [selectedTrimestre]);
   const [searchTerm, setSearchTerm] = useState("");
   const [saveSuccess, setSaveSuccess] = useState(false);
   const [isSaving, setIsSaving] = useState(false);

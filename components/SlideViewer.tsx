@@ -228,8 +228,8 @@ export const SlideViewer: React.FC<{ onClose: () => void, slideType?: 'corpo-mid
     return 'Debate: Corpo e Mídia';
   };
 
-  const isTeacherTalk = slide.category === 'ROTEIRO_PROFESSOR' || slide.title?.includes('FALA DO PROFESSOR') || slide.title?.includes('ROTEIRO DO PROFESSOR');
-  const isBoardCopy = slide.category === 'LOUSA_ALUNO' || slide.title?.includes('CONTEÚDO NO QUADRO') || slide.title?.includes('LOUSA');
+  const isTeacherTalk = (slide as any)?.category === 'ROTEIRO_PROFESSOR' || slide.title?.includes('FALA DO PROFESSOR') || slide.title?.includes('ROTEIRO DO PROFESSOR');
+  const isBoardCopy = (slide as any)?.category === 'LOUSA_ALUNO' || slide.title?.includes('CONTEÚDO NO QUADRO') || slide.title?.includes('LOUSA');
 
   return (
     <div className="fixed inset-0 z-[9999] bg-slate-900 flex flex-col h-screen overflow-hidden text-slate-100">

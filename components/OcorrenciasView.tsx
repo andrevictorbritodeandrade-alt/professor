@@ -23,9 +23,17 @@ export const OcorrenciasView: React.FC<OcorrenciasViewProps> = ({ onBack }) => {
   const [loading, setLoading] = useState(true);
 
   // Selection states
-  const [selectedSchool, setSelectedSchool] = useState<string>('');
+  const [selectedSchool, setSelectedSchool] = useState<string>(() => {
+    return localStorage.getItem('ocorrencias_selectedSchool') || '';
+  });
   const [selectedClass, setSelectedClass] = useState<ClassData | null>(null);
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
+
+  useEffect(() => {
+    if (selectedSchool) {
+      localStorage.setItem('ocorrencias_selectedSchool', selectedSchool);
+    }
+  }, [selectedSchool]);
 
   // Form states
   const [formDate, setFormDate] = useState<string>(new Date().toISOString().split('T')[0]);

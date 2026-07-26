@@ -90,18 +90,38 @@ const App: React.FC = () => {
   const [accessLevel, setAccessLevel] = useState<'portal' | 'alunos' | 'professor_login' | 'professor'>(() => {
     return (localStorage.getItem('app_accessLevel') as any) || 'portal';
   });
-  const [currentView, setView] = useState<ViewState>(() => {
+  const ALL_VALID_VIEWS: ViewState[] = [
+    'home', 'statistics', 'classes', 'profile', 'ementa', 'plano', 
+    'lesson-content', 'schedule', 'gallery', 'assignments', 'biblioteca', 
+    'register-activities', 'decolonial', 'calendar', 'daily-activities', 'alunos-view'
+  ];
 
+  const [currentView, setView] = useState<ViewState>(() => {
     const hash = window.location.hash.replace('#', '');
-    if (hash && ['home', 'statistics', 'classes', 'ementa', 'plano', 'profile', 'decolonial'].includes(hash)) {
+    if (hash && ALL_VALID_VIEWS.includes(hash as ViewState)) {
       return hash as ViewState;
     }
-    return (localStorage.getItem('app_currentView') as ViewState) || 'home';
+    const saved = localStorage.getItem('app_currentView') as ViewState;
+    if (saved && ALL_VALID_VIEWS.includes(saved)) {
+      return saved;
+    }
+    return 'home';
   });
   
   useEffect(() => {
     localStorage.setItem('app_accessLevel', accessLevel);
   }, [accessLevel]);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace('#', '');
+      if (hash && ALL_VALID_VIEWS.includes(hash as ViewState)) {
+        setView(hash as ViewState);
+      }
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
 
   // Shared State
   const [classData, setClassData] = useState<ClassDataMap>(() => {
@@ -961,7 +981,18 @@ const App: React.FC = () => {
   };
 
   // Slide Viewer State
-  const [slideViewerOpen, setSlideViewerOpen] = useState<{ type: 'corpo-midia' | 'altinha-futvolei' } | null>(null);
+  const [slideViewerOpen, setSlideViewerOpen] = useState<{ type: 'corpo-midia' | 'altinha-futvolei' } | null>(() => {
+    const saved = localStorage.getItem('app_slideViewerOpen');
+    return saved ? JSON.parse(saved) : null;
+  });
+
+  useEffect(() => {
+    if (slideViewerOpen) {
+      localStorage.setItem('app_slideViewerOpen', JSON.stringify(slideViewerOpen));
+    } else {
+      localStorage.removeItem('app_slideViewerOpen');
+    }
+  }, [slideViewerOpen]);
 
   useEffect(() => {
     (window as any).openSlideViewer = (type: 'corpo-midia' | 'altinha-futvolei') => setSlideViewerOpen({ type });

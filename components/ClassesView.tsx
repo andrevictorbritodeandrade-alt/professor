@@ -89,7 +89,14 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
   const [targetClassId, setTargetClassId] = useState('');
   
   // Date Logic
-  const [activeTrimesterId, setActiveTrimesterId] = useState<number>(2);
+  const [activeTrimesterId, setActiveTrimesterId] = useState<number>(() => {
+    const saved = localStorage.getItem('classes_activeTrimesterId');
+    return saved ? parseInt(saved, 10) : 2;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('classes_activeTrimesterId', activeTrimesterId.toString());
+  }, [activeTrimesterId]);
 
   const getTodayISO = () => {
     const today = new Date();

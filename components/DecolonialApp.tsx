@@ -341,10 +341,51 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
   setClassData,
   onSave
 }) => {
-  const [currentView, setCurrentView] = useState('menu');
-  const [selectedAulaData, setSelectedAulaData] = useState<string | null>(null);
-  const [planningSubView, setPlanningSubView] = useState<null | '8ano' | 'ap' | 'ap_sexta' | 'gestao'>(null);
-  const [selectedAulaPlan, setSelectedAulaPlan] = useState<any>(null);
+  const [currentView, setCurrentView] = useState(() => {
+    return localStorage.getItem('decolonial_currentView') || 'menu';
+  });
+  const [selectedAulaData, setSelectedAulaData] = useState<string | null>(() => {
+    return localStorage.getItem('decolonial_selectedAulaData') || null;
+  });
+  const [planningSubView, setPlanningSubView] = useState<null | '8ano' | 'ap' | 'ap_sexta' | 'gestao'>(() => {
+    return (localStorage.getItem('decolonial_planningSubView') as any) || null;
+  });
+  const [selectedAulaPlan, setSelectedAulaPlan] = useState<any>(() => {
+    const saved = localStorage.getItem('decolonial_selectedAulaPlan');
+    return saved ? JSON.parse(saved) : null;
+  });
+
+  useEffect(() => {
+    if (currentView) {
+      localStorage.setItem('decolonial_currentView', currentView);
+    } else {
+      localStorage.removeItem('decolonial_currentView');
+    }
+  }, [currentView]);
+
+  useEffect(() => {
+    if (selectedAulaData) {
+      localStorage.setItem('decolonial_selectedAulaData', selectedAulaData);
+    } else {
+      localStorage.removeItem('decolonial_selectedAulaData');
+    }
+  }, [selectedAulaData]);
+
+  useEffect(() => {
+    if (planningSubView) {
+      localStorage.setItem('decolonial_planningSubView', planningSubView);
+    } else {
+      localStorage.removeItem('decolonial_planningSubView');
+    }
+  }, [planningSubView]);
+
+  useEffect(() => {
+    if (selectedAulaPlan) {
+      localStorage.setItem('decolonial_selectedAulaPlan', JSON.stringify(selectedAulaPlan));
+    } else {
+      localStorage.removeItem('decolonial_selectedAulaPlan');
+    }
+  }, [selectedAulaPlan]);
 
   // --- TELA DE MENU ---
   const renderMenu = () => (
@@ -2088,8 +2129,17 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
       ...s,
       parentTitle: s.parentTitle || activeAulaTitle
     })) : null;
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(() => {
+      const key = selectedAulaData ? `decolonial_slideIndex_${selectedAulaData}` : 'decolonial_slideIndex';
+      const saved = localStorage.getItem(key);
+      return saved ? parseInt(saved, 10) : 0;
+    });
     const [showDica, setShowDica] = useState(false);
+
+    useEffect(() => {
+      const key = selectedAulaData ? `decolonial_slideIndex_${selectedAulaData}` : 'decolonial_slideIndex';
+      localStorage.setItem(key, currentIndex.toString());
+    }, [currentIndex, selectedAulaData]);
 
     // Navegação Teclado
     useEffect(() => {

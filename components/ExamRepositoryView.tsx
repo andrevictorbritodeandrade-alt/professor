@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, FileText, CheckCircle2, Download, Printer, Search } from 'lucide-react';
 
@@ -268,8 +268,22 @@ const EXAMS: Exam[] = [
 ];
 
 export const ExamRepositoryView = ({ onBack }: { onBack: () => void }) => {
-  const [selectedExam, setSelectedExam] = useState<Exam | null>(null);
+  const [selectedExam, setSelectedExam] = useState<Exam | null>(() => {
+    const savedId = localStorage.getItem('exam_selectedExamId');
+    if (savedId) {
+      return EXAMS.find(e => e.id === savedId) || null;
+    }
+    return null;
+  });
   const [showPrintWarning, setShowPrintWarning] = useState(false);
+
+  useEffect(() => {
+    if (selectedExam) {
+      localStorage.setItem('exam_selectedExamId', selectedExam.id);
+    } else {
+      localStorage.removeItem('exam_selectedExamId');
+    }
+  }, [selectedExam]);
 
   const handlePrint = () => {
     if (window.self !== window.top) {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Calendar, Info, X, Filter, Users, BookOpen, ClipboardList, CheckCircle, Bell, Download, ChevronLeft, Presentation } from 'lucide-react';
 import { PE_PLAN } from '../data/planosPE';
 
@@ -424,11 +424,29 @@ const SCHEDULE_FRIDAY = [
 // ============================================================================
 
 export const PlanoAnualPE: React.FC<{ onBack: () => void }> = ({ onBack }) => {
-  const [activeTab, setActiveTab] = useState('MONDAY');
-  const [filterClass, setFilterClass] = useState('ALL');
-  const [activeMonth, setActiveMonth] = useState('05');
+  const [activeTab, setActiveTab] = useState(() => {
+    return localStorage.getItem('planoAnual_activeTab') || 'MONDAY';
+  });
+  const [filterClass, setFilterClass] = useState(() => {
+    return localStorage.getItem('planoAnual_filterClass') || 'ALL';
+  });
+  const [activeMonth, setActiveMonth] = useState(() => {
+    return localStorage.getItem('planoAnual_activeMonth') || '05';
+  });
   const [modalData, setModalData] = useState<any>(null);
   const [completedClasses, setCompletedClasses] = useState<string[]>([]);
+
+  useEffect(() => {
+    localStorage.setItem('planoAnual_activeTab', activeTab);
+  }, [activeTab]);
+
+  useEffect(() => {
+    localStorage.setItem('planoAnual_filterClass', filterClass);
+  }, [filterClass]);
+
+  useEffect(() => {
+    localStorage.setItem('planoAnual_activeMonth', activeMonth);
+  }, [activeMonth]);
 
   const currentClasses = activeTab === 'MONDAY' ? CLASSES.MONDAY : CLASSES.FRIDAY;
   const currentSchedule = activeTab === 'MONDAY' ? SCHEDULE_MONDAY : SCHEDULE_FRIDAY;
