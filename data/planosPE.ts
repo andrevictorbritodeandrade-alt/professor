@@ -138,18 +138,14 @@ export const PE_PLAN: Record<string, AulaPlan[]> = {
             data: '29/06', tri: '2º Tri', modulo: 'Esportes de Campo e Quadra', titulo: 'Voleibol: Regras de Rotação (Aula 1/4 - TEÓRICA)', desc: 'Estudo das posições da quadra (1 a 6) e regras de rodízio e pontuação.', 
             resumo: `🎯 **Objetivo da Aula:** Compreender o sentido horário do rodízio no Voleibol.\n\n🗣️ **Dinâmica (Quadro):**\n• Desenho das posições da quadra de vôlei e fluxo de rodízio.` 
         },
-        { 
-            data: '06/07', tri: '2º Tri', modulo: 'Esportes de Campo e Quadra', titulo: 'Voleibol: Recepção e Toque (Aula 2/4 - PRÁTICA)', desc: 'Base corporal de recepção na quadra: manchete e toque de dedos.', 
+        { data: '06/07', tri: '2º Tri', modulo: 'Esportes de Campo e Quadra', titulo: 'Voleibol: Recepção e Toque (Aula 2/4 - PRÁTICA)', desc: 'Base corporal de recepção na quadra: manchete e toque de dedos.', 
             resumo: `🎯 **Objetivo da Aula:** Desenvolver recepção estável.\n\n🗣️ **Dinâmica (Prática):**\n• Exercício prático de manchete de dedão e passe de toque.` 
         },
+        { data: '27/07', tri: '2º Tri', modulo: 'Inclusão', titulo: 'Retorno de Férias: Esporte Paralímpico', desc: 'Acolhimento e Teoria Intercalada (Fala do Prof. + Quadro).', resumo: COMMON_RESUMOS['Paralímpico'] },
         { 
-            data: '27/07', tri: '2º Tri', modulo: 'Esportes de Campo e Quadra', titulo: 'Voleibol: Sistemas de Jogo (Aula 3/4 - MEIO A MEIO)', desc: 'Mecânica do sistema 6x0 em sala e prática de posse em quadra. Recolhimento do Trabalho.', 
+            data: '03/08', tri: '2º Tri', modulo: 'Esportes de Campo e Quadra', titulo: 'Voleibol: Sistemas de Jogo (Aula 3/4 - MEIO A MEIO)', desc: 'Mecânica do sistema 6x0 em sala e prática de posse em quadra. Recolhimento do Trabalho.', 
             trabalho: 'recolher',
             resumo: `🎯 **Objetivo da Aula:** Assimilar movimentação tática simples e recolher trabalhos escolares.\n\n🗣️ **Dinâmica (Quadro/Prática):**\n• Explicação rápida do sistema simples sem especialização (6x0).\n• Jogo de voleibol facilitado com controle de posse.\n\n📥 **TRABALHO:** Recolher a Pesquisa Escolar (3 pts) sobre Esportes de Campo e Quadra.` 
-        },
-        { 
-            data: '03/08', tri: '2º Tri', modulo: 'Esportes de Campo e Quadra', titulo: 'Voleibol: Mini-Torneio (Aula 4/4 - PRÁTICA)', desc: 'Partidas simplificadas focadas em passes coletivos da equipe.', 
-            resumo: `🎯 **Objetivo da Aula:** Fixar regras em formato competitivo integrado.\n\n🗣️ **Dinâmica (Prática):**\n• Mini-torneio de voleibol adaptado com bola macia.` 
         },
         { 
             data: '10/08', tri: '2º Tri', modulo: 'Esportes de Campo e Quadra', titulo: 'Basquete/Handebol: Regras Rápidas (Aula 1/2 - TEÓRICA)', desc: 'Regras de drible e condução do basquete e área de goleiro do handebol.', 
@@ -237,6 +233,7 @@ export const PE_PLAN: Record<string, AulaPlan[]> = {
             trabalho: 'recolher',
             resumo: `🎯 **Objetivo da Aula:** Praticar o espírito esportivo e recolher trabalhos escolares.\n\n🗣️ **Dinâmica (Prática):**\n• Jogo tático final focado em disciplina e espírito coletivo.\n\n📥 **TRABALHO:** Recolher a Pesquisa Escolar (3 pts) sobre Esportes de Campo e Quadra.` 
         },
+        { data: '27/07', tri: '2º Tri', modulo: 'Inclusão', titulo: 'Retorno de Férias: Esporte Paralímpico', desc: 'Acolhimento e Teoria Intercalada (Fala do Prof. + Quadro).', resumo: COMMON_RESUMOS['Paralímpico'] },
         { 
             data: '31/07', tri: '2º Tri', modulo: 'Esportes de Campo e Quadra', titulo: 'Voleibol: Regras de Quadra (Aula 1/4 - TEÓRICA)', desc: 'Sentido do rodízio escolar (1 a 6) e limites de 3 toques na bola.', 
             resumo: `🎯 **Objetivo da Aula:** Dominar o andamento das regras de quadra no Voleibol.\n\n🗣️ **Dinâmica (Quadro):**\n• Desenho visual dos postes da rede e o rodízio.` 
@@ -344,3 +341,8 @@ export const PE_PLAN: Record<string, AulaPlan[]> = {
 
     ]
 };
+
+PE_PLAN['ciep369'] = PE_PLAN['ap'];
+PE_PLAN['ciep198'] = PE_PLAN['ap'];
+PE_PLAN['ciep320'] = PE_PLAN['ap_sexta'];
+PE_PLAN['correcao_fluxo'] = PE_PLAN['ap'];

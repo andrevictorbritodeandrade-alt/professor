@@ -456,135 +456,141 @@ export const SLIDES_PARALIMPICO = [
   {
     slideNumber: "1/7",
     category: "ROTEIRO_PROFESSOR",
-    title: "1/7 • 🗣️ ROTEIRO DO PROFESSOR: RODA DE ACOLHIMENTO",
-    subtitle: "Acolhimento Pedagógico de Volta das Férias de Julho • 2º Trimestre",
-    content: "Boas-vindas à turma! Vamos iniciar o semestre com uma roda de conversa acolhedora de escuta ativa sobre as férias, fazendo a transição para a rotina de estudos.",
+    title: "1/7 • 🗣️ ROTEIRO DO PROFESSOR: RODA DE ACOLHIMENTO E ESCUTA ATIVA",
+    subtitle: "Recepção de Volta das Férias de Julho • Transição para o 2º Trimestre Letivo",
+    content: "Exposição inicial e mediação de roda de conversa com a turma (8º Ano e Correção de Fluxo - CIEP 369, 198, 320). Momento de recepção afetiva, escuta sobre o recesso escolar e explicitação da metodologia de aula teórica em sala de aula sem livro didático.",
     speechScript: [
-      "• Boas-vindas e Escuta Ativa: 'Como foram as férias de vocês? Quem conseguiu descansar, brincar, passear ou praticar esportes?'",
-      "• Sensibilização Corporal: 'Como o nosso corpo e a nossa mente reagem ao sair da rotina livre e retornar aos horários escolares?'",
-      "• Transição para o Tema: 'Hoje nossa aula será 100% TEÓRICA em sala. Como não temos livro didático impresso, os registros no quadro serão a matéria oficial do caderno para os estudos do 2º Trimestre.'"
+      "1. Acolhimento Afetuoso e Escuta Ativa: 'Sejam muito bem-vindos de volta! Como foram as férias de julho de vocês? Conseguiram descansar, se divertir ou fazer algo diferente com a família e amigos? Gostaria de ouvir 3 a 4 alunos de forma voluntária sobre o que mais marcou esse período de recesso.'",
+      "2. Sensibilização Sobre a Rotina e o Corpo: 'Quando entramos de férias, nossos horários, sono e alimentação mudam. Como o corpo e a mente de vocês sentiram essa transição de hoje pela manhã ao voltar para os horários escolares, carteiras e tarefas?'",
+      "3. Contrato Pedagógico e Ausência de Livro Didático: 'Vocês já sabem que em nossa escola não dispomos de livro didático impresso para Educação Física. Por isso, a nossa sala de aula é nosso espaço de reflexão crítica e nosso caderno é nosso livro didático autoral. Tudo o que eu registrar no quadro nesta aula substitui o livro físico e será a matéria oficial para estudo das provas e composição da nota do 2º Trimestre.'",
+      "4. Introdução ao Módulo de Inclusão e Paradesporto: 'Hoje abrimos oficialmente a Unidade 2 do nosso plano de ensino. Vamos tratar de um tema fundamental para a vida civil: Inclusão Social, Acessibilidade e o Movimento Paralímpico. Vamos alternar momentos de explicação oral minha (onde vocês apenas escutam e debatem) e momentos de cópia no quadro (onde vocês registram no caderno).'"
     ],
     referencias: [
-      "BNCC EF67EF03: Experimentar, fruir e recriar esportes de marca, precisão, invasão e combate, valorizando a inclusão.",
-      "SEEDUC-RJ: Diretrizes de Acolhimento e Reagrupamento do 2º Trimestre Letivo."
+      "BNCC EF67EF03: Experimentar, fruir e recriar esportes de marca, precisão, invasão e combate, valorizando a inclusão e a diversidade.",
+      "SEEDUC-RJ: Diretrizes de Acolhimento, Diagnóstico e Reagrupamento no Retorno do Recesso (2º Trimestre Letivo)."
     ],
     graphicType: "acolhimento_roda",
-    dicaProfessor: "Inicie em tom afetuoso e acolhedor. Permita que 3 a 4 alunos compartilhem experiências das férias antes de direcionar para o registro teórico."
+    dicaProfessor: "Disponha as carteiras em semicírculo ou roda se possível. Dê espaço para os alunos falarem brevemente do recesso para quebrar a ansiedade do retorno antes de iniciar a matéria no quadro."
   },
   {
     slideNumber: "2/7",
     category: "LOUSA_ALUNO",
     title: "2/7 • ✍️ CONTEÚDO NO QUADRO: INCLUSÃO E ACESSIBILIDADE",
-    subtitle: "CÓPIA INTEGRAL NO CADERNO (Matéria Base para Avaliação)",
+    subtitle: "CÓPIA INTEGRAL NO CADERNO (Matéria do Aluno - Estudo para Prova)",
     quadroHeader: "UNIDADE 2: INCLUSÃO SOCIAL E DIREITO AO ESPORTE",
     points: [
-      "1. Acolhimento e Convivência: O reinício das aulas fortalece os laços de empatia, solidariedade e o respeito às diferenças no ambiente escolar.",
-      "2. Conceito de Inclusão Social: Inclusão é o direito de todas as pessoas — independentemente de suas condições físicas, sensoriais ou intelectuais — de participarem plenamente da sociedade com autonomia e dignidade.",
-      "3. Princípio da Acessibilidade (Lei nº 13.146/2015): Garantia de condições para utilização segura de espaços, edificações, transportes e comunicação por pessoas com deficiência ou mobilidade reduzida.",
-      "4. Adaptação do Meio: O ambiente e a sociedade devem se adaptar às necessidades das pessoas para eliminar barreiras, e não o contrário."
+      "1. Acolhimento e Convivência: O retorno às aulas fortalece a empatia, a solidariedade e o respeito incondicional às diferenças individuais dentro e fora da escola.",
+      "2. Conceito de Inclusão Social: É o processo de garantia do direito de todas as pessoas — independentemente de suas condições físicas, sensoriais ou intelectuais — de participarem ativamente da sociedade com autonomia, dignidade e igualdade de oportunidades.",
+      "3. Princípio da Acessibilidade (Lei nº 13.146/2015): É a garantia de utilização, com segurança e autonomia, dos espaços urbanos, edificações, transportes, equipamentos e meios de comunicação por pessoas com deficiência ou mobilidade reduzida.",
+      "4. Adaptação do Meio: Não é a pessoa com deficiência que deve se 'mudar' ou se 'isolar', mas sim a sociedade e a escola que devem se adaptar para eliminar todas as barreiras."
     ],
     referencias: [
-      "Lei Federal nº 13.146/2015 (Estatuto da Pessoa com Deficiência, Art. 2º e 3º).",
+      "Lei Federal nº 13.146/2015 (Estatuto da Pessoa com Deficiência - LBI, Art. 2º e 3º).",
       "Declaração de Salamanca (UNESCO, 1994) - Princípios de Educação Inclusiva."
     ],
     graphicType: "acessibilidade_quadro",
-    dicaProfessor: "Escreva este bloco no quadro de forma organizada. Avise aos alunos que este texto substitui o livro didático e será cobrado nas provas."
+    dicaProfessor: "Escreva este bloco com letra bem visível no quadro. Aguarde todos os alunos terminarem a cópia antes de passar para o slide seguinte de explicação oral."
   },
   {
     slideNumber: "3/7",
     category: "ROTEIRO_PROFESSOR",
-    title: "3/7 • 🗣️ ROTEIRO DO PROFESSOR: HISTÓRIA DO PARADESPORTO",
-    subtitle: "Embasamento Teórico: Da Reabilitação ao Alto Rendimento Global",
-    content: "Exposição oral do professor contextualizando a evolução histórica e tecnológica do Movimento Paralímpico Internacional e Brasileiro.",
+    title: "3/7 • 🗣️ ROTEIRO DO PROFESSOR: HISTÓRIA E EVOLUÇÃO DO PARADESPORTO",
+    subtitle: "Roteiro Teórico Completo: Da Reabilitação ao Alto Rendimento Global",
+    content: "Exposição oral aprofundada do professor contextualizando a origem, a evolução tecnológica e a importância social e geopolítica do Paradesporto no mundo e no Brasil.",
     speechScript: [
-      "• Origem na II Guerra Mundial (1948): Em Stoke Mandeville (Inglaterra), o neurocirurgião Sir Ludwig Guttmann usou o esporte para reabilitar veteranos de guerra com lesão medular.",
-      "• Do Tratamento Médico à Elite Olímpica: O esporte adaptado evoluiu de terapia de saúde para um espetáculo de altíssimo rendimento e superação de limites humanos.",
-      "• Combate ao Capacitismo: 'Atletas paralímpicos não são coitadinhos ou exemplos de pena, mas sim atletas de alto rendimento com treinamento rigoroso, próteses tecnológicas e dedicação extrema.'"
+      "1. Contexto Histórico da Pós-Guerra (Stoke Mandeville, 1948): 'Pessoal, prestem muita atenção nesta história. O esporte adaptado não nasceu como entretenimento, mas como sobrevivência humana. Em 1948, no hospital de Stoke Mandeville, na Inglaterra, o neurocirurgião alemão Sir Ludwig Guttmann começou a usar a prática do esporte (inicialmente o tiro com arco e o basquete em cadeira de rodas) para reabilitar veteranos da Segunda Guerra Mundial que haviam sofrido lesão na coluna e paralisia. Naquela época, pessoas com lesão medular eram tratadas pela medicina tradicional como pacientes sem futuro. Guttmann provou que o esporte devolvia a dignidade, a força muscular e a vontade de viver.'",
+      "2. A Evolução para os Jogos Paralímpicos (Roma, 1960 e IPC, 1989): 'A iniciativa deu tão certo que em 1960, em Roma (Itália), foram realizados os I Jogos Paralímpicos Oficiais da História, com 400 atletas de 23 países. Em 1989, foi fundado o Comitê Paralímpico Internacional (IPC), consolidando o movimento como o segundo maior evento esportivo do planeta, atrás apenas dos Jogos Olímpicos.'",
+      "3. O Brasil como Potência Paralímpica Mundial: 'Vocês sabiam que o Brasil é uma das maiores superpotências mundiais do esporte paralímpico? Nas edições de Rio 2016, Tóquio 2020 e Paris 2024, o Brasil ficou no TOP 10 do quadro geral de medalhas! Temos destaques lendários no Atletismo (com atletas velocistas cegos e amputados), Natação, Futebol de 5 e Bocha Paralímpica.'",
+      "4. Desconstruindo o Capacitismo e o Olhar de 'Pena': 'Aqui está o ponto central da nossa reflexão: o que é CAPACITISMO? É o preconceito de achar que a pessoa com deficiência é 'menos capaz' ou 'incapaz'. Muito cuidado: atletas paralímpicos NÃO são 'coitadinhos' ou 'exemplos de caridade'. Eles são atletas de elite de altíssimo rendimento, com rotinas de treino extenuantes de 6 a 8 horas por dia, nutrição rigorosa e tecnologia de ponta, como próteses de fibra de carbono e cadeiras superleves aerodinâmicas.'",
+      "5. Pergunta de Impacto para a Turma: 'Vocês já assistiram a uma prova de atletismo com próteses de lâmina de carbono ou a um jogo de Futebol de 5 para cegos? Qual foi a sensação ao ver a velocidade e a precisão desses atletas?'"
     ],
     referencias: [
-      "Comitê Paralímpico Internacional (CPI / IPC) - Guia Oficial de História Paralímpica.",
-      "Comitê Paralímpico Brasileiro (CPB) - O Paradesporto de Alto Rendimento no Brasil."
+      "Comitê Paralímpico Internacional (IPC) - Guia Oficial de História Paralímpica.",
+      "Comitê Paralímpico Brasileiro (CPB) - O Paradesporto de Alto Rendimento no Brasil.",
+      "GUTTMANN, Sir Ludwig. 'Pioneering Work in Paraplegia and Disability Sport' (1976)."
     ],
     graphicType: "historia_paralimpica",
-    dicaProfessor: "Enfatize a tecnologia das próteses de fibra de carbono e guias visuais para quebrar a visão assistencialista ou de 'pena'."
+    dicaProfessor: "Use a imagem da lâmina de carbono e das cadeiras esportivas no slide para mostrar a tecnologia aliada à alta performance atlética."
   },
   {
     slideNumber: "4/7",
     category: "LOUSA_ALUNO",
-    title: "4/7 • ✍️ CONTEÚDO NO QUADRO: O MOVIMENTO PARALÍMPICO",
-    subtitle: "CÓPIA INTEGRAL NO CADERNO (História, Regras e Modalidades)",
-    quadroHeader: "CAPÍTULO 1: HISTÓRIA E MODALIDADES DO PARADESPORTO",
+    title: "4/7 • ✍️ CONTEÚDO NO QUADRO: HISTÓRIA E MODALIDADES",
+    subtitle: "CÓPIA INTEGRAL NO CADERNO (Resumo dos Fatos e Regras Principais)",
+    quadroHeader: "CAPÍTULO 1: HISTÓRIA, REGRAS E MODALIDADES PARALÍMPICAS",
     points: [
-      "1. Origem Histórica: O esporte adaptado surgiu em 1948 na Inglaterra (Stoke Mandeville). Os I Jogos Paralímpicos ocorreram em Roma (1960).",
-      "2. Classificação Funcional: Sistema técnico que agrupa atletas conforme o grau de funcionalidade física/sensorial para garantir disputas justas.",
-      "3. Modalidades Paralímpicas de Destaque:",
-      "   • Vôlei Sentado: Quadra de 10x6m, rede de 1,15m (M) e 1,05m (F). É obrigatório manter o glúteo em contato com o solo ao tocar na bola.",
-      "   • Futebol de 5: Exclusivo para deficientes visuais (cegos). Bola com guizo sonoro e torcida em absoluto silêncio.",
-      "   • Atletismo e Natação Adaptados: Provas com próteses de carbono, atletas-guia e sinalizadores visuais/sonoros."
+      "1. Origem Histórica: O paradesporto nasceu em 1948 na Inglaterra (Stoke Mandeville), idealizado pelo Dr. Ludwig Guttmann para reabilitação de lesionados de guerra. Os I Jogos Paralímpicos ocorreram em Roma (1960).",
+      "2. Classificação Funcional: Sistema técnico e médico que avalia e agrupa os atletas conforme o grau de funcionalidade física ou sensorial, garantindo disputas equilibradas e justas.",
+      "3. Vôlei Sentado: Disputado em quadra menor (10m x 6m) com rede baixa (1,15m masculino e 1,05m feminino). Regra principal: é obrigatório manter os glúteos em contato com o solo no momento de tocar na bola.",
+      "4. Futebol de 5 (Cegos): Praticado por atletas com deficiência visual usando venda nos olhos para nivelamento. A bola possui guizos sonoros internos e a torcida deve permanecer em absoluto silêncio durante a partida.",
+      "5. Atletismo e Natação Adaptados: Uso de próteses de fibra de carbono, cadeiras de três rodas e atletas-guia para orientação em pista e piscina."
     ],
     referencias: [
-      "Livro Didático Digital de Educação Física - Unidade Paradesporto e Inclusão.",
-      "Regras Oficiais do Vôlei Sentado (World ParaVolley) e Futebol de 5 (IBSA)."
+      "World ParaVolley - Official Sit Volleyball Rules & Regulations.",
+      "IBSA (International Blind Sports Federation) - Blind Football Rules."
     ],
     graphicType: "volei_sentado_quadro",
-    dicaProfessor: "Desenhe no quadro o retângulo da quadra de Vôlei Sentado (10x6m) ressaltando a regra do glúteo no chão."
+    dicaProfessor: "Desenhe no quadro a representação simplificada da quadra de Vôlei Sentado (10x6m) ressaltando a regra do glúteo no chão."
   },
   {
     slideNumber: "5/7",
     category: "ROTEIRO_PROFESSOR",
-    title: "5/7 • 🗣️ ROTEIRO DO PROFESSOR: MEDIAÇÃO DE DEBATE",
-    subtitle: "Barreiras Arquitetônicas, Atitudinais e Cidadania Local",
-    content: "Mediação de debate conectando os conceitos teóricos de acessibilidade com a realidade dos bairros e da escola dos alunos.",
+    title: "5/7 • 🗣️ ROTEIRO DO PROFESSOR: DEBATE SOBRE BARREIRAS E DIREITOS",
+    subtitle: "Roteiro Teórico Completo: Tipos de Barreiras, Legislação e Realidade Local",
+    content: "Mediação de debate e análise sociológica da realidade dos bairros e da escola (CIEP 369, CIEP 198, CIEP 320, Baixada Fluminense / Maricá), conectando os conceitos da Lei nº 13.146/2015 com a vivência cotidiana dos alunos.",
     speechScript: [
-      "• Barreiras Arquitetônicas (Físicas): Calçadas esburacadas, falta de rampas com inclinação correta, ônibus sem elevador e banheiros inacessíveis.",
-      "• Barreiras Atitudinais (Sociais): Preconceito, piadas ofensivas, capacitismo, falta de paciência e olhar de inferiorização.",
-      "• Pergunta Mobilizadora: 'Analisando o caminho da sua casa até a escola, uma pessoa em cadeira de rodas ou cega conseguiria transitar com segurança e autonomia?'"
+      "1. Diferenciando as Barreiras Físicas (Arquitetônicas e de Transporte): 'Alunos, a Lei nº 13.146/2015 classifica as barreiras que impedem o acesso das pessoas em diferentes tipos. As primeiras são as Barreiras Arquitetônicas e Urbanísticas: calçadas esburacadas, degraus sem rampa, falta de sinalização tátil no chão, portas estreitas que não passam cadeira de rodas e banheiros sem barra de apoio. Também temos as Barreiras de Transporte: ônibus sem elevador funcional ou motoristas que não param para cadeirantes.'",
+      "2. Aprofundando as Barreiras Atitudinais e Comunicacionais: 'Mas existe uma barreira ainda mais invisível e cruel: a Barreira Atitudinal. O que é isso? São os comportamentos, os preconceitos, o capacitismo, as piadas de mau gosto, a falta de paciência e a tendência de ignorar ou infantilizar a pessoa com deficiência. Também há a Barreira Comunicacional: faltar intérprete de Libras, braille ou textos legíveis.'",
+      "3. Diagnóstico Crítico da Nossa Escola e do Nosso Bairro: 'Agora eu pergunto a vocês de forma bem direta: se um aluno em cadeira de rodas ou cego se matriculasse hoje na nossa turma do CIEP / nossa escola, ele conseguiria sozinho ir do portão até a sala de aula, ao banheiro, ao refeitório e à quadra de Educação Física?'",
+      "4. Conexão com o Caminho de Casa até a Escola: 'E no bairro onde vocês moram? As calçadas da rua de vocês permitem que uma pessoa com muleta ou cadeira de rodas circule em um dia de chuva? Por que o poder público muitas vezes esquece da acessibilidade nas periferias?'",
+      "5. Síntese do Conceito de Cidadania Ativa: 'Lembrem-se: rampas, sinalização tátil e respeito NÃO SÃO FAVORES nem caridade. São DIREITOS assegurados por lei para que todo cidadão viva com dignidade!'"
     ],
     referencias: [
-      "Estatuto da Pessoa com Deficiência (Lei nº 13.146/15 - Art. 3º: Tipos de Barreiras).",
-      "Sociologia do Esporte: Inclusão, Espaço Urbano e Direitos Humanos."
+      "Estatuto da Pessoa com Deficiência (Lei Federal nº 13.146/2015 - Art. 3º - Tipologia das Barreiras).",
+      "ABNT NBR 9050: Acessibilidade a Edificações, Espaços, Mapeamentos e Equipamentos Urbanos."
     ],
     graphicType: "barreiras_cidade",
-    dicaProfessor: "Provoque os alunos a observarem o espaço escolar: pátio, refeitório, banheiros e acesso à quadra de Educação Física."
+    dicaProfessor: "Estimule os alunos a apontarem locais específicos da escola e do bairro que precisam de reformas de acessibilidade."
   },
   {
     slideNumber: "6/7",
     category: "LOUSA_ALUNO",
-    title: "6/7 • ✍️ CONTEÚDO NO QUADRO: CAPACITISMO E EXERCÍCIO",
-    subtitle: "CÓPIA INTEGRAL + EXERCÍCIO AVALIATIVO DE FIXAÇÃO",
-    quadroHeader: "CAPÍTULO 2: CAPACITISMO, ATITUDE E EXERCÍCIO PRÁTICO",
+    title: "6/7 • ✍️ CONTEÚDO NO QUADRO: EXERCÍCIO AVALIATIVO DE FIXAÇÃO",
+    subtitle: "CÓPIA INTEGRAL NO CADERNO + RESPOSTAS INDIVIDUAIS",
+    quadroHeader: "CAPÍTULO 2: CAPACITISMO, ATITUDE E EXERCÍCIO AVALIATIVO",
     points: [
       "1. Capacitismo: Preconceito estrutural que discrimina, inferioriza ou duvida da capacidade de pessoas com deficiência.",
-      "2. Acessibilidade Atitudinal: Ação consciente de combater preconceitos, eliminar termos pejorativos e incluir todos com respeito.",
-      "3. EXERCÍCIO DE FIXAÇÃO NO CADERNO (Responder agora):",
-      "   Q1) O que é Inclusão Social e qual a diferença entre Barreiras Arquitetônicas e Atitudinais?",
-      "   Q2) Qual é a regra fundamental do Vôlei Sentado referente ao contato do corpo com o solo?",
-      "   Q3) Cite 2 barreiras físicas que você observa no seu bairro/escola e proponha uma solução prática de acessibilidade."
+      "2. Acessibilidade Atitudinal: Ação consciente de combater preconceitos, eliminar vocabulário ofensivo e garantir a inclusão de todos com respeito.",
+      "3. EXERCÍCIO DE FIXAÇÃO NO CADERNO (Copiar e Responder Agora):",
+      "   • Q1) O que é Inclusão Social e qual a diferença entre Barreiras Arquitetônicas e Barreiras Atitudinais?",
+      "   • Q2) No Vôlei Sentado, qual é a regra fundamental no momento de tocar na bola sobre a quadra?",
+      "   • Q3) Cite 2 barreiras de acessibilidade que você observa no seu bairro/escola e proponha uma solução prática de melhoria."
     ],
     referencias: [
-      "Exercício de Fixação para Composição de Nota do 2º Trimestre.",
-      "Conselho de Educação Escolar - Avaliação Teórica em Educação Física."
+      "Exercício de Fixação Teórica para Composição de Nota do 2º Trimestre.",
+      "Avaliação Contínua e Diagnóstica de Educação Física • SEEDUC-RJ."
     ],
     graphicType: "exercicio_quadro",
-    dicaProfessor: "Dê 10 a 15 minutos para responderem no caderno. Este exercício servirá para estudo de prova."
+    dicaProfessor: "Dê 10 a 15 minutos para que os alunos respondam individualmente no caderno. Passe pelas carteiras auxiliando quem tem dúvida."
   },
   {
     slideNumber: "7/7",
     category: "ROTEIRO_PROFESSOR",
-    title: "7/7 • 🗣️ ROTEIRO DO PROFESSOR: ENCERRAMENTO E VISTO",
-    subtitle: "Visto no Caderno e Encaminhamentos da Próxima Aula",
-    content: "Encerramento do tempo de aula teórica, conferência dos cadernos e orientações de transição.",
+    title: "7/7 • 🗣️ ROTEIRO DO PROFESSOR: ENCERRAMENTO E VISTO OFICIAL",
+    subtitle: "Roteiro Pedagógico Completo: Visto no Caderno, Orientações e Próxima Aula",
+    content: "Roteiro de fechamento pedagógico, conferência individual de caderno para atribuição de nota/visto e orientações de continuidade do 2º Trimestre.",
     speechScript: [
-      "• Conferência de Cadernos: O professor passará nas carteiras conferindo a cópia completa e dando o visto oficial no caderno.",
-      "• Orientação de Estudo: 'Guardem essas anotações com cuidado! Como não temos livro físico, este registro no caderno será nosso material de consulta nas avaliações do trimestre.'",
-      "• Próxima Aula: Daremos continuidade ao Módulo de Inclusão com a vivência prática e debate sobre Mídia e Padrões de Beleza.'"
+      "1. Organização do Tempo e Chamada para Visto: 'Turma, faltam 10 minutos para o término da nossa aula. Peço que todos mantenham seus cadernos abertos sobre as carteiras com a matéria copiada e o exercício respondido.'",
+      "2. Passagem pelas Carteiras (Avaliação Formativa): 'Vou passar de bancada em bancada aplicando o visto oficial. Esse visto comprova que vocês têm a matéria no caderno para estudar para a nossa avaliação do 2º Trimestre. Alunos que precisam de mais tempo para copiar ou responder podem continuar enquanto eu vou conferindo.'",
+      "3. Valorização do Esforço do Aluno: 'Parabéns pelo capricho nas anotações de hoje! Lembrem-se de que como não temos livro didático físico, a organização do caderno de vocês é a garantia de que vocês têm o conteúdo completo.'",
+      "4. Spoiler / Gancho para a Próxima Aula: 'Na nossa próxima aula, vamos dar continuidade a esta Unidade com vivência prática adaptada e discussões críticas sobre Mídia, Redes Sociais e Padrões de Beleza no Esporte!'"
     ],
     referencias: [
-      "Plano Anual de Educação Física 2026 • SEEDUC-RJ.",
-      "Registro de Frequência e Vistos de Caderno."
+      "Plano de Curso Anual 2026 de Educação Física • SEEDUC-RJ.",
+      "Ficha de Acompanhamento e Registro de Frequência / Vistos de Caderno."
     ],
     graphicType: "fechamento_visto",
-    dicaProfessor: "Carimbe ou assine os cadernos. Valorize os alunos que copiaram com capricho e atenção."
+    dicaProfessor: "Carimbe ou assine com data o caderno de cada aluno. Aponte e elogie o esforço individual dos alunos das turmas de Correção de Fluxo e do 8º Ano."
   }
 ];
 

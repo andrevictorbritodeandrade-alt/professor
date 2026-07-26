@@ -62,10 +62,15 @@ const slidesData: Record<string, Slide[]> = {
   '8ano_15/06': SLIDES_GENERICOS['Jogos do Mundo'].map((s: any) => ({...s, tipo: s.type || 'texto'})),
   '8ano_22/06': SLIDES_GENERICOS['Jogos Cooperativos'].map((s: any) => ({...s, tipo: s.type || 'texto'})),
   'ap_12/06': SLIDES_JOGOS_TABULEIRO.map(s => ({...s, tipo: s.tipo || 'texto'})),
-  '8ano_27/07': SLIDES_PARALIMPICO.map(s => ({...s, tipo: s.title.includes('QUADRO') ? 'texto_simples' : 'texto'})),
-  'ap_27/07': SLIDES_PARALIMPICO.map(s => ({...s, tipo: s.title.includes('QUADRO') ? 'texto_simples' : 'texto'})),
-  'ap_sexta_27/07': SLIDES_PARALIMPICO.map(s => ({...s, tipo: s.title.includes('QUADRO') ? 'texto_simples' : 'texto'})),
-  'ilgch_27/07': SLIDES_PARALIMPICO.map(s => ({...s, tipo: s.title.includes('QUADRO') ? 'texto_simples' : 'texto'})),
+  '8ano_27/07': SLIDES_PARALIMPICO.map(s => ({...s, tipo: s.category === 'LOUSA_ALUNO' || s.title.includes('QUADRO') ? 'texto_simples' : 'texto'})),
+  'ap_27/07': SLIDES_PARALIMPICO.map(s => ({...s, tipo: s.category === 'LOUSA_ALUNO' || s.title.includes('QUADRO') ? 'texto_simples' : 'texto'})),
+  'ap_sexta_27/07': SLIDES_PARALIMPICO.map(s => ({...s, tipo: s.category === 'LOUSA_ALUNO' || s.title.includes('QUADRO') ? 'texto_simples' : 'texto'})),
+  'ap_sexta_31/07': SLIDES_PARALIMPICO.map(s => ({...s, tipo: s.category === 'LOUSA_ALUNO' || s.title.includes('QUADRO') ? 'texto_simples' : 'texto'})),
+  'ciep369_27/07': SLIDES_PARALIMPICO.map(s => ({...s, tipo: s.category === 'LOUSA_ALUNO' || s.title.includes('QUADRO') ? 'texto_simples' : 'texto'})),
+  'ciep198_27/07': SLIDES_PARALIMPICO.map(s => ({...s, tipo: s.category === 'LOUSA_ALUNO' || s.title.includes('QUADRO') ? 'texto_simples' : 'texto'})),
+  'ciep320_27/07': SLIDES_PARALIMPICO.map(s => ({...s, tipo: s.category === 'LOUSA_ALUNO' || s.title.includes('QUADRO') ? 'texto_simples' : 'texto'})),
+  'correcao_fluxo_27/07': SLIDES_PARALIMPICO.map(s => ({...s, tipo: s.category === 'LOUSA_ALUNO' || s.title.includes('QUADRO') ? 'texto_simples' : 'texto'})),
+  'ilgch_27/07': SLIDES_PARALIMPICO.map(s => ({...s, tipo: s.category === 'LOUSA_ALUNO' || s.title.includes('QUADRO') ? 'texto_simples' : 'texto'})),
 
   // AULA 1: INTRO / CULTURA CORPORAL
   'ilgch_22/05': [
