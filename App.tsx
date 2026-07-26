@@ -251,7 +251,7 @@ const App: React.FC = () => {
 
   // Sync Status State
   const [syncStatus, setSyncStatus] = useState<'synced' | 'saving' | 'error'>('synced');
-  const [isInitializing, setIsInitializing] = useState(true);
+  const [isInitializing, setIsInitializing] = useState(false);
 
   // Helper to save classes explicitly with debounce-like behavior for rapid updates
   const saveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
