@@ -11,7 +11,7 @@ import { OcorrenciasView } from './OcorrenciasView';
 import { GradesView } from './GradesView';
 import { ExamRepositoryView } from './ExamRepositoryView';
 import { ChalkboardDiagram } from './ChalkboardDiagram';
-import { ALTINHA_FUTVOLEI_SLIDES, SLIDES_3TRI, SLIDES_JOGOS_TABULEIRO, SLIDES_GENERICOS, SLIDES_HANDEBOL, SLIDES_POVOS_ORIGINARIOS } from '../data/corpoMidiaSlides';
+import { ALTINHA_FUTVOLEI_SLIDES, SLIDES_3TRI, SLIDES_JOGOS_TABULEIRO, SLIDES_GENERICOS, SLIDES_HANDEBOL, SLIDES_POVOS_ORIGINARIOS, SLIDES_PARALIMPICO } from '../data/corpoMidiaSlides';
 
 // ================= DADOS DO CRONOGRAMA =================
 const cronograma = PE_PLAN['ilgch'] || [];
@@ -57,11 +57,15 @@ const slidesData: Record<string, Slide[]> = {
   'ap_sexta_15/05': ALTINHA_FUTVOLEI_SLIDES.map(s => ({...s, tipo: s.type || 'texto_simples'})),
   'ap_sexta_22/05': ALTINHA_FUTVOLEI_SLIDES.map(s => ({...s, tipo: s.type || 'texto_simples'})),
 
-  // AULAS 2º TRIMESTRE (JOGOS DE TABULEIRO)
+  // AULAS 2º TRIMESTRE (JOGOS DE TABULEIRO E RETORNO / INCLUSÃO)
   '8ano_08/06': SLIDES_JOGOS_TABULEIRO.map(s => ({...s, tipo: s.tipo || 'texto'})),
   '8ano_15/06': SLIDES_GENERICOS['Jogos do Mundo'].map((s: any) => ({...s, tipo: s.type || 'texto'})),
   '8ano_22/06': SLIDES_GENERICOS['Jogos Cooperativos'].map((s: any) => ({...s, tipo: s.type || 'texto'})),
   'ap_12/06': SLIDES_JOGOS_TABULEIRO.map(s => ({...s, tipo: s.tipo || 'texto'})),
+  '8ano_27/07': SLIDES_PARALIMPICO.map(s => ({...s, tipo: s.title.includes('QUADRO') ? 'texto_simples' : 'texto'})),
+  'ap_27/07': SLIDES_PARALIMPICO.map(s => ({...s, tipo: s.title.includes('QUADRO') ? 'texto_simples' : 'texto'})),
+  'ap_sexta_27/07': SLIDES_PARALIMPICO.map(s => ({...s, tipo: s.title.includes('QUADRO') ? 'texto_simples' : 'texto'})),
+  'ilgch_27/07': SLIDES_PARALIMPICO.map(s => ({...s, tipo: s.title.includes('QUADRO') ? 'texto_simples' : 'texto'})),
 
   // AULA 1: INTRO / CULTURA CORPORAL
   'ilgch_22/05': [
@@ -1541,72 +1545,17 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
             ];
           }
 
-          if (tUpper.includes('INCLUSÃO') && tUpper.includes('PARALÍMPICO')) {
-            return [
-              {
-                tipo: 'capa',
-                type: 'capa',
-                titulo: aula.titulo,
-                title: aula.titulo,
-                subtitulo: "Como Adaptações de Regras Rompem as Barreiras de Mobilidade",
-                dicaProfessor: "Projete nos canais Datashow para incentivar a solidariedade, o respeito mútuo e a equidade."
-              },
-              {
-                tipo: 'texto_simples',
-                type: 'texto_simples',
-                titulo: "♿ Paradesporto e Inclusão de Base",
-                topicos: [
-                  "Definição: Adaptação das regras clássicas, espaços e bolas para incluir pessoas com limitações motoras.",
-                  "O Foco nas Potencialidades: O esporte inclusivo busca maximizar o que o atleta CONSEGUE realizar de forma limpa.",
-                  "Fomento ao Respeito: Combate os preconceitos estruturais históricos nas quadras e espaços degradados periféricos.",
-                  "O Fairplay de Inserção: Valoriza o esporte como ferramenta ativa e universal de cooperação de direitos."
-                ],
-                dicaProfessor: "Mostre que a limitação motora é sobreposta quando as ferramentas pedagógicas são pensadas para todos."
-              },
-              {
-                tipo: 'texto_simples',
-                type: 'texto_simples',
-                titulo: "🏐 Modalidade: Vôlei Sentado",
-                topicos: [
-                  "Destinação: Praticado por indivíduos com comprometimento motor inferior ou amputação de membros.",
-                  "Dimensões de Quadra: Retângulo menor medindo exactly 10 metros de comprimento por 6 metros de largura útil.",
-                  "Altura da Rede divisória: Reduzida drasticamente para 1,15m (masculino) e 1,05m (feminino).",
-                  "Regra de Glúteos: É obrigatório manter os glúteos tocando no cimento/piso no estrito instante de toque na bola."
-                ],
-                dicaProfessor: "Destaque a força dos membros superiores exigida para se deslocar e sustentar o saque sentado."
-              },
-              {
-                tipo: 'texto_simples',
-                type: 'texto_simples',
-                titulo: "✍️ Como Desenhar a Quadra de Vôlei Sentado",
-                topicos: [
-                  "Passo 1: Esboce um retângulo menor no quadro denotando a quadra de 10x6 metros.",
-                  "Passo 2: Desenhe a linha mediana de divisão com postes de eixos muito rentes à base.",
-                  "Passo 3: Represente os atletas esboçando linhas de palito com um círculo espesso colado no solo.",
-                  "Passo 4: Desenhe a linha pontilhada da zona de ataque a exactly 2 metros da rede lateral de voleibol."
-                ],
-                dicaProfessor: "Mostre visualmente no quadro por que as posições sentadas dificultam ataques longos."
-              },
-              {
-                tipo: 'texto_simples',
-                type: 'texto_simples',
-                titulo: "🏙️ Barreiras Arquitetônicas Infantis",
-                topicos: [
-                  "Análise Situacional: Por que nossas calçadas e pátios escolares muitas vezes impedem cadeirantes de circular?",
-                  "Direito de Cidadania: Calçadas lisas e rampas de acesso não são favores estatais, são direitos assegurados por lei.",
-                  "O papel do esporte: Mudar nossa percepção para apoiar a equidade dentro da comunidade de vizinhos da Baixada.",
-                  "Prática de Hoje: Reflexão analítica e simulação de movimentos por cooperação visual no pátio."
-                ],
-                dicaProfessor: "Conduza uma reflexão sutil sobre a falta de acessibilidade nas vilas vizinhas."
-              },
-              {
-                tipo: 'destaque_centro',
-                type: 'destaque_centro',
-                texto: "🤝 IGUALDADE ATIVA DE DIREITOS",
-                subtexto: "Como o esporte escolar ensina as pessoas a focarem no que cada corpo consegue fazer, em vez de focar nas limitações?",
-                dicaProfessor: "Conduza uma rápida escuta coletiva de encerramento da aula presencial de diversidade."
-              }
-            ];
+          if ((tUpper.includes('INCLUSÃO') && tUpper.includes('PARALÍMPICO')) || tUpper.includes('RETORNO')) {
+            return SLIDES_PARALIMPICO.map(s => ({
+              tipo: s.title.includes('QUADRO') ? 'texto_simples' : 'texto',
+              type: s.title.includes('QUADRO') ? 'texto_simples' : 'texto',
+              titulo: s.title,
+              title: s.title,
+              subtitulo: s.subtitle,
+              topicos: s.points,
+              content: s.content,
+              dicaProfessor: s.dicaProfessor
+            }));
           }
 
           if (tUpper.includes('INCLUSÃO') && tUpper.includes('FUTEBOL DE 5')) {
