@@ -1547,8 +1547,9 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
 
           if ((tUpper.includes('INCLUSÃO') && tUpper.includes('PARALÍMPICO')) || tUpper.includes('RETORNO')) {
             return SLIDES_PARALIMPICO.map(s => ({
-              tipo: s.title.includes('QUADRO') ? 'texto_simples' : 'texto',
-              type: s.title.includes('QUADRO') ? 'texto_simples' : 'texto',
+              ...s,
+              tipo: s.category === 'LOUSA_ALUNO' || s.title.includes('QUADRO') ? 'texto_simples' : 'texto',
+              type: s.category === 'LOUSA_ALUNO' || s.title.includes('QUADRO') ? 'texto_simples' : 'texto',
               titulo: s.title,
               title: s.title,
               subtitulo: s.subtitle,
