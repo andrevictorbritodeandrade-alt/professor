@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { safeLocalStorage } from '../utils/storage';
 
 interface DayInfo {
   type: string;
@@ -36,12 +37,12 @@ const legendConfig: Record<string, { bg: string; text: string }> = {
 
 export const InteractiveCalendar: React.FC = () => {
   const [selectedMonth, setSelectedMonth] = useState<number>(() => {
-    const saved = localStorage.getItem('calendar_selectedMonth');
+    const saved = safeLocalStorage.getItem('calendar_selectedMonth');
     return saved ? parseInt(saved, 10) : new Date().getMonth();
   });
 
   useEffect(() => {
-    localStorage.setItem('calendar_selectedMonth', selectedMonth.toString());
+    safeLocalStorage.setItem('calendar_selectedMonth', selectedMonth.toString());
   }, [selectedMonth]);
 
   // Função para determinar o tipo do dia baseado no mês e dia (1-indexed)

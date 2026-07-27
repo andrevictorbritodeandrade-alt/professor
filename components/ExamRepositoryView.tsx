@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, FileText, CheckCircle2, Download, Printer, Search } from 'lucide-react';
+import { safeLocalStorage } from '../utils/storage';
 
 interface Question {
   id: string;
@@ -269,7 +270,7 @@ const EXAMS: Exam[] = [
 
 export const ExamRepositoryView = ({ onBack }: { onBack: () => void }) => {
   const [selectedExam, setSelectedExam] = useState<Exam | null>(() => {
-    const savedId = localStorage.getItem('exam_selectedExamId');
+    const savedId = safeLocalStorage.getItem('exam_selectedExamId');
     if (savedId) {
       return EXAMS.find(e => e.id === savedId) || null;
     }
@@ -279,9 +280,9 @@ export const ExamRepositoryView = ({ onBack }: { onBack: () => void }) => {
 
   useEffect(() => {
     if (selectedExam) {
-      localStorage.setItem('exam_selectedExamId', selectedExam.id);
+      safeLocalStorage.setItem('exam_selectedExamId', selectedExam.id);
     } else {
-      localStorage.removeItem('exam_selectedExamId');
+      safeLocalStorage.removeItem('exam_selectedExamId');
     }
   }, [selectedExam]);
 

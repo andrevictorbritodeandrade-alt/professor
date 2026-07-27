@@ -8,6 +8,7 @@ import {
 import { ClassDataMap, TrimestreGrade } from '../types';
 import html2canvas from 'html2canvas';
 import { jsPDF } from 'jspdf';
+import { safeLocalStorage } from '../utils/storage';
 
 interface GradesViewProps {
   onBack: () => void;
@@ -23,27 +24,27 @@ export const GradesView: React.FC<GradesViewProps> = ({
   onSave 
 }) => {
   const [selectedSchool, setSelectedSchool] = useState<string | null>(() => {
-    return localStorage.getItem('grades_selectedSchool') || null;
+    return safeLocalStorage.getItem('grades_selectedSchool') || null;
   });
   const [selectedClassId, setSelectedClassId] = useState<string | null>(() => {
-    return localStorage.getItem('grades_selectedClassId') || null;
+    return safeLocalStorage.getItem('grades_selectedClassId') || null;
   });
   const [selectedTrimestre, setSelectedTrimestre] = useState<string>(() => {
-    return localStorage.getItem('grades_selectedTrimestre') || "2";
+    return safeLocalStorage.getItem('grades_selectedTrimestre') || "2";
   });
 
   useEffect(() => {
-    if (selectedSchool) localStorage.setItem('grades_selectedSchool', selectedSchool);
-    else localStorage.removeItem('grades_selectedSchool');
+    if (selectedSchool) safeLocalStorage.setItem('grades_selectedSchool', selectedSchool);
+    else safeLocalStorage.removeItem('grades_selectedSchool');
   }, [selectedSchool]);
 
   useEffect(() => {
-    if (selectedClassId) localStorage.setItem('grades_selectedClassId', selectedClassId);
-    else localStorage.removeItem('grades_selectedClassId');
+    if (selectedClassId) safeLocalStorage.setItem('grades_selectedClassId', selectedClassId);
+    else safeLocalStorage.removeItem('grades_selectedClassId');
   }, [selectedClassId]);
 
   useEffect(() => {
-    if (selectedTrimestre) localStorage.setItem('grades_selectedTrimestre', selectedTrimestre);
+    if (selectedTrimestre) safeLocalStorage.setItem('grades_selectedTrimestre', selectedTrimestre);
   }, [selectedTrimestre]);
   const [searchTerm, setSearchTerm] = useState("");
   const [saveSuccess, setSaveSuccess] = useState(false);
@@ -57,7 +58,7 @@ export const GradesView: React.FC<GradesViewProps> = ({
   // Sync state between props and local state
   const [localClassData, setLocalClassData] = useState<ClassDataMap>(() => {
     if (classData) return classData;
-    const stored = localStorage.getItem('app_classData');
+    const stored = safeLocalStorage.getItem('app_classData');
     return stored ? JSON.parse(stored) : {};
   });
 
@@ -125,7 +126,7 @@ export const GradesView: React.FC<GradesViewProps> = ({
   const saveGrades = async () => {
     setIsSaving(true);
     // Write to local storage first
-    localStorage.setItem('app_classData', JSON.stringify(localClassData));
+    safeLocalStorage.setItem('app_classData', JSON.stringify(localClassData));
     
     // If setClassData prop is passed, update parent state
     if (setClassData) {

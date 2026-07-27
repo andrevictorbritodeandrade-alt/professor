@@ -2,6 +2,7 @@ import React, { useEffect, useState, useMemo } from 'react';
 import { DashboardCardData, ClassDataMap, ClassData } from '../types';
 import { initialClassData } from '../constants';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, Legend } from 'recharts';
+import { safeLocalStorage } from '../utils/storage';
 
 interface StatisticsViewProps {
   classData?: ClassDataMap;
@@ -84,7 +85,7 @@ export const StatisticsView: React.FC<StatisticsViewProps> = ({ classData, onBac
 
     let todayDate = "";
     let activeDateStr = "";
-    const storedDate = localStorage.getItem('app_selectedDate');
+    const storedDate = safeLocalStorage.getItem('app_selectedDate');
     if (storedDate) {
       const parts = storedDate.split('-');
       if (parts.length === 3) {

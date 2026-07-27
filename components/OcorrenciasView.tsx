@@ -11,6 +11,7 @@ import {
   saveOccurrenceToFirestore, 
   deleteOccurrenceFromFirestore 
 } from '../services/firebaseService';
+import { safeLocalStorage } from '../utils/storage';
 
 interface OcorrenciasViewProps {
   onBack: () => void;
@@ -24,14 +25,14 @@ export const OcorrenciasView: React.FC<OcorrenciasViewProps> = ({ onBack }) => {
 
   // Selection states
   const [selectedSchool, setSelectedSchool] = useState<string>(() => {
-    return localStorage.getItem('ocorrencias_selectedSchool') || '';
+    return safeLocalStorage.getItem('ocorrencias_selectedSchool') || '';
   });
   const [selectedClass, setSelectedClass] = useState<ClassData | null>(null);
   const [selectedStudent, setSelectedStudent] = useState<Student | null>(null);
 
   useEffect(() => {
     if (selectedSchool) {
-      localStorage.setItem('ocorrencias_selectedSchool', selectedSchool);
+      safeLocalStorage.setItem('ocorrencias_selectedSchool', selectedSchool);
     }
   }, [selectedSchool]);
 
@@ -112,10 +113,10 @@ export const OcorrenciasView: React.FC<OcorrenciasViewProps> = ({ onBack }) => {
       await saveOccurrenceToFirestore(newOccurrence);
       
       // Save locally to localStorage as fallback/mirror
-      const localStored = localStorage.getItem('app_occurrences');
+      const localStored = safeLocalStorage.getItem('app_occurrences');
       const localList = localStored ? JSON.parse(localStored) : [];
       localList.push(newOccurrence);
-      localStorage.setItem('app_occurrences', JSON.stringify(localList));
+      safeLocalStorage.setItem('app_occurrences', JSON.stringify(localList));
 
       // Reset form
       setFormDescription('');
@@ -124,10 +125,10 @@ export const OcorrenciasView: React.FC<OcorrenciasViewProps> = ({ onBack }) => {
     } catch (err) {
       console.error("Erro ao salvar ocorrência:", err);
       // Fallback local save anyway
-      const localStored = localStorage.getItem('app_occurrences');
+      const localStored = safeLocalStorage.getItem('app_occurrences');
       const localList = localStored ? JSON.parse(localStored) : [];
       localList.push(newOccurrence);
-      localStorage.setItem('app_occurrences', JSON.stringify(localList));
+      safeLocalStorage.setItem('app_occurrences', JSON.stringify(localList));
       
       setFormDescription('');
       setSubmissionFeedback('Registrada localmente com sucesso!');
@@ -145,10 +146,10 @@ export const OcorrenciasView: React.FC<OcorrenciasViewProps> = ({ onBack }) => {
       }
       
       // Update local storage too
-      const localStored = localStorage.getItem('app_occurrences');
+      const localStored = safeLocalStorage.getItem('app_occurrences');
       if (localStored) {
         const localList = JSON.parse(localStored).filter((o: OccurrenceData) => o.id !== id);
-        localStorage.setItem('app_occurrences', JSON.stringify(localList));
+        safeLocalStorage.setItem('app_occurrences', JSON.stringify(localList));
       }
     }
   };

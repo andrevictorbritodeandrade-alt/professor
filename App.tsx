@@ -22,6 +22,7 @@ import { ViewState, ClassDataMap, ClassData, GalleryData } from './types';
 import { mockUserProfile, initialClassData } from './constants';
 import { initFirebase, subscribeToClasses, saveClassesToFirestore, subscribeToGallery, saveGalleryToFirestore } from './services/firebaseService';
 import { AiAssistant } from './components/AiAssistant';
+import { safeLocalStorage } from './utils/storage';
 
 // --- Global Footer Component ---
 const GlobalFooter = () => (
@@ -88,7 +89,7 @@ const deduplicateStudentsByNameAndId = (students: any[]): { deduplicated: any[],
 const App: React.FC = () => {
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const [accessLevel, setAccessLevel] = useState<'portal' | 'alunos' | 'professor_login' | 'professor'>(() => {
-    return (localStorage.getItem('app_accessLevel') as any) || 'portal';
+    return (safeLocalStorage.getItem('app_accessLevel') as any) || 'portal';
   });
   const ALL_VALID_VIEWS: ViewState[] = [
     'home', 'statistics', 'classes', 'profile', 'ementa', 'plano', 
@@ -97,11 +98,16 @@ const App: React.FC = () => {
   ];
 
   const [currentView, setView] = useState<ViewState>(() => {
-    const hash = window.location.hash.replace('#', '');
+    let hash = '';
+    try {
+      hash = window.location.hash.replace('#', '');
+    } catch (e) {
+      console.warn("Could not read location.hash:", e);
+    }
     if (hash && ALL_VALID_VIEWS.includes(hash as ViewState)) {
       return hash as ViewState;
     }
-    const saved = localStorage.getItem('app_currentView') as ViewState;
+    const saved = safeLocalStorage.getItem('app_currentView') as ViewState;
     if (saved && ALL_VALID_VIEWS.includes(saved)) {
       return saved;
     }
@@ -109,14 +115,18 @@ const App: React.FC = () => {
   });
   
   useEffect(() => {
-    localStorage.setItem('app_accessLevel', accessLevel);
+    safeLocalStorage.setItem('app_accessLevel', accessLevel);
   }, [accessLevel]);
 
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = window.location.hash.replace('#', '');
-      if (hash && ALL_VALID_VIEWS.includes(hash as ViewState)) {
-        setView(hash as ViewState);
+      try {
+        const hash = window.location.hash.replace('#', '');
+        if (hash && ALL_VALID_VIEWS.includes(hash as ViewState)) {
+          setView(hash as ViewState);
+        }
+      } catch (e) {
+        console.warn("hashchange handler error:", e);
       }
     };
     window.addEventListener('hashchange', handleHashChange);
@@ -125,8 +135,15 @@ const App: React.FC = () => {
 
   // Shared State
   const [classData, setClassData] = useState<ClassDataMap>(() => {
-    const stored = localStorage.getItem('app_classData');
-    const base = stored ? JSON.parse(stored) : { ...initialClassData };
+    const stored = safeLocalStorage.getItem('app_classData');
+    let base = { ...initialClassData };
+    if (stored) {
+      try {
+        base = JSON.parse(stored);
+      } catch (e) {
+        console.warn("Failed to parse stored classData:", e);
+      }
+    }
 
     // Migration for CIEP320_AP101: ensure the 26 correct students remain with correct attendance
     if (base["CIEP320_AP101"]) {
@@ -259,8 +276,15 @@ const App: React.FC = () => {
     return base;
   });
   const [galleryData, setGalleryData] = useState<GalleryData>(() => {
-    const stored = localStorage.getItem('app_galleryData');
-    return stored ? JSON.parse(stored) : { images: [] };
+    const stored = safeLocalStorage.getItem('app_galleryData');
+    if (stored) {
+      try {
+        return JSON.parse(stored);
+      } catch (e) {
+        console.warn("Failed to parse stored galleryData:", e);
+      }
+    }
+    return { images: [] };
   });
 
   // Persistence Refs
@@ -304,7 +328,7 @@ const App: React.FC = () => {
   };
 
   useEffect(() => {
-    localStorage.setItem('app_classData', JSON.stringify(classData));
+    safeLocalStorage.setItem('app_classData', JSON.stringify(classData));
     if (hasLoadedClasses.current) {
       if (isRemoteClassUpdate.current) {
         isRemoteClassUpdate.current = false;
@@ -315,7 +339,7 @@ const App: React.FC = () => {
   }, [classData]);
 
   useEffect(() => {
-    localStorage.setItem('app_galleryData', JSON.stringify(galleryData));
+    safeLocalStorage.setItem('app_galleryData', JSON.stringify(galleryData));
     if (hasLoadedGallery.current) {
       if (isRemoteGalleryUpdate.current) {
         isRemoteGalleryUpdate.current = false;
@@ -327,43 +351,63 @@ const App: React.FC = () => {
 
   // State for Navigation within Classes
   const [selectedGrade, setSelectedGrade] = useState<string | null>(() => {
-    const params = new URLSearchParams(window.location.search);
-    return params.get('grade') || localStorage.getItem('app_selectedGrade');
+    try {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('grade') || safeLocalStorage.getItem('app_selectedGrade');
+    } catch (e) {
+      return safeLocalStorage.getItem('app_selectedGrade');
+    }
   });
   const [selectedClassId, setSelectedClassId] = useState<string | null>(() => {
-    const params = new URLSearchParams(window.location.search);
-    return params.get('classId') || localStorage.getItem('app_selectedClassId');
+    try {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('classId') || safeLocalStorage.getItem('app_selectedClassId');
+    } catch (e) {
+      return safeLocalStorage.getItem('app_selectedClassId');
+    }
   });
 
   useEffect(() => {
-    localStorage.setItem('app_currentView', currentView);
-    window.location.hash = currentView;
+    safeLocalStorage.setItem('app_currentView', currentView);
+    try {
+      window.location.hash = currentView;
+    } catch (e) {
+      console.warn("Setting location.hash failed:", e);
+    }
     // Expose setView to window for external access (like from ClassesView)
     (window as any).setView = setView;
   }, [currentView]);
 
   useEffect(() => {
-    const url = new URL(window.location.href);
-    if (selectedGrade) {
-      localStorage.setItem('app_selectedGrade', selectedGrade);
-      url.searchParams.set('grade', selectedGrade);
-    } else {
-      localStorage.removeItem('app_selectedGrade');
-      url.searchParams.delete('grade');
+    try {
+      const url = new URL(window.location.href);
+      if (selectedGrade) {
+        safeLocalStorage.setItem('app_selectedGrade', selectedGrade);
+        url.searchParams.set('grade', selectedGrade);
+      } else {
+        safeLocalStorage.removeItem('app_selectedGrade');
+        url.searchParams.delete('grade');
+      }
+      window.history.replaceState({}, '', url.toString());
+    } catch (e) {
+      console.warn("URL manipulation failed:", e);
     }
-    window.history.replaceState({}, '', url.toString());
   }, [selectedGrade]);
 
   useEffect(() => {
-    const url = new URL(window.location.href);
-    if (selectedClassId) {
-      localStorage.setItem('app_selectedClassId', selectedClassId);
-      url.searchParams.set('classId', selectedClassId);
-    } else {
-      localStorage.removeItem('app_selectedClassId');
-      url.searchParams.delete('classId');
+    try {
+      const url = new URL(window.location.href);
+      if (selectedClassId) {
+        safeLocalStorage.setItem('app_selectedClassId', selectedClassId);
+        url.searchParams.set('classId', selectedClassId);
+      } else {
+        safeLocalStorage.removeItem('app_selectedClassId');
+        url.searchParams.delete('classId');
+      }
+      window.history.replaceState({}, '', url.toString());
+    } catch (e) {
+      console.warn("URL manipulation failed:", e);
     }
-    window.history.replaceState({}, '', url.toString());
   }, [selectedClassId]);
 
   useEffect(() => {
@@ -813,7 +857,7 @@ const App: React.FC = () => {
           setClassData(migratedClasses);
         } else if (!hasLoadedClasses.current) {
           // If Firestore is empty, initialize with local/blueprint data
-          const stored = localStorage.getItem('app_classData');
+          const stored = safeLocalStorage.getItem('app_classData');
           let dataToSave = stored ? JSON.parse(stored) : initialClassData;
           saveClassesToFirestore(dataToSave);
           setClassData(dataToSave);
@@ -827,7 +871,7 @@ const App: React.FC = () => {
           isRemoteGalleryUpdate.current = true;
           setGalleryData(firebaseGallery);
         } else if (!hasLoadedGallery.current) {
-          const stored = localStorage.getItem('app_galleryData');
+          const stored = safeLocalStorage.getItem('app_galleryData');
           if (stored) {
             const dataToSave = JSON.parse(stored);
             saveGalleryToFirestore(dataToSave);
@@ -982,15 +1026,22 @@ const App: React.FC = () => {
 
   // Slide Viewer State
   const [slideViewerOpen, setSlideViewerOpen] = useState<{ type: 'corpo-midia' | 'altinha-futvolei' } | null>(() => {
-    const saved = localStorage.getItem('app_slideViewerOpen');
-    return saved ? JSON.parse(saved) : null;
+    const saved = safeLocalStorage.getItem('app_slideViewerOpen');
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        console.warn("Failed to parse slideViewerOpen:", e);
+      }
+    }
+    return null;
   });
 
   useEffect(() => {
     if (slideViewerOpen) {
-      localStorage.setItem('app_slideViewerOpen', JSON.stringify(slideViewerOpen));
+      safeLocalStorage.setItem('app_slideViewerOpen', JSON.stringify(slideViewerOpen));
     } else {
-      localStorage.removeItem('app_slideViewerOpen');
+      safeLocalStorage.removeItem('app_slideViewerOpen');
     }
   }, [slideViewerOpen]);
 

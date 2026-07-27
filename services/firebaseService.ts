@@ -1,8 +1,9 @@
 import { initializeApp, getApps, getApp } from 'firebase/app';
-import { getFirestore, initializeFirestore, doc, onSnapshot, updateDoc, setDoc, collection, writeBatch, enableIndexedDbPersistence, getDocFromServer, persistentLocalCache, persistentMultipleTabManager } from 'firebase/firestore';
+import { getFirestore, initializeFirestore, doc, onSnapshot, updateDoc, setDoc, collection, writeBatch, persistentLocalCache, persistentMultipleTabManager } from 'firebase/firestore';
 import { getAuth, signInAnonymously, onAuthStateChanged } from 'firebase/auth';
 import { DashboardCardData, ClassDataMap, GalleryData, OccurrenceData } from '../types';
 import firebaseAppletConfig from '../firebase-applet-config.json';
+import { safeLocalStorage } from '../utils/storage';
 
 const CONFIG_KEY = 'school_management_firebase_config';
 
@@ -12,7 +13,7 @@ export const getStoredConfig = () => {
     return firebaseAppletConfig;
   }
   
-  const stored = localStorage.getItem(CONFIG_KEY);
+  const stored = safeLocalStorage.getItem(CONFIG_KEY);
   if (stored) {
     try {
       return JSON.parse(stored);
@@ -24,9 +25,11 @@ export const getStoredConfig = () => {
 };
 
 export const saveConfig = (config: any) => {
-  localStorage.setItem(CONFIG_KEY, JSON.stringify(config));
+  safeLocalStorage.setItem(CONFIG_KEY, JSON.stringify(config));
   // Reload the page to apply the new config
-  window.location.reload();
+  if (typeof window !== 'undefined') {
+    window.location.reload();
+  }
 };
 
 export enum OperationType {
@@ -94,15 +97,20 @@ export const initFirebase = () => {
     }
     
     if (!db) {
-      const firestoreSettings = {
-        experimentalForceLongPolling: true,
-        localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() })
-      };
+      try {
+        const firestoreSettings = {
+          experimentalForceLongPolling: true,
+          localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() })
+        };
 
-      if (config.firestoreDatabaseId) {
-        db = initializeFirestore(app, firestoreSettings, config.firestoreDatabaseId);
-      } else {
-        db = initializeFirestore(app, firestoreSettings);
+        if (config.firestoreDatabaseId) {
+          db = initializeFirestore(app, firestoreSettings, config.firestoreDatabaseId);
+        } else {
+          db = initializeFirestore(app, firestoreSettings);
+        }
+      } catch (cacheErr) {
+        console.warn("Could not initialize persistent cache, falling back to standard getFirestore:", cacheErr);
+        db = getFirestore(app);
       }
     }
 

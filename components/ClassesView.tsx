@@ -5,6 +5,7 @@ import { ClassDiaryTable } from './ClassDiaryTable';
 import { saveClassesToFirestore } from '../services/firebaseService';
 import { initialClassData } from '../constants';
 import { scanStudentList } from '../services/geminiService';
+import { safeLocalStorage } from '../utils/storage';
 
 const TRIMESTERS = [
   {
@@ -90,12 +91,12 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
   
   // Date Logic
   const [activeTrimesterId, setActiveTrimesterId] = useState<number>(() => {
-    const saved = localStorage.getItem('classes_activeTrimesterId');
+    const saved = safeLocalStorage.getItem('classes_activeTrimesterId');
     return saved ? parseInt(saved, 10) : 2;
   });
 
   useEffect(() => {
-    localStorage.setItem('classes_activeTrimesterId', activeTrimesterId.toString());
+    safeLocalStorage.setItem('classes_activeTrimesterId', activeTrimesterId.toString());
   }, [activeTrimesterId]);
 
   const getTodayISO = () => {
@@ -132,7 +133,7 @@ export const ClassesView: React.FC<ClassesViewProps> = ({
   // Sincroniza com localStorage apenas para persistir durante a sessão se necessário, 
   // mas o estado inicial agora é sempre hoje ao montar o componente.
   useEffect(() => {
-    localStorage.setItem('app_selectedDate', selectedDate);
+    safeLocalStorage.setItem('app_selectedDate', selectedDate);
   }, [selectedDate]);
 
   const getFormattedDate = (isoDate: string) => {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
+import { safeLocalStorage } from '../utils/storage';
 import { 
   BookOpen, Presentation, ChevronLeft, ChevronRight, Home, 
   Info, Printer, LayoutGrid, Calendar, Activity, Shield, 
@@ -342,48 +343,48 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
   onSave
 }) => {
   const [currentView, setCurrentView] = useState(() => {
-    return localStorage.getItem('decolonial_currentView') || 'menu';
+    return safeLocalStorage.getItem('decolonial_currentView') || 'menu';
   });
   const [selectedAulaData, setSelectedAulaData] = useState<string | null>(() => {
-    return localStorage.getItem('decolonial_selectedAulaData') || null;
+    return safeLocalStorage.getItem('decolonial_selectedAulaData') || null;
   });
   const [planningSubView, setPlanningSubView] = useState<null | '8ano' | 'ap' | 'ap_sexta' | 'gestao'>(() => {
-    return (localStorage.getItem('decolonial_planningSubView') as any) || null;
+    return (safeLocalStorage.getItem('decolonial_planningSubView') as any) || null;
   });
   const [selectedAulaPlan, setSelectedAulaPlan] = useState<any>(() => {
-    const saved = localStorage.getItem('decolonial_selectedAulaPlan');
+    const saved = safeLocalStorage.getItem('decolonial_selectedAulaPlan');
     return saved ? JSON.parse(saved) : null;
   });
 
   useEffect(() => {
     if (currentView) {
-      localStorage.setItem('decolonial_currentView', currentView);
+      safeLocalStorage.setItem('decolonial_currentView', currentView);
     } else {
-      localStorage.removeItem('decolonial_currentView');
+      safeLocalStorage.removeItem('decolonial_currentView');
     }
   }, [currentView]);
 
   useEffect(() => {
     if (selectedAulaData) {
-      localStorage.setItem('decolonial_selectedAulaData', selectedAulaData);
+      safeLocalStorage.setItem('decolonial_selectedAulaData', selectedAulaData);
     } else {
-      localStorage.removeItem('decolonial_selectedAulaData');
+      safeLocalStorage.removeItem('decolonial_selectedAulaData');
     }
   }, [selectedAulaData]);
 
   useEffect(() => {
     if (planningSubView) {
-      localStorage.setItem('decolonial_planningSubView', planningSubView);
+      safeLocalStorage.setItem('decolonial_planningSubView', planningSubView);
     } else {
-      localStorage.removeItem('decolonial_planningSubView');
+      safeLocalStorage.removeItem('decolonial_planningSubView');
     }
   }, [planningSubView]);
 
   useEffect(() => {
     if (selectedAulaPlan) {
-      localStorage.setItem('decolonial_selectedAulaPlan', JSON.stringify(selectedAulaPlan));
+      safeLocalStorage.setItem('decolonial_selectedAulaPlan', JSON.stringify(selectedAulaPlan));
     } else {
-      localStorage.removeItem('decolonial_selectedAulaPlan');
+      safeLocalStorage.removeItem('decolonial_selectedAulaPlan');
     }
   }, [selectedAulaPlan]);
 
@@ -2131,14 +2132,14 @@ export const DecolonialApp: React.FC<DecolonialAppProps> = ({
     })) : null;
     const [currentIndex, setCurrentIndex] = useState(() => {
       const key = selectedAulaData ? `decolonial_slideIndex_${selectedAulaData}` : 'decolonial_slideIndex';
-      const saved = localStorage.getItem(key);
+      const saved = safeLocalStorage.getItem(key);
       return saved ? parseInt(saved, 10) : 0;
     });
     const [showDica, setShowDica] = useState(false);
 
     useEffect(() => {
       const key = selectedAulaData ? `decolonial_slideIndex_${selectedAulaData}` : 'decolonial_slideIndex';
-      localStorage.setItem(key, currentIndex.toString());
+      safeLocalStorage.setItem(key, currentIndex.toString());
     }, [currentIndex, selectedAulaData]);
 
     // Navegação Teclado
