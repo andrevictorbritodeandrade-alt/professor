@@ -1122,7 +1122,7 @@ const App: React.FC = () => {
                
                <div className="flex items-center gap-3">
                  <div className="flex flex-col justify-center">
-                   <h1 className="text-base md:text-lg font-black leading-tight tracking-tighter uppercase">{currentView === 'home' ? 'PORTAL PEDAGÓGICO' : getTitle()}</h1>
+                   <h1 className="text-base md:text-lg font-black leading-tight tracking-tighter uppercase">{currentView === 'home' ? 'CONTEÚDOS TEÓRICOS' : getTitle()}</h1>
                    <p className="text-[9px] md:text-[10px] font-bold text-white/40 uppercase tracking-[0.2em] truncate">
                      {currentView === 'home' ? 'Prof. André Brito' : 'MÓDULO DE GESTÃO'}
                    </p>
