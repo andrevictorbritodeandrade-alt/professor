@@ -594,3 +594,79 @@ export const SLIDES_PARALIMPICO = [
   }
 ];
 
+export const SLIDES_AULA_INTERATIVA_EM = [
+  {
+    slideNumber: "1/6",
+    type: "capa",
+    tipo: "capa",
+    title: "A GUERRA PELA SUA MENTE",
+    subtitle: "Algoritmos, Dopamina, Telas e Onde Fica o Seu Corpo? (30 a 50 min)",
+    dicaProfessor: "🗣️ ROTEIRO (Introdução - 5 min): \"Bom dia, pessoal! Hoje nós vamos iniciar uma discussão crucial sobre uma guerra invisível que está acontecendo agora mesmo, neste exato segundo, dentro do seu bolso. Quem aqui olhou o celular nos últimos 15 minutos? E por quê? Não é bronca! Quero que vocês pensem: vocês escolheram abrir o celular ou sentiram uma 'coceira' física na mão puxando o aparelho? Hoje vamos entender como as gigantes da tecnologia usam a ciência e bilhões de dólares para colonizar nossa atenção e prender nossos corpos, e como podemos retomar o controle de nossa mente e da nossa rotina.\""
+  },
+  {
+    slideNumber: "2/6",
+    type: "texto_simples",
+    tipo: "texto_simples",
+    title: "1. A Armadilha da Dopamina Rápida",
+    subtitle: "Como o seu cérebro é enganado pelo feed infinito",
+    points: [
+      "Dopamina = Neuroquímico do Desejo: É liberada na ANTECIPAÇÃO da novidade (antes mesmo de ver o próximo vídeo).",
+      "Efeito Caça-Níquel (Slot Machine): O feed intercala vídeos normais com vídeos incríveis — esse padrão incerto vicia o cérebro.",
+      "Fadiga de Foco: Cada notificação fraciona sua atenção. Após 20 min de Reels/TikTok, a capacidade de focar na aula despenca.",
+      "Provocação para a Turma: 'Você realmente escolheu ver os últimos 15 vídeos ou o algoritmo te hipnotizou?'"
+    ],
+    dicaProfessor: "🗣️ ROTEIRO (10 min): \"A dopamina não é o hormônio do prazer, mas do DESEJO e da expectativa de algo novo! No feed infinito (TikTok/Reels), o algoritmo funciona como uma máquina caça-níqueis de cassino: ele intercala posts sem graça com posts maravilhosos para o seu cérebro nunca saber quando virá o prêmio. Isso vicia e cansa sua mente. Após 20 minutos disso, sua capacidade de focar despenca. Vamos propor um desafio: abram agora o celular em 'Tempo de Tela' nas configurações e falem honestamente: quanto tempo passaram nas redes ontem? Vamos descobrir para onde está indo o tempo de vida de vocês.\""
+  },
+  {
+    slideNumber: "3/6",
+    type: "texto_simples",
+    tipo: "texto_simples",
+    title: "2. Corpo Imóvel x Cérebro Acelerado",
+    subtitle: "O impacto invisível da tela no seu corpo e na sua rotina",
+    points: [
+      "Pescoço de Texto (Tech Neck): Inclinar a cabeça para olhar a tela equivale a colocar 27 kg sobre a sua coluna cervical.",
+      "Luz Azul e Sono Destruído: Usar celular antes de dormir bloqueia a melatonina. Você acorda exausto mesmo dormindo 8 horas.",
+      "Comparação e Ansiedade: Filtros e vidas perfeitas geram a ilusão de que todos estão felizes — menos você.",
+      "A Resposta do Corpo: Exercícios físicos e esportes liberam endorfina e serotonina reais, limpando a névoa mental."
+    ],
+    dicaProfessor: "🗣️ ROTEIRO (10 min): \"Enquanto o seu cérebro está acelerado com dezenas de vídeos de 15 segundos, o seu corpo está estático e curvado. Sabiam que inclinar a cabeça para olhar a tela do celular joga um peso de até 27kg na coluna cervical (Tech Neck)? É como carregar uma criança no pescoço! E a luz azul bloqueia a melatonina, gerando cansaço crônico mesmo dormindo 8 horas. No mental, os filtros geram ansiedade extrema de comparação. Mas o movimento físico libera serotonina e endorfina de verdade! Vamos todos ficar de pé por 10 segundos, alinhar a postura, olhar para cima, respirar fundo e sentir o alívio imediato na coluna. Sinta seu corpo de verdade!\""
+  },
+  {
+    slideNumber: "4/6",
+    type: "texto_simples",
+    tipo: "texto_simples",
+    title: "3. Quem Comanda a Sua Identidade?",
+    subtitle: "Decolonize o seu feed e recupere o controle da sua atenção",
+    points: [
+      "A Bolha de Filtro: O algoritmo só mostra o que te dá raiva ou reforça o que você já pensa. Você para de ver o mundo real.",
+      "Se você não paga pelo produto, O PRODUTO É VOCÊ: O seu tempo de vida e atenção são vendidos para anunciantes.",
+      "Decolonizar o Tempo Livre: Retomar o comando sobre suas horas sem depender da validação do feed.",
+      "Estratégias Hacks: Desativar notificações banais, praticar esportes e criar momentos do dia 'Livre de Telas'."
+    ],
+    dicaProfessor: "🗣️ ROTEIRO (10 min): \"Tem uma frase famosa no Vale do Silício: 'Se você não paga pelo produto, o produto é você'. O que eles estão vendendo para as marcas anunciantes é o seu tempo de atenção e de vida. Decolonizar o feed significa tomar as rédeas de suas horas reais. Dicas práticas de hackers de atenção: desativem notificações inúteis que servem só para chamar vocês, não durmam com o celular ao lado da cama e usem o esporte como desintoxicação. Se vocês ficassem sem internet por 24 horas inteiras neste final de semana, o que seu corpo e sua mente fariam de divertido e ativo na vida real?\""
+  },
+  {
+    slideNumber: "5/6",
+    type: "destaque_centro",
+    tipo: "destaque_centro",
+    texto: "🔥 DEBATE EXPRESS (10 MINUTOS)",
+    subtexto: "Qual é a primeira coisa que você faz ao acordar e a última antes de dormir? Você controla a tela ou a tela te controla?",
+    dicaProfessor: "🗣️ ROTEIRO (10 min): \"Agora, turma, vamos debater de forma totalmente sincera e sem julgamentos. Qual é a primeira coisa que você faz ao acordar e a última antes de dormir? É olhar as notificações? Quem aqui já sentiu ansiedade física quando o celular ficou descarregado ou sem internet? Vocês acham que são vocês que controlam as telas ou as telas é que controlam a rotina de vocês? Quero ouvir as opiniões honestas de 4 a 5 alunos.\""
+  },
+  {
+    slideNumber: "6/6",
+    type: "texto_simples",
+    tipo: "texto_simples",
+    title: "✍️ ATIVIDADE PARA O CADERNO (Cópia e Resposta em Aula)",
+    subtitle: "Responda individualmente agora. O professor passará nas carteiras dando visto e nota!",
+    points: [
+      "1) Explique como a DOPAMINA e o efeito 'caça-níquel' (rolagem infinita) mantêm os jovens presos nas redes sociais.",
+      "2) Cite 2 impactos FÍSICOS (no corpo) e 1 impacto MENTAL causados pelo uso excessivo de celulares.",
+      "3) O que significa a frase: 'Se você não paga pelo produto, o produto é o seu tempo de atenção'?",
+      "4) [DESAFIO PESSOAL] Escreva uma meta prática de 3 passos para reduzir seu tempo de tela e praticar uma atividade física nesta semana."
+    ],
+    dicaProfessor: "🗣️ ROTEIRO (15 min): \"Mantenham os cadernos abertos e canetas na mão. Copiem e respondam a essas 4 perguntas de forma sincera. Podem debater entre si de forma produtiva. Enquanto vocês respondem, eu passarei em cada carteira individualmente para tirar dúvidas, conversar sobre as metas de vocês e já dar o visto e a nota de participação do trimestre direto no caderno! Mãos à obra!\""
+  }
+];
+
+

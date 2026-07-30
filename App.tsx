@@ -1025,7 +1025,7 @@ const App: React.FC = () => {
   };
 
   // Slide Viewer State
-  const [slideViewerOpen, setSlideViewerOpen] = useState<{ type: 'corpo-midia' | 'altinha-futvolei' } | null>(() => {
+  const [slideViewerOpen, setSlideViewerOpen] = useState<{ type: 'corpo-midia' | 'altinha-futvolei' | 'decolonial_player' } | null>(() => {
     const saved = safeLocalStorage.getItem('app_slideViewerOpen');
     if (saved) {
       try {
@@ -1064,7 +1064,7 @@ const App: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen relative font-sans">
       {/* Slide Viewer Global Overlay */}
-      {slideViewerOpen && (
+      {slideViewerOpen && slideViewerOpen.type !== 'decolonial_player' && (
         <SlideViewer 
           onClose={() => setSlideViewerOpen(null)} 
           slideType={slideViewerOpen.type} 

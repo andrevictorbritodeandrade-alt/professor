@@ -202,7 +202,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ setView, classData
               className={`relative aspect-video sm:aspect-square lg:aspect-[4/5] overflow-hidden rounded-[2.5rem] cursor-pointer group shadow-lg border border-slate-200 bg-white/95 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 ${card.hoverBorder}`}
             >
               {/* Category / Color Tag */}
-              <div className="absolute top-5 left-5 z-20">
+              <div className="absolute top-4 inset-x-0 flex justify-center z-20 pointer-events-none">
                 <span className={`px-3 py-1 text-[9px] md:text-[10px] font-black uppercase tracking-widest rounded-xl shadow-sm ${card.badgeClass}`}>
                   {card.colorName}
                 </span>
@@ -223,15 +223,15 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ setView, classData
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent transition-all duration-500 z-[2]"></div>
               </div>
               
-              {/* Content Overlay */}
-              <div className="absolute inset-0 p-6 md:p-8 z-10 flex flex-col justify-end h-full">
+              {/* Content Overlay - Centered and safely framed inside card */}
+              <div className="absolute inset-0 p-4 sm:p-5 lg:p-6 z-10 flex flex-col justify-end items-center text-center h-full w-full">
                 {/* Small indicator bar */}
-                <div className={`w-10 h-[3px] ${card.barBg} rounded-full mb-4 group-hover:w-16 transition-all duration-300`}></div>
+                <div className={`w-10 h-[3px] ${card.barBg} rounded-full mb-3 group-hover:w-16 transition-all duration-300 mx-auto`}></div>
 
-                <h3 className={`text-2xl md:text-3xl font-black text-white mb-2 tracking-tight ${card.hoverText} group-hover:translate-x-1 transition-all uppercase leading-tight`}>
+                <h3 className={`text-base sm:text-lg lg:text-xl font-black text-white mb-2 tracking-tight ${card.hoverText} transition-all uppercase leading-snug text-center px-1 w-full break-normal [word-break:keep-all] hyphens-none`}>
                   {card.title}
                 </h3>
-                <p className="text-xs md:text-sm text-slate-200 font-bold leading-relaxed group-hover:text-slate-100 transition-colors">
+                <p className="text-xs sm:text-sm text-slate-200 font-bold leading-relaxed group-hover:text-slate-100 transition-colors text-center px-1 w-full">
                   {card.description}
                 </p>
               </div>

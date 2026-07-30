@@ -1,5 +1,5 @@
 import { initializeApp, getApps, getApp } from 'firebase/app';
-import { getFirestore, initializeFirestore, doc, onSnapshot, updateDoc, setDoc, collection, writeBatch, persistentLocalCache, persistentMultipleTabManager } from 'firebase/firestore';
+import { getFirestore, initializeFirestore, doc, onSnapshot, updateDoc, setDoc, collection, writeBatch, persistentLocalCache, persistentMultipleTabManager, getDocFromServer } from 'firebase/firestore';
 import { getAuth, signInAnonymously, onAuthStateChanged } from 'firebase/auth';
 import { DashboardCardData, ClassDataMap, GalleryData, OccurrenceData } from '../types';
 import firebaseAppletConfig from '../firebase-applet-config.json';

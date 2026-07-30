@@ -242,13 +242,33 @@ export const SlideViewer: React.FC<{ onClose: () => void, slideType?: 'corpo-mid
             <p className="text-xs text-slate-400 font-bold uppercase tracking-widest">Aulas Teóricas de Educação Física • Sem Livro Didático</p>
           </div>
         </div>
-        <div className="flex items-center gap-4">
-            <span className="font-extrabold text-sm tracking-widest bg-slate-700/80 px-3 py-1 rounded-full text-indigo-300 border border-slate-600">
-              SLIDE {currentSlide + 1} / {slides.length}
-            </span>
-            <button onClick={onClose} className="p-2 hover:bg-slate-700 rounded-full text-slate-300 hover:text-white transition-colors">
-              <X size={24} />
+        <div className="flex items-center gap-3">
+          {/* Passador Pequeno no Cabeçalho */}
+          <div className="flex items-center gap-1 p-1 rounded-lg bg-slate-900 border border-slate-700 text-white shadow-inner">
+            <button 
+              onClick={prev} 
+              disabled={currentSlide === 0} 
+              className="p-1.5 rounded hover:bg-slate-800 disabled:opacity-25 text-indigo-400 transition-all cursor-pointer"
+              title="Slide Anterior"
+            >
+              <ArrowLeft size={16} />
             </button>
+            <span className="font-extrabold text-xs tracking-wider px-2 text-indigo-300">
+              {currentSlide + 1} / {slides.length}
+            </span>
+            <button 
+              onClick={next} 
+              disabled={currentSlide === slides.length - 1} 
+              className="p-1.5 rounded hover:bg-slate-800 disabled:opacity-25 text-indigo-400 transition-all cursor-pointer"
+              title="Próximo Slide"
+            >
+              <ArrowRight size={16} />
+            </button>
+          </div>
+
+          <button onClick={onClose} className="p-2 hover:bg-slate-700 rounded-full text-slate-300 hover:text-white transition-colors">
+            <X size={22} />
+          </button>
         </div>
       </div>
 
